@@ -1,0 +1,48 @@
+<div>
+  <div>
+    <label for="fn">Loan #</label>
+    <input [(ngModel)]="LoanID"  id="fn" type="text" value="00000" (input)="onChangedLoanID(LoanID)">
+  </div>
+
+  <div>
+    <div>
+      <label for="comment">Comment</label>
+      <textarea [(ngModel)]="inputComment" id="comment" class="input-area text-area-med"></textarea>
+      <label for="note">Note</label>
+      <textarea [(ngModel)]="inputNote" id="note" class="input-area text-area-med"></textarea>
+      <label for="an">Additional Notes</label>
+      <textarea [(ngModel)]="inputAdditionalNote" id="an" class="input-area text-area-long"></textarea>
+
+    </div>
+    <form (submit)="submitComments()" #memberForm="ngForm">
+      <div>
+        <button class="btn-blue">Add Comment</button>
+      </div>
+    </form>
+  </div>
+  <div>
+    <button type="button" class="btn-blue" (click)="onToggleDu()">what{{expando}}</button>
+  </div>
+  <div *ngIf="showComments===true">
+    <table class="table-view">
+
+      <tbody>
+      <tr>
+        <td>Date of Completion</td>
+        <td>Comment</td>
+        <td>Notes</td>
+        <td>Additional Notes</td>
+      </tr>
+
+      <tr *ngFor="let cmt of comments"  (click)="onUsingTable(cmt)">
+
+        <td> {{cmt.completionDate | date}} </td>
+        <td> {{cmt.comment}} </td>
+        <td>{{cmt.notes}}</td>
+        <td>{{cmt.additionalNotes}}</td>
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
