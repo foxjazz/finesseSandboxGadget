@@ -6,6 +6,35 @@
 
   <div>
     <div>
+      <table class="table-entry">
+        <tr>
+          <td><label>Comment</label></td>
+          <td><label>Note</label></td>
+          <td>Additional Notes</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <textarea [(ngModel)]="inputComment" id="comment" class="input-area text-area-h"></textarea>
+          </td>
+          <td>
+            <textarea [(ngModel)]="inputNote" id="note" class="input-area text-area-h"></textarea>
+          </td>
+          <td>
+            <textarea [(ngModel)]="inputAdditionalNote" id="an" class="input-area text-area-h"></textarea>
+          </td>
+          <td>
+            <form (submit)="submitComments()" #memberForm="ngForm">
+              <div>
+                <button class="btn-blue">Add Comment</button>
+              </div>
+            </form>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+<!--    <div>
       <label for="comment">Comment</label>
       <textarea [(ngModel)]="inputComment" id="comment" class="input-area text-area-med"></textarea>
       <label for="note">Note</label>
@@ -13,22 +42,18 @@
       <label for="an">Additional Notes</label>
       <textarea [(ngModel)]="inputAdditionalNote" id="an" class="input-area text-area-long"></textarea>
 
-    </div>
-    <form (submit)="submitComments()" #memberForm="ngForm">
-      <div>
-        <button class="btn-blue">Add Comment</button>
-      </div>
-    </form>
+    </div>-->
+
   </div>
   <div>
-    <button type="button" class="btn-blue" (click)="onToggleDu()">what{{expando}}</button>
+    <button type="button" class="btn-blue" (click)="onToggleDu()">{{expando}}</button>
   </div>
   <div *ngIf="showComments===true">
     <table class="table-view">
 
       <tbody>
       <tr>
-        <td>Date of Completion</td>
+        <td>Date</td>
         <td>Comment</td>
         <td>Notes</td>
         <td>Additional Notes</td>
@@ -36,7 +61,7 @@
 
       <tr *ngFor="let cmt of comments"  (click)="onUsingTable(cmt)">
 
-        <td> {{cmt.completionDate | date}} </td>
+        <td> {{cmt.dateandTime | date}} </td>
         <td> {{cmt.comment}} </td>
         <td>{{cmt.notes}}</td>
         <td>{{cmt.additionalNotes}}</td>
