@@ -7,4 +7,55 @@ div{
 }
 a{
   background: #1d2528;
+  color: #3498db;
+}
+nav li{
+  display:inline-block;
+  border-bottom:1px solid #935fbf;
+  margin-left:-20px;
+}
+nav a{
+  color:#fff;
+  background:#935fbf;
+  position:relative;
+  display:inline-block;
+  margin:0 22px;
+  padding:8px 11px;
+  text-shadow: 0 1px 0 rgba(0,2,0,0.4);
+  border-radius:7px 7px 0 0; /* just to smooth the top edges */
+}
+nav a:before,
+nav a:after{
+  content:" ";
+  position: absolute;
+  top:0;
+  width: 23px;
+  height: 100%;
+  background-color: inherit;
+}
+nav a:before{
+  border-radius: 12px 0 0 0;
+  transform: skew(-24deg);
+  left: -13px; /* play with this one to give the LI border ~2px extrusion */
+}
+nav a:after{
+  border-radius: 0 12px 0 0;
+  transform: skew(24deg);
+  right: -13px; /* play with this one to give the LI border ~2px extrusion */
+  border-right: 1px solid #935fbf;
+  z-index: 1; /* overlap next element */
+}
+/* LI ACTIVE  */
+nav li.active{
+  border-bottom:1px solid #0c0f1d;
+}
+nav li.active a{
+  color:#935fbf;
+  background: #0c0f1d;
+}
+nav li.active a:before{
+  z-index: 1; /* overlap prev element */
+}
+nav li.active a:after{
+  border-bottom:1px solid #ffffff;
 }

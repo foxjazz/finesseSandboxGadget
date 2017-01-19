@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CommentsService} from "./comments.service";
 import {Comments} from "./Comments";
+import {ActivatedRoute} from "@angular/router";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-comments',
@@ -10,7 +12,13 @@ import {Comments} from "./Comments";
 })
 export class CommentsComponent implements OnInit {
 
-  constructor(public cs: CommentsService) { this.showComments = true; this.expando="Collapse"; this.setupBy = "not set";}
+  private subscription: Subscription;
+
+  constructor(private cs: CommentsService, private ar: ActivatedRoute) {
+    this.showComments = true; this.expando="Collapse"; this.setupBy = "not set";
+    this.LoanID = "00000";
+
+  }
   comments : Array<Comments>;
   comment : Comments;
   LoanID: string;
@@ -63,11 +71,23 @@ export class CommentsComponent implements OnInit {
       this.comment = cmt;
   }
   ngOnInit() {
-     this.LoanID = "00000";
-     let id = this.LoanID + "14544";
-    this.cs.getComments(id).subscribe(h => {
-      this.comments = h;
-    });
+
+
+     //let id = this.LoanID + "14544";
+     //let id2: string;
+    this.subscription = this.ar.queryParams.subscribe(
+      (queryParam: any) => {
+        this.LoanID = queryParam['LoanID'];
+        this.cs.getComments(this.LoanID).subscribe(h => {
+          this.comments = h;
+
+        });
+      }
+
+    );
+
+
+
 
   }
 
