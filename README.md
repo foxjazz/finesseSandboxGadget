@@ -5,6 +5,7 @@ This project was generated with [angular-cli](https://github.com/angular/angular
 #finesse shortcuts:
 utils reset_3rdpartygadget_password
 utils service restart Cisco Finesse Tomcat
+https://developer.cisco.com/media/finesseDevGuide4.1/CFIN_RF_U1D810BD_00_upload-third-party-gadgets.html
 
 
 ## Development server
