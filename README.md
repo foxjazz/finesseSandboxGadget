@@ -3,6 +3,7 @@
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
 
 #finesse shortcuts:
+ssh administrator@10.10.20.10 (pw is ciscopsdt)
 utils reset_3rdpartygadget_password
 utils service restart Cisco Finesse Tomcat
 https://developer.cisco.com/media/finesseDevGuide4.1/CFIN_RF_U1D810BD_00_upload-third-party-gadgets.html

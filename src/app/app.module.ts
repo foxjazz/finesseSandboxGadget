@@ -6,13 +6,16 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { CommentsComponent } from './comments/comments.component';
 import {RouterModule, Routes} from "@angular/router";
+import { TestComponent } from './test/test.component';
 
-const appRoutes: Routes=[{path:'',component:CommentsComponent}, {path:'comments', component:CommentsComponent}]
+const appRoutes: Routes=[{path:'',component:CommentsComponent},
+  {path:'comments', component:CommentsComponent}, {path:'test', component:TestComponent}]
 
 @NgModule({
   declarations: [
     AppComponent,
-    CommentsComponent
+    CommentsComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

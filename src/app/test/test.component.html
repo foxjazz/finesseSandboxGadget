@@ -1,0 +1,18 @@
+<div>
+<input type="text" [(ngModel)]="uri">
+  <input type="test" [(ngModel)]="command">
+</div>
+<div>
+  text area for post data:
+  <textarea [(ngModel)]="body" id="comment"></textarea>
+
+</div>
+<div>
+  <button (click)="testGet()">test get</button>
+  <div>
+  <button (click)="testPost()">test Post</button>
+  </div>
+</div>
+<div>
+  API Result PUT:{{response}}
+</div>

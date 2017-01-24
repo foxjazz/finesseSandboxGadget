@@ -17,13 +17,13 @@ export class CommentsService {
   constructor(public http: Http){}
   public getComments(id: string): Observable<Array<Comments>>
   {
-    let uri = 'http://localhost:63114/api/Comments/' + id;
+    let uri = 'https://localhost/fiwebapi/api/Comments/' + id;
     return this.http.get(uri)
       .map((res: Response) => res.json());
   }
   result;
   public Add(c: Comments){
-    let uri = 'http://localhost:63114/api/Comments/';
+    let uri = 'http://localhost:5055/api/Comments/';
     this.save(uri,JSON.stringify(c)).subscribe(r => {this.result = r;});
     console.log(this.result);
   }
