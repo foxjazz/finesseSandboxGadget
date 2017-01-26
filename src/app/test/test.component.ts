@@ -11,13 +11,35 @@ import 'rxjs/add/operator/catch';
 })
 export class TestComponent implements OnInit {
 
-  constructor(private http: Http) { this.command = "User/Agent002";
+  constructor(private http: Http) {
+    this.command = "User/Agent002";
     this.body = '<User> <state>READY</state></User>';
   }
   uri: string;
   command: string;
   response: any;
   body: string;
+  setReadyState(){
+    this.command = "User/Agent002";
+    this.body = '<User> <state>READY</state></User>';
+    this.put();
+  }
+  setNotReadyState(){
+    this.command = "User/Agent002";
+    this.body = '<User> <state>NOT_READY</state></User>';
+    this.put();
+  }
+  wrapUpTest(){
+    this.command = "Dialog/54321";
+    this.body = `<Dialog>
+      <requestedAction>UPDATE_CALL_DATA</requestedAction>
+      <mediaProperties>
+        <wrapUpReason>Happy customer!</wrapUpReason>
+      </mediaProperties>
+      </Dialog>;`
+
+    this.testPut();
+  }
   testGet(){
     this.get().subscribe( r => {
       this.response = r;
@@ -29,16 +51,17 @@ export class TestComponent implements OnInit {
     return this.http.get(this.uri + this.command)
       .map((res: Response) => res.json());
   }
-  public post(): Observable<Array<any>>
+  public put(): Observable<Array<any>>
   {
-    let headers = new Headers([{ 'Content-Type': 'application/xml' },{ 'Authorization': 'Basic QWdlbnQwMDI6Y2lzY29wc2R0' }]);
-
+    //let headers = new Headers([{ 'Content-Type': 'application/xml' },{ 'Authorization': 'Basic QWdlbnQwMDI6Y2lzY29wc2R0' }]);
+    let headers = new Headers({'Content-Type': 'application/xml'});
+    headers.append('Accept', 'application/xml');
     let options = new RequestOptions( { headers: headers } );
     return this.http.put(this.uri + this.command, this.body, options)
       .map((res: Response) => res.json());
   }
-  testPost(){
-     this.post().subscribe(r => {
+  testPut(){
+     this.put().subscribe(r => {
        this.response = r;
      })
   }

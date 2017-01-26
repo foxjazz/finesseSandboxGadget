@@ -1,16 +1,37 @@
+<script src="https://gist.github.com/andyferra/2554919.js"></script>
+
 # ServiceUI
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
+### Project to test the finesse eco system with an embedded gadget.
 
-#finesse shortcuts:
-ssh administrator@10.10.20.10 (pw is ciscopsdt)
-utils reset_3rdpartygadget_password
-utils service restart Cisco Finesse Tomcat
+##finesse shortcuts:
+ssh administrator@10.10.20.10 (pw is ciscopsdt)  
+utils reset_3rdpartygadget_password   (this needs to be run to enable the third party gadget echosystem)  
+utils service restart Cisco Finesse Tomcat   (this is run after every change to the gadget xml on the back copied to the back end).    
+
+in order to reboot dns server, rdp to 10.10.20.100 with abc.inc/Administartor as the username ciscopsdt as pw.
+
+
+To test for functions, postman can be used to set ready and not ready state for the finesse desktop.  
+
+##setting up with nginx  
+    download and use the config file in the nginx folder. This is used both for the gadget client and 
+    the web-service api.  Because the gadget only responds to ssl commands, nginx creates a valid reverse proxy.
+
+## LINKS   
+### <styl> color: red; </style> Useful finesse links
+   <a href="https://developer.cisco.com/media/finesseDevGuide4.1/">Finesse developer guid</a> ***
+   <a href="https://developer.cisco.com/media/finesseDevGuide4.1/CFIN_RF_D91DEB3D_00_dialog-update-call-variable-data.html">Finesse dev guide sheet</a>
+  
+# Useful Angular Links
+
 https://developer.cisco.com/media/finesseDevGuide4.1/CFIN_RF_U1D810BD_00_upload-third-party-gadgets.html
 
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Is there an easy way to get a refresh to fire on the finesse desktop to re-read a gadget?
+
 
 ## Code scaffolding
 

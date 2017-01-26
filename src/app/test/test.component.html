@@ -5,13 +5,17 @@
 <div>
   text area for post data:
   <textarea [(ngModel)]="body" id="comment"></textarea>
-
 </div>
 <div>
   <button (click)="testGet()">test get</button>
   <div>
-  <button (click)="testPost()">test Post</button>
+  <button (click)="testPut()">test Post</button>
   </div>
+</div>
+<div>
+  <button (click)="wrapUpTest()">Wrap up test</button>
+  <button (click)="setReadyState()">Set State to Ready</button>
+  <button (click)="setNotReadyState()">Set State to NOT Ready</button>
 </div>
 <div>
   API Result PUT:{{response}}
