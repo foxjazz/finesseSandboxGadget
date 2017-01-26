@@ -1,6 +1,6 @@
 <div>
 <input type="text" [(ngModel)]="uri">
-  <input type="test" [(ngModel)]="command">
+  <input type="test" [(ngModel)]="command">  <button (click)="setSecure()">Set https</button> <button (click)="setHttp()">Set http</button>
 </div>
 <div>
   text area for post data:
@@ -13,6 +13,7 @@
   </div>
 </div>
 <div>
+  <button (click)="systemInfo()"> System Info</button>
   <button (click)="wrapUpTest()">Wrap up test</button>
   <button (click)="setReadyState()">Set State to Ready</button>
   <button (click)="setNotReadyState()">Set State to NOT Ready</button>

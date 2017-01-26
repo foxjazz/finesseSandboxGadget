@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -14,11 +15,23 @@ export class TestComponent implements OnInit {
   constructor(private http: Http) {
     this.command = "User/Agent002";
     this.body = '<User> <state>READY</state></User>';
+    this.s = '';
   }
+  s: string;
   uri: string;
   command: string;
   response: any;
   body: string;
+  systemInfo(){
+    this.command="SystemInfo";
+    this.testGet();
+  }
+  setSecure(){
+    this.uri = "https://hq-uccx.abc.inc:8082/finesse/api/"
+  }
+  setHttp(){
+    this.uri = "https://hq-uccx.abc.inc:8082/finesse/api/"
+  }
   setReadyState(){
     this.command = "User/Agent002";
     this.body = '<User> <state>READY</state></User>';
@@ -45,11 +58,12 @@ export class TestComponent implements OnInit {
       this.response = r;
     })
   }
-  public get(): Observable<Array<any>>
+  public get(): Observable<any>
   {
 
     return this.http.get(this.uri + this.command)
-      .map((res: Response) => res.json());
+     // .map((res: Response) => JSON.parse(xml2json(res.text(),'  '))
+      .map((res: Response) => res);
   }
   public put(): Observable<Array<any>>
   {
@@ -58,7 +72,7 @@ export class TestComponent implements OnInit {
     headers.append('Accept', 'application/xml');
     let options = new RequestOptions( { headers: headers } );
     return this.http.put(this.uri + this.command, this.body, options)
-      .map((res: Response) => res.json());
+      .map((res: Response) => res.json())
   }
   testPut(){
      this.put().subscribe(r => {
@@ -66,7 +80,7 @@ export class TestComponent implements OnInit {
      })
   }
   ngOnInit() {
-    this.uri = "http://hq-uccx.abc.inc:8082/finesse/api/"
+    this.uri = "https://hq-uccx.abc.inc:8082/finesse/api/"
 
   }
 
