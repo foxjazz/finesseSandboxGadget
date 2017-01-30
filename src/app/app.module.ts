@@ -7,15 +7,21 @@ import { AppComponent } from './app.component';
 import { CommentsComponent } from './comments/comments.component';
 import {RouterModule, Routes} from "@angular/router";
 import { TestComponent } from './test/test.component';
+import { NavComponent } from './nav/nav.component';
+import { LoanInfoComponent } from './loan-info/loan-info.component';
 
 const appRoutes: Routes=[{path:'',component:TestComponent},
-  {path:'comments', component:CommentsComponent}, {path:'test', component:TestComponent}]
+  {path:'comments', component:CommentsComponent},
+  {path:'test', component:TestComponent},
+  {path:'loaninfo', component:LoanInfoComponent}]
 
 @NgModule({
   declarations: [
     AppComponent,
     CommentsComponent,
-    TestComponent
+    TestComponent,
+    NavComponent,
+    LoanInfoComponent
   ],
   imports: [
     BrowserModule,
