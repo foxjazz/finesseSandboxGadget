@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {MaterialModule} from "@angular/material";
 
 @Component({
   selector: 'app-nav',

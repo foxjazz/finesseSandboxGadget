@@ -1,9 +1,39 @@
-<nav>
-  <ul class="nav navbar-nav">
-    <!--<li class="width20"></li>-->
-    <li><a [routerLink]="['test']"><button class="btn-nav">Ad hoc testing</button></a></li>
-    <li><a [routerLink]="['comments']">Comments</a></li>
-    <li><a [routerLink]="['loaninfo']"</li>
-    <!--<li><a [routerLink]="['comments']"><button class="btn-nav">Comments</button></a></li>-->
-  </ul>
+
+<!--<md-menu #appMenu="mdMenu">
+  <button md-menu-item>Comments</button>
+  <button md-menu-item>Loan Info</button>
+</md-menu>-->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">{{brand}}</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a [routerLink]="['loaninfo']">Loan Info</a></li>
+        <li><a [routerLink]="['main']">Main</a></li>
+        <li><a [routerLink]="['test']">Ad hoc testing</a></li>
+        <li><a [routerLink]="['comments']">Comments</a></li>
+      </ul>
+    </div>
+  </div>
 </nav>
+
+
+<!--  <ul class="nav navbar-nav">
+    &lt;!&ndash;<li class="width20"></li>&ndash;&gt;
+    <li><a [routerLink]="['loaninfo']">Loan Info</a></li>
+    <li><a [routerLink]="['test']">Ad hoc testing</a></li>
+    <li><a [routerLink]="['comments']">Comments</a></li>
+
+    &lt;!&ndash;<li><a [routerLink]="['comments']"><button class="btn-nav">Comments</button></a></li>&ndash;&gt;
+  </ul>-->
+

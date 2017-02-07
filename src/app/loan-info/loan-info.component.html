@@ -1,3 +1,43 @@
-<p>
-  loan-info works!
-</p>
+<div class="row">
+  <div class="col-md-3">
+    <ul>
+      <li>Loan ID</li>
+
+
+      <li>Interest Rate:</li>
+
+      <li>Due Date</li>
+      <li>Payments Due</li>
+      <li>Total Due:</li>
+
+    </ul>
+  </div>
+
+  <div class="col-md-3">
+    <ul>
+      <li> <input [(ngModel)]="Loan.loanID"  id="fn" type="text" value="00000" (input)="onChangedLoanID()"></li>
+      <li>{{Loan.interestRate}}</li>
+      <li>{{Loan.dueDate | date:"MM/dd/yyyy"}}</li>
+      <li>{{Loan.pmtRemaining}}</li>
+      <li>{{Loan.principleBal}}</li>
+
+    </ul>
+  </div>
+
+  <div class="col-md-3">
+    <ul>
+      <li>Payment Amount</li>
+      <li>Type</li>
+      <li>Collector:</li>
+      <li>spoc</li>
+    </ul>
+  </div>
+  <div class="col-md-3">
+    <ul>
+      <li>needs/data</li>
+      <li>{{Loan.loanType}}</li>
+      <li>needs/data</li>
+      <li>n/d</li>
+    </ul>
+  </div>
+</div>

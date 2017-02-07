@@ -27,7 +27,7 @@ export class TestComponent implements OnInit {
     this.testGet();
   }
   setSecure(){
-    this.uri = "https://hq-uccx.abc.inc:8082/finesse/api/"
+    this.uri = "https://hq-uccx.abc.inc:8445/finesse/api/"
   }
   setHttp(){
     this.uri = "https://hq-uccx.abc.inc:8082/finesse/api/"
@@ -80,7 +80,7 @@ export class TestComponent implements OnInit {
      })
   }
   ngOnInit() {
-    this.uri = "https://hq-uccx.abc.inc:8082/finesse/api/"
+    this.uri = "https://hq-uccx.abc.inc:8445/finesse/api/"
 
   }
 
