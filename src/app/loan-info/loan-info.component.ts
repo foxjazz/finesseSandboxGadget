@@ -15,15 +15,16 @@ export class LoanInfoComponent implements OnInit {
   }
 
   Loan: ILoan;
-  //@Output() OnGetLoan = new EventEmitter<ILoan>();
+  @Output() OnGetLoan = new EventEmitter<ILoan>();
 
   onChangedLoanID(){
     let id = this.Loan.loanID;
     if(id.length === 10)
       this.ls.getLoan(id).subscribe(h => {
-        if(h.length > 0)
+        if(h.length > 0) {
           this.Loan = h[0];
-        //this.OnGetLoan.emit(this.Loan);
+          this.OnGetLoan.emit(this.Loan);
+        }
       });
 
   }

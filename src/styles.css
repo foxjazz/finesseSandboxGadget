@@ -1,7 +1,16 @@
+:host {
+  display: block;
+
+  background-color: #1d2528;
+  color: #FFCC99;
+}
+nav{
+  color: #3cb0fd;
+}
 body{
   background-color: black;
-  color: cornsilk;
-  font-family: Arial;
+  color: #FFCC99;
+  font-family: Garamond;
 }/* You can add global styles to this file, and also import other style files */
 h1{ /* colors of the heading text */
   margin: 0;
@@ -18,6 +27,13 @@ h3{
   background: #1d2528;
   color: #FFCC99;
 }
+div{
+  background: #1d2528;
+  color: #FFCC99;
+}
 html{
    text-size-adjust: 100%;
  }
+.sh{
+  height: 800px;
+}

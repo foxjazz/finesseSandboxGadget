@@ -1,0 +1,13 @@
+
+
+.navcolor a:hover{
+  color: yellow;
+  background-color: black;
+}
+.navcolor a{
+  color: deepskyblue;
+
+}
+.navcolor{
+  height: 30px;
+}

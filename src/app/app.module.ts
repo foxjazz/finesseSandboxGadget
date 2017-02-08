@@ -13,7 +13,7 @@ import {MaterialModule} from "@angular/material";
 import { ContactComponent } from './contact/contact.component';
 import { MainComponent } from './main/main.component';
 
-const appRoutes: Routes=[{path:'',component:TestComponent},
+const appRoutes: Routes=[{path:'',component:MainComponent},
   {path:'comments', component:CommentsComponent},
   {path:'test', component:TestComponent},
   {path:'loaninfo', component:LoanInfoComponent},

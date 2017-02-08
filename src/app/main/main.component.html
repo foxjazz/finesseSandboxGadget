@@ -1,7 +1,15 @@
 
-  this should work.
- <!-- <app-loan-info (OnGetLoan)="onGetLoan($event)"></app-loan-info>-->
+<div>
 
-<!--<div class="row"><app-contact></app-contact></div>
-<div class="row"><app-comments [loan]="getLoan()"></app-comments></div>-->
+   <app-loan-info (OnGetLoan)="onGetLoan($event)"> </app-loan-info>
+</div>
+
+
+
+
+<div>
+<!--<div class="row"><app-contact></app-contact></div>-->
+<app-comments [loan]="getLoan()"></app-comments>
+</div>
+
 

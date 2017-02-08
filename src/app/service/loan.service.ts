@@ -15,7 +15,7 @@ export class LoanService {
   constructor(public http: Http){}
   public getComments(id: string): Observable<Array<Comments>>
   {
-    let uri = 'https://localhost/fiwebapi/api/GetCommentsByID/' + id;
+    let uri = 'https://localhost/fiwebapi/api/Comments/' + id;
     return this.http.get(uri)
       .map((res: Response) => res.json());
   }

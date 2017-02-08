@@ -1,27 +1,22 @@
-<div>
-<!--  <div>
-    <label for="fn">Loan #</label>
-    <input [(ngModel)]="LoanID"  id="fn" type="text" value="00000" (input)="onChangedLoanID(LoanID)">
-  </div>-->
 
-  <div>
+
+<div class="row">
+
+  <div class="col-xs-6">
     <div>
       <table class="table-entry">
         <tr>
-          <td><label>Comment</label></td>
-          <td><label>Note</label></td>
-          <td>Additional Notes</td>
+          <td><label class="cm">Comment</label></td>
+          <td class="an">Additional Notes</td>
           <td></td>
         </tr>
         <tr>
           <td>
-            <textarea [(ngModel)]="inputComment" id="comment" class="input-area text-area-h"></textarea>
+            <textarea [(ngModel)]="inputComment" id="comment" class="input-area text-area-h cm"></textarea>
           </td>
-          <td>
-            <textarea [(ngModel)]="inputNote" id="note" class="input-area text-area-h"></textarea>
-          </td>
-          <td>
-            <textarea [(ngModel)]="inputAdditionalNote" id="an" class="input-area text-area-h"></textarea>
+
+          <td class="an">
+            <textarea [(ngModel)]="inputAdditionalNote" id="an" class="input-area text-area-h an"></textarea>
           </td>
           <td>
             <form (submit)="submitComments()" #memberForm="ngForm">
@@ -34,40 +29,28 @@
 
       </table>
     </div>
-<!--    <div>
-      <label for="comment">Comment</label>
-      <textarea [(ngModel)]="inputComment" id="comment" class="input-area text-area-med"></textarea>
-      <label for="note">Note</label>
-      <textarea [(ngModel)]="inputNote" id="note" class="input-area text-area-med"></textarea>
-      <label for="an">Additional Notes</label>
-      <textarea [(ngModel)]="inputAdditionalNote" id="an" class="input-area text-area-long"></textarea>
-
-    </div>-->
-
-  </div>
-  <div>
-    <button type="button" class="btn-blue" (click)="onToggleDu()">{{expando}}</button>
-  </div>
-  <div *ngIf="showComments===true">
-    <table class="table-view">
-
-      <tbody>
-      <tr>
-        <td>Date</td>
-        <td>Comment</td>
-        <td>Notes</td>
-        <td>Additional Notes</td>
-      </tr>
-
-      <tr *ngFor="let cmt of comments"  (click)="onUsingTable(cmt)">
-
-        <td> {{cmt.dateandTime | date}} </td>
-        <td> {{cmt.comment}} </td>
-        <td>{{cmt.notes}}</td>
-        <td>{{cmt.additionalNotes}}</td>
-
-      </tr>
-      </tbody>
-    </table>
+    <div>
+      <button type="button" class="btn-blue" (click)="onToggleDu()">{{expando}}</button>
+    </div>
   </div>
 </div>
+  <div class="row" *ngIf="showComments===true">
+    <div class="col-md-6">
+      <table class="table-view">
+          <tr>
+            <th>Date</th>
+            <th>Setup By</th>
+            <th>Comment</th>
+            <th>Additional Notes</th>
+          </tr>
+          <tr *ngFor="let cmt of comments"  (click)="onUsingTable(cmt)">
+            <td> {{cmt.dateandTime | date:"MM/dd/yyyy hh:mm"}} </td>
+            <td>{{cmt.setupBy}}</td>
+            <td> {{cmt.comment}} </td>
+            <td>{{cmt.additionalNotes}}</td>
+          </tr>
+          </table>
+    </div>
+  </div>
+
+

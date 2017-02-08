@@ -23,6 +23,9 @@ export class CommentsComponent implements OnInit {
   @Input('loan')
   set loan(l: ILoan){
     this.Loan = l;
+    this.ls.getComments(this.Loan.loanID).subscribe(c => {
+      this.comments  = c;
+    })
   }
   get loan(): ILoan{
     return this.Loan;

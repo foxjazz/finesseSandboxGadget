@@ -3,10 +3,11 @@ import {LoanInfoComponent} from '../loan-info/loan-info.component'
 import {ContactComponent} from '../contact/contact.component'
 import {CommentsComponent} from "../comments/comments.component";
 import {ILoan} from "../service/Loan";
+import {LoanService} from "../service/loan.service";
 
 @Component({
   selector: 'app-main',
-  providers: [LoanInfoComponent],
+  providers: [LoanService,LoanInfoComponent],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
