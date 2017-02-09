@@ -2,11 +2,11 @@
   <div class="col-md-6">
     <div>
       <ul>
-        <li>Loan ID  <input [(ngModel)]="Loan.loanID"  id="fn" type="text" value="00000" (input)="onChangedLoanID()"></li>
-        <li>Interest Rate {{Loan.interestRate}}</li>
-        <li>Due Date {{Loan.dueDate | date:"MM/dd/yyyy"}}</li>
-        <li>Payments Due {{Loan.pmtRemaining}}</li>
-        <li>Total Due: {{Loan.principleBal}}</li>
+
+        <li>Loan ID  <input [(ngModel)]="Loan.loanID"  id="fn" type="text" value="00000" (input)="onChangedLoanID()" class="input-custom"></li>
+        <li>Name {{MA.borrName}}</li>
+        <li>Address {{MA.addressLine1}} {{MA.addressLine2}}</li>
+        <li>{{MA.city}},  {{MA.state}} {{MA.zip}} </li>
 
       </ul>
     </div>
@@ -14,20 +14,16 @@
 
 
 
-  <div class="col-md-3">
+  <div class="col-md-6">
     <ul>
+      <li>Interest Rate {{Loan.interestRate}}</li>
+      <li>Due Date {{Loan.dueDate | date:"MM/dd/yyyy"}}</li>
+      <li>Payments Due {{Loan.pmtRemaining}}</li>
+      <li>Total Due: {{Loan.principleBal}}</li>
       <li>Payment Amount</li>
-      <li>Type</li>
+      <li>Type {{Loan.loanType}}</li>
       <li>Collector:</li>
       <li>spoc</li>
-    </ul>
-  </div>
-  <div class="col-md-3">
-    <ul>
-      <li>needs/data</li>
-      <li>{{Loan.loanType}}</li>
-      <li>needs/data</li>
-      <li>n/d</li>
     </ul>
   </div>
 </div>

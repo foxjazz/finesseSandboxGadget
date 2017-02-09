@@ -1,5 +1,7 @@
-
-<div>
+<div class="tops">
+  |
+</div>
+<div >
 
    <app-loan-info (OnGetLoan)="onGetLoan($event)"> </app-loan-info>
 </div>
@@ -10,6 +12,7 @@
 <div>
 <!--<div class="row"><app-contact></app-contact></div>-->
 <app-comments [loan]="getLoan()"></app-comments>
+  <app-contact [loan]="getLoan()"></app-contact>
 </div>
 
 

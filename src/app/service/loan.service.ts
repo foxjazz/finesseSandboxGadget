@@ -7,6 +7,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {Comments} from "../comments/Comments";
 import {ILoan} from "./Loan";
+import {IContact} from "../contact/contact";
+import {IMailingAddress} from "../main/MailingAddress";
 
 // This is the http calls to crud the comments in the database of Service.Comments
 
@@ -19,13 +21,25 @@ export class LoanService {
     return this.http.get(uri)
       .map((res: Response) => res.json());
   }
+
+  public getContacts(id: string): Observable<Array<IContact>>{
+    let uri = 'https://localhost/fiwebapi/api/Contacts/' + id;
+    return this.http.get(uri)
+      .map((res: Response) => res.json());
+  }
   public getLoan(id: string): Observable<Array<ILoan>>
   {
     let uri = 'https://localhost/fiwebapi/api/Loans/' + id;
     return this.http.get(uri)
       .map((res: Response) => res.json());
   }
-  result;
+  public getMailingAddress(id: string) : Observable<Array<IMailingAddress>>
+  {
+    let uri = 'https://localhost/fiwebapi/api/MailingAddress/' + id;
+    return this.http.get(uri)
+      .map((res: Response) => res.json());
+  }
+
   public Add(c: Comments){
     let uri = 'http://localhost:5055/api/Comments/';
     this.save(uri,JSON.stringify(c)).subscribe(r => {this.result = r;});
