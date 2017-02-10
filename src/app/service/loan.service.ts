@@ -14,7 +14,9 @@ import {IMailingAddress} from "../main/MailingAddress";
 
 @Injectable()
 export class LoanService {
-  constructor(public http: Http){}
+
+  constructor(public http: Http){ this.result = "";}
+  result: string;
   public getComments(id: string): Observable<Array<Comments>>
   {
     let uri = 'https://localhost/fiwebapi/api/Comments/' + id;
@@ -42,8 +44,11 @@ export class LoanService {
 
   public Add(c: Comments){
     let uri = 'http://localhost:5055/api/Comments/';
-    this.save(uri,JSON.stringify(c)).subscribe(r => {this.result = r;});
-    console.log(this.result);
+    this.save(uri,JSON.stringify(c)).subscribe(r => {
+      this.result = r;
+      console.log(this.result);
+    });
+
   }
 
   private save(uri: string,data: string) : Observable<any>{

@@ -12,6 +12,7 @@ import { LoanInfoComponent } from './loan-info/loan-info.component';
 import {MaterialModule} from "@angular/material";
 import { ContactComponent } from './contact/contact.component';
 import { MainComponent } from './main/main.component';
+import {CasePipe} from "./Common/case.pipe";
 
 const appRoutes: Routes=[{path:'',component:MainComponent},
   {path:'comments', component:CommentsComponent},
@@ -22,6 +23,7 @@ const appRoutes: Routes=[{path:'',component:MainComponent},
 @NgModule({
   declarations: [
     AppComponent,
+    CasePipe,
     CommentsComponent,
     TestComponent,
     NavComponent,

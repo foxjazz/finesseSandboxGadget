@@ -10,10 +10,24 @@ import {IMailingAddress} from "../main/MailingAddress";
 })
 export class LoanInfoComponent implements OnInit {
 
-  constructor(private ls: LoanService) {   this.Loan = {borrName: "", loanID: "00000", acquiredFrom: "",
-    dueDate: new Date(), interestRate: 0, investorName:"",    loanPurpose: "", mersNum: 0, originalAmt: 0,
-    pmtRemaining: 0, principleBal: 0, secondMtg: 0, soldTo: "", loanType: ""}
-    this.MA = {borrName: "", addressLine1: "", addressLine2: "", city: "", state: "", zip: ""}
+  constructor(private ls: LoanService) {
+    this.Loan = {loanID: "0000027900", unappliedOption: null,
+    originalAmt: null, principalBal: null, escrowPmt: null,
+    legalFeeBal: null, othFundBal: null, lossDraftBal: null, partialPaid: null,
+    othFeeBal: null,prpetitionUnappliedBal: null,
+    stipulationUnappliedBal: null, unappliedBal: null, lcBal: null, piPmp: null,
+    othFundPmt: null, escrowBal: null,
+    currencyType: "US Dollars", pmtFrequency: null, deferredPrincipal: null,
+    deferredInterest: null, dateLastContacted: null,
+    promisedByDate: null, outcome: "", lastPmtRecvdDate: null, lastUpdateDate: null,
+    lastLetterDt: null, lastNSFDt: null,
+    lastNSFCheck: null, outcomeDescription: "", borrowerName: "bn", borrowerSSN: "ssn",
+    coBorrowerName: "cb", coBorrowerSSN: "cbssn",
+    investor: "", interestRate: null, paymentAmount: null,
+    inglePointOfContactName: "spoc", numberOfPaymentsdue: 0,
+    lastInspRecvDt: null, dueDate: null, loanType: null };
+
+  this.MA = {borrName: null, state: null, city: null, addressLine2: null, addressLine1: null, zip:null};
   }
 
   Loan: ILoan;
@@ -38,6 +52,7 @@ export class LoanInfoComponent implements OnInit {
 
   }
   ngOnInit() {
+    this.onChangedLoanID();
   }
 
 }

@@ -1,10 +1,11 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-4">
     <div>
       <ul>
 
-        <li>Loan ID  <input [(ngModel)]="Loan.loanID"  id="fn" type="text" value="00000" (input)="onChangedLoanID()" class="input-custom"></li>
-        <li>Name {{MA.borrName}}</li>
+        <li>Loan #  <input [(ngModel)]="Loan.loanID"  id="fn" type="text" value="00000" (input)="onChangedLoanID()" class="input-custom"></li>
+        <li>Status {{Loan.primStat}}</li>
+        <li>Borrower {{Loan.borrowerName | asCase:"lower"}}, CoBorrower {{Loan.coBorrowerName | asCase:"lower"}}</li>
         <li>Address {{MA.addressLine1}} {{MA.addressLine2}}</li>
         <li>{{MA.city}},  {{MA.state}} {{MA.zip}} </li>
 
@@ -12,18 +13,22 @@
     </div>
   </div>
 
-
-
-  <div class="col-md-6">
+  <div class="col-md-4">
     <ul>
-      <li>Interest Rate {{Loan.interestRate}}</li>
-      <li>Due Date {{Loan.dueDate | date:"MM/dd/yyyy"}}</li>
-      <li>Payments Due {{Loan.pmtRemaining}}</li>
-      <li>Total Due: {{Loan.principleBal}}</li>
-      <li>Payment Amount</li>
+      <li>Interest Rate {{Loan.interestRate | percent}}</li>
+      <li>Due Date {{Loan.dat | date:"MM/dd/yyyy"}}</li>
+      <li># Payments Due {{Loan.numberOfPaymentsdue}}</li>
+      <li>Total Due: {{Loan.principalBal | currency}}</li>
+      <li>Payment Amount {{Loan.paymentAmount | currency}}</li>
+    </ul>
+  </div>
+
+  <div class="col-md-4">
+    <ul>
+      <li>SPOC {{Loan.inglePointOfContactName}}</li>
       <li>Type {{Loan.loanType}}</li>
       <li>Collector:</li>
-      <li>spoc</li>
+
     </ul>
   </div>
 </div>
