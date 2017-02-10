@@ -5,9 +5,9 @@
 
         <li>Loan #  <input [(ngModel)]="Loan.loanID"  id="fn" type="text" value="00000" (input)="onChangedLoanID()" class="input-custom"></li>
         <li>Status {{Loan.primStat}}</li>
-        <li>Borrower {{Loan.borrowerName | asCase:"lower"}}, CoBorrower {{Loan.coBorrowerName | asCase:"lower"}}</li>
-        <li>Address {{MA.addressLine1}} {{MA.addressLine2}}</li>
-        <li>{{MA.city}},  {{MA.state}} {{MA.zip}} </li>
+        <li>Borrower {{Loan.borrowerName | asCase:"name"}}; CoBorrower {{Loan.coBorrowerName | asCase:"name"}}</li>
+        <li>Address {{MA.addressLine1 | asCase:"name"}} {{MA.addressLine2 }}</li>
+        <li>{{MA.city | asCase:"name"}},  {{MA.state }} {{MA.zip}} </li>
 
       </ul>
     </div>
