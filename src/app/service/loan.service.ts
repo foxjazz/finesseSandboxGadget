@@ -9,6 +9,7 @@ import {Comments} from "../comments/Comments";
 import {ILoan} from "./Loan";
 import {IContact} from "../contact/contact";
 import {IMailingAddress} from "../main/MailingAddress";
+import {payment} from "../payments/payment";
 
 // This is the http calls to crud the comments in the database of Service.Comments
 
@@ -23,7 +24,12 @@ export class LoanService {
     return this.http.get(uri)
       .map((res: Response) => res.json());
   }
-
+  public getPayments(id: string): Observable<Array<payment>>
+  {
+    let uri = 'https://localhost/fiwebapi/api/Payments/' + id;
+    return this.http.get(uri)
+      .map((res: Response) => res.json());
+  }
   public getContacts(id: string): Observable<Array<IContact>>{
     let uri = 'https://localhost/fiwebapi/api/Contacts/' + id;
     return this.http.get(uri)

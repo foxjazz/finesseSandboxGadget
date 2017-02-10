@@ -13,6 +13,7 @@ import {MaterialModule} from "@angular/material";
 import { ContactComponent } from './contact/contact.component';
 import { MainComponent } from './main/main.component';
 import {CasePipe} from "./Common/case.pipe";
+import { PaymentsComponent } from './payments/payments.component';
 
 const appRoutes: Routes=[{path:'',component:MainComponent},
   {path:'comments', component:CommentsComponent},
@@ -22,14 +23,18 @@ const appRoutes: Routes=[{path:'',component:MainComponent},
 
 @NgModule({
   declarations: [
-    AppComponent,
+
     CasePipe,
     CommentsComponent,
     TestComponent,
     NavComponent,
     LoanInfoComponent,
     ContactComponent,
-    MainComponent
+    PaymentsComponent,
+    MainComponent,
+    AppComponent,
+
+
   ],
   imports: [
     BrowserModule,

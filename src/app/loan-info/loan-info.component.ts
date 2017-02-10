@@ -11,28 +11,29 @@ import {IMailingAddress} from "../main/MailingAddress";
 export class LoanInfoComponent implements OnInit {
 
   constructor(private ls: LoanService) {
-    this.Loan = {loanID: "0000027900", unappliedOption: null,
+    this.Loan =  {loanID: "0000027900",
     originalAmt: null, principalBal: null, escrowPmt: null,
-    legalFeeBal: null, othFundBal: null, lossDraftBal: null, partialPaid: null,
-    othFeeBal: null,prpetitionUnappliedBal: null,
-    stipulationUnappliedBal: null, unappliedBal: null, lcBal: null, piPmp: null,
-    othFundPmt: null, escrowBal: null,
-    currencyType: "US Dollars", pmtFrequency: null, deferredPrincipal: null,
-    deferredInterest: null, dateLastContacted: null,
+    legalFeeBal: null,
+      lcBal: null, piPmp: null, currencyType: "US Dollars", pmtFrequency: null,
+    dateLastContacted: null,
     promisedByDate: null, outcome: "", lastPmtRecvdDate: null, lastUpdateDate: null,
-    lastLetterDt: null, lastNSFDt: null,
-    lastNSFCheck: null, outcomeDescription: "", borrowerName: "bn", borrowerSSN: "ssn",
+    lastLetterDt: null, lastNSFDt: null, lastNSFCheck: null, outcomeDescription: "",
+      borrowerName: "bn", borrowerSSN: "ssn",
     coBorrowerName: "cb", coBorrowerSSN: "cbssn",
     investor: "", interestRate: null, paymentAmount: null,
-    inglePointOfContactName: "spoc", numberOfPaymentsdue: 0,
-    lastInspRecvDt: null, dueDate: null, loanType: null };
+    spoc: "spoc", numberOfPaymentsDue: 0,
+    dueDate: null, primStat: "", loanType: null, collector: ""};
 
-  this.MA = {borrName: null, state: null, city: null, addressLine2: null, addressLine1: null, zip:null};
+    this.MA = {borrName: null, state: null, city: null, addressLine2: null, addressLine1: null, zip:null};
+    this.gref = "";
   }
 
-  Loan: ILoan;
-  MA: IMailingAddress;
+
   @Output() OnGetLoan = new EventEmitter<ILoan>();
+
+  public Loan: ILoan;
+  public MA: IMailingAddress;
+  public gref: string;
 
   onChangedLoanID(){
     let id = this.Loan.loanID;
@@ -40,6 +41,7 @@ export class LoanInfoComponent implements OnInit {
       this.ls.getMailingAddress(id).subscribe(h => {
         if(h.length > 0){
           this.MA = h[0];
+          this.gref = "https://www.google.com/maps/place/" + this.MA.addressLine1.replace(' ','').replace('  ','') + "," + this.MA.city.replace(' ','') + "," + this.MA.state;
         }
 
       });
@@ -52,6 +54,8 @@ export class LoanInfoComponent implements OnInit {
 
   }
   ngOnInit() {
+    this.Loan.loanID = '00000027900';
+    this.OnGetLoan.emit(this.Loan);
     this.onChangedLoanID();
   }
 

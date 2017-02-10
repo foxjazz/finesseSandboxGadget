@@ -95,7 +95,7 @@ a{
 .table-container {
   overflow-y: auto;
   overflow-x: hidden;
-  height: 200px;
+
   background: #000000;
   border-spacing: 0;
   width:100%;
@@ -124,7 +124,7 @@ a{
 }
 .table-container tbody{
   overflow-y: auto;
-  height: 200px;
+
   padding: 2px 2px;
   display: table;
   width: calc(100% - 16px); /* assuming scrollbar width as 16px */
@@ -141,19 +141,19 @@ a{
 }
 
 .table-container th{
-  min-width: 50px;
-  max-width: 100px;
+  min-width: 15px;
+  max-width: 22px;
 }
 
 .table-container td{
-  min-width: 50px;
-  max-width: 100px;
+  min-width: 15px;
+  max-width: 22px;
 }
 
 .table-view {
   overflow-y: auto;
   overflow-x: hidden;
-  height: 100px;
+
   background: #000000;
   border-spacing: 0;
   width:100%;
@@ -184,7 +184,6 @@ a{
 
 .table-view tbody{
   overflow-y: auto;
-  height: 200px;
   padding: 2px 2px;
   display: table;
   width: calc(100% - 16px); /* assuming scrollbar width as 16px */

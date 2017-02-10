@@ -9,10 +9,18 @@
 
 
 
-<div>
 <!--<div class="row"><app-contact></app-contact></div>-->
-<app-comments [loan]="getLoan()"></app-comments>
-  <app-contact [loan]="getLoan()"></app-contact>
+<div class="row">
+  <div class="col-md-6">
+    <app-comments [loan]="getLoan()"></app-comments>
+  </div>
+
+  <!--<app-contact [loan]="getLoan()"></app-contact>-->
+  <div class="col-md-6">
+    <app-payments [loan]="getLoan()"></app-payments>
+  </div>
+
+
 </div>
 
 
