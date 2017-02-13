@@ -37,3 +37,24 @@ html{
 .sh{
   height: 800px;
 }
+
+
+.table-norm{
+  padding: 0px 9px;
+
+}
+
+.table-norm caption{
+  color: #95a2bf;
+  text-align: center;
+}
+.table-norm tr td{
+  padding: 0px 4px;
+}
+.table-norm th{
+  padding: 0px 4px;
+  min-width: 120px;
+}
+.table-norm tr:nth-child(even){
+  background-color: #0c0f1d;
+}

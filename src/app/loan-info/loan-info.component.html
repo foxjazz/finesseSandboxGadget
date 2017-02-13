@@ -17,7 +17,7 @@
   <div class="col-md-4">
     <ul>
       <li>Interest Rate {{Loan.interestRate | percent}}</li>
-      <li>Due Date {{Loan.dat | date:"MM/dd/yyyy"}}</li>
+      <li>Due Date {{Loan.dueDate | date:"MM/dd/yyyy"}}</li>
       <li># Payments Due {{Loan.numberOfPaymentsdue}}</li>
       <li>Total Due: {{Loan.principalBal | currency}}</li>
       <li>Payment Amount {{Loan.paymentAmount | currency}}</li>
@@ -26,9 +26,9 @@
 
   <div class="col-md-4">
     <ul>
-      <li>SPOC {{Loan.inglePointOfContactName}}</li>
+      <li>SPOC {{Loan.spoc}}</li>
       <li>Type {{Loan.loanType}}</li>
-      <li>Collector:</li>
+      <li>Collector: {{Loan.collector}}</li>
       <li><app-contact [loan]="getLoan()"></app-contact></li>
     </ul>
   </div>

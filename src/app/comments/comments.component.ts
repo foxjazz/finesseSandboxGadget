@@ -94,10 +94,12 @@ export class CommentsComponent implements OnInit {
     this.subscription = this.ar.queryParams.subscribe(
       (queryParam: any) => {
         this.LoanID = queryParam['LoanID'];
-        this.ls.getComments(this.LoanID).subscribe(h => {
-          this.comments = h;
+        if(this.LoanID != null) {
+          this.ls.getComments(this.LoanID).subscribe(h => {
+            this.comments = h;
 
-        });
+          });
+        }
       }
 
     );

@@ -11,7 +11,7 @@ import {IMailingAddress} from "../main/MailingAddress";
 export class LoanInfoComponent implements OnInit {
 
   constructor(private ls: LoanService) {
-    this.Loan =  {loanID: "0000027900",
+    this.Loan =  {loanID: "0000032141",
     originalAmt: null, principalBal: null, escrowPmt: null,
     legalFeeBal: null,
       lcBal: null, piPmp: null, currencyType: "US Dollars", pmtFrequency: null,
@@ -57,7 +57,7 @@ export class LoanInfoComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.Loan.loanID = '00000027900';
+    this.Loan.loanID = '0000032141';
     this.OnGetLoan.emit(this.Loan);
     this.onChangedLoanID();
   }

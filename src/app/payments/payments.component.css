@@ -1,0 +1,19 @@
+.table-d{
+  padding: 0px 9px;
+
+}
+
+.table-d caption{
+  color: #95a2bf;
+  text-align: center;
+}
+.table-d tr td{
+  padding: 0px 4px;
+}
+.table-d th{
+   padding: 0px 4px;
+ }
+.table-d tr:nth-child(even){
+  background-color: #0c0f1d;
+}
+

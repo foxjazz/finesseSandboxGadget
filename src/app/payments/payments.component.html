@@ -1,6 +1,6 @@
-<div>
-  <table>
-    <caption>payment history</caption>
+<div >
+  <table class="table-d">
+    <caption>Payment History</caption>
     <tr>
       <th>description</th>
       <th>repay date</th>
@@ -9,7 +9,7 @@
     </tr>
     <tr *ngFor="let p of payments">
       <td>{{p.description}}</td>
-      <td>{{p.repayDate}}</td>
+      <td>{{p.repayDate | date:"MM/dd/yyyy"}}</td>
       <td>{{p.repayAmt}}</td>
       <td>{{p.lateChargeAmt}}</td>
 

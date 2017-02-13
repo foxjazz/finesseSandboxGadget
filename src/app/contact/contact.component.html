@@ -1,20 +1,14 @@
-<div class="row">
-  <div class="col-md-6">
-    <div>
-      Name
-     <!-- <select name="cts" ngModel class="report-body">
-        <option *ngFor="let cts of contacts" [ngValue]="cts">
-          {{ cts.display }}
-        </option>
-      </select>-->
-    </div>
-  </div>
-  <div class="col-md-6">
-    <table>
-
-      <tr>
-        <td></td>
-      </tr>
-    </table>
-  </div>
+<div>
+  <table class="table-norm">
+    <tr>
+      <th>Date last contacted</th>
+      <th>Demeanor</th>
+      <th>Reason</th>
+    </tr>
+    <tr *ngFor="let c of contacts">
+      <td>{{c.dateLastContacted | date:"MM/dd/yyyy"}}</td>
+      <td>{{c.demeanor}}</td>
+      <td>{{c.reason}}</td>
+    </tr>
+  </table>
 </div>
