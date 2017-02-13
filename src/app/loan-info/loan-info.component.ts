@@ -2,6 +2,8 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {LoanService} from "../service/loan.service";
 import { ILoan} from "../service/Loan";
 import {IMailingAddress} from "../main/MailingAddress";
+import {IContact} from "../contact/contact";
+import {IAuthorizedUser} from "../service/AuthorizedUser";
 @Component({
   selector: 'app-loan-info',
   providers: [LoanService],
@@ -24,8 +26,14 @@ export class LoanInfoComponent implements OnInit {
     spoc: "spoc", numberOfPaymentsDue: 0,
     dueDate: null, primStat: "", loanType: null, collector: ""};
 
+    this.showAU = false;
+
     this.MA = {borrName: null, state: null, city: null, addressLine2: null, addressLine1: null, zip:null};
     this.gref = "";
+
+    this.c = {loanID: "",dateLastContacted: null, outcome: "", demeanor: "", reason: ""};
+
+
   }
 
 
@@ -34,9 +42,17 @@ export class LoanInfoComponent implements OnInit {
   public Loan: ILoan;
   public MA: IMailingAddress;
   public gref: string;
-
+  contacts: Array<IContact>;
+  public c: IContact;
+  public showAU: boolean;
   getLoan():ILoan{
     return this.Loan;
+  }
+  hoverAU(){
+    this.showAU = true;
+  }
+  leaveAU(){
+    this.showAU = false;
   }
   onChangedLoanID(){
     let id = this.Loan.loanID;
@@ -54,6 +70,16 @@ export class LoanInfoComponent implements OnInit {
           this.OnGetLoan.emit(this.Loan);
         }
       });
+
+      this.ls.getContacts(id).subscribe(c => {
+        if(c != null) {
+          this.contacts = c;
+          if(c.length > 0)
+            this.c = c[0];
+        }
+      })
+
+
 
   }
   ngOnInit() {

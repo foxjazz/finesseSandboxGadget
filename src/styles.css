@@ -4,6 +4,10 @@
   background-color: #1d2528;
   color: #FFCC99;
 }
+ul{
+
+}
+ul li{ cursor: default;}
 nav{
   color: #3cb0fd;
 }
@@ -50,11 +54,13 @@ html{
 }
 .table-norm tr td{
   padding: 0px 4px;
+
 }
 .table-norm th{
   padding: 0px 4px;
-  min-width: 120px;
+  min-width: 100px;
 }
 .table-norm tr:nth-child(even){
   background-color: #0c0f1d;
 }
+

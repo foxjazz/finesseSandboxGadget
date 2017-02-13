@@ -10,6 +10,7 @@ import {ILoan} from "./Loan";
 import {IContact} from "../contact/contact";
 import {IMailingAddress} from "../main/MailingAddress";
 import {payment} from "../payments/payment";
+import {IAuthorizedUser} from "./AuthorizedUser";
 
 // This is the http calls to crud the comments in the database of Service.Comments
 
@@ -32,6 +33,11 @@ export class LoanService {
   {
     let uri = this.baseURI + '/api/Payments/' + id;
 
+    return this.http.get(uri)
+      .map((res: Response) => res.json());
+  }
+  public getAuthorizedUsers(id: string): Observable<Array<IAuthorizedUser>>{
+    let uri = this.baseURI + '/api/AuthorizedUsers/' + id;
     return this.http.get(uri)
       .map((res: Response) => res.json());
   }
