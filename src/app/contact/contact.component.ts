@@ -11,7 +11,9 @@ import {ILoan} from "../service/Loan";
 })
 export class ContactComponent implements OnInit {
 
-  constructor(private ls: LoanService) { }
+  constructor(private ls: LoanService) {
+    this.contacts = new Array<IContact>();
+  }
 
   @Input('loan')
   set loan(l: ILoan){

@@ -35,6 +35,9 @@ export class LoanInfoComponent implements OnInit {
   public MA: IMailingAddress;
   public gref: string;
 
+  getLoan():ILoan{
+    return this.Loan;
+  }
   onChangedLoanID(){
     let id = this.Loan.loanID;
     if(id.length === 10)
