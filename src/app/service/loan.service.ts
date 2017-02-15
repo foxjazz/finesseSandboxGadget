@@ -19,7 +19,7 @@ export class LoanService {
 
 
   constructor(public http: Http){ this.result = "";
-    this.baseURI = 'https://localhost/fiwebapi';
+    this.baseURI = 'https://192.168.1.13/fiwebapi';
   }
   result: string;
   baseURI: string;

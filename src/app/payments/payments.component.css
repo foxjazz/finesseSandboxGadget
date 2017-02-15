@@ -1,11 +1,25 @@
 .table-d{
   padding: 0px 9px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: block;
+  height: 140px;
 
 }
-
+table{
+  scrollbar-base-color: black;
+  scrollbar-arrow-color: purple;
+  scrollbar-face-color: blue;
+}
 .table-d caption{
   color: #95a2bf;
   text-align: center;
+}
+.table-d thead{
+
+}
+.table-d tbody{
+  width: calc(100% - 16px);
 }
 .table-d tr td{
   padding: 0px 4px;

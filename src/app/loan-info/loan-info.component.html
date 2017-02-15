@@ -13,7 +13,7 @@
 
       </ul>
     </div>
-    <div *ngIf="showAU"><app-authorized-users [loan]="getLoan()"></app-authorized-users></div>
+
   </div>
 
   <div class="col-md-4">
@@ -25,6 +25,7 @@
       <li>Payment Amount {{Loan.paymentAmount | currency}}</li>
       <li>SPOC {{Loan.spoc}}</li>
       <li (mouseover)="hoverAU()" (mouseleave)="leaveAU()">Authorized Users</li>
+
     </ul>
   </div>
 
@@ -34,9 +35,17 @@
       <li>Type {{Loan.loanType}}</li>
       <li>Collector: {{Loan.collector}}</li>
       <li>Last contact {{c.dateLastContacted}}</li>
-      <li>reason {{c.reason}}</li>
-      <li>outcome {{c.outcome}}</li>
-      <li>demeanor {{c.demeanor}}</li>
+      <li>Reason {{c.reason}}</li>
+      <li>Outcome {{c.outcome}}</li>
+      <li>Demeanor {{c.demeanor}}</li>
+      <li>Follow up date {{c.followUpDt | date:"MM/dd/yyyy"}}</li>
     </ul>
   </div>
 </div>
+<div class="row" *ngIf="showAU">
+  <div class="col-md-4"></div>
+  <div class="col-md-8">
+    <div><app-authorized-users [loan]="getLoan()"></app-authorized-users></div>
+  </div>
+</div>
+

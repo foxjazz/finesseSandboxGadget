@@ -1,18 +1,24 @@
 <div >
   <table class="table-d">
     <caption>Payment History</caption>
-    <tr>
-      <th>description</th>
-      <th>repay date</th>
-      <th>repay amt</th>
-      <th>late chg</th>
-    </tr>
-    <tr *ngFor="let p of payments">
-      <td>{{p.description}}</td>
-      <td>{{p.repayDate | date:"MM/dd/yyyy"}}</td>
-      <td>{{p.repayAmt}}</td>
-      <td>{{p.lateChargeAmt}}</td>
+    <thead>
 
+
+    <tr>
+      <th>Description</th>
+      <th>Repay date</th>
+      <th>Repay amt</th>
+      <th>Late chg</th>
     </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of payments">
+        <td>{{p.description}}</td>
+        <td>{{p.repayDate | date:"MM/dd/yyyy"}}</td>
+        <td>{{p.repayAmt}}</td>
+        <td>{{p.lateChargeAmt}}</td>
+
+      </tr>
+    </tbody>
   </table>
 </div>

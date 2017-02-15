@@ -31,7 +31,7 @@ export class LoanInfoComponent implements OnInit {
     this.MA = {borrName: null, state: null, city: null, addressLine2: null, addressLine1: null, zip:null};
     this.gref = "";
 
-    this.c = {loanID: "",dateLastContacted: null, outcome: "", demeanor: "", reason: ""};
+    this.c = {loanID: "",dateLastContacted: null, outcome: "", demeanor: "", reason: "", followUpDt: null};
 
 
   }
@@ -83,9 +83,10 @@ export class LoanInfoComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.Loan.loanID = '0000032141';
+    this.Loan.loanID = '0000027900';
     this.OnGetLoan.emit(this.Loan);
     this.onChangedLoanID();
   }
+
 
 }

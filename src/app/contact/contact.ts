@@ -8,5 +8,6 @@ export interface IContact{
   demeanor: string;
   outcome: string;
   reason: string;
+  followUpDt: Date;
 
 }

@@ -4,6 +4,8 @@
 
 ### Project to test the finesse eco system with an embedded gadget.
 
+
+
 ##finesse shortcuts:
 ssh administrator@10.10.20.10 (pw is ciscopsdt)  
 utils reset_3rdpartygadget_password   (this needs to be run to enable the third party gadget echosystem)  
@@ -14,9 +16,12 @@ in order to reboot dns server, rdp to 10.10.20.100 with abc.inc/Administartor as
 
 To test for functions, postman can be used to set ready and not ready state for the finesse desktop.  
 
+
 ##setting up with nginx  
     download and use the config file in the nginx folder. This is used both for the gadget client and 
     the web-service api.  Because the gadget only responds to ssl commands, nginx creates a valid reverse proxy.
+    to start: nginx -s signal
+
 
 ## LINKS   
 ### <styl> color: red; </style> Useful finesse links
