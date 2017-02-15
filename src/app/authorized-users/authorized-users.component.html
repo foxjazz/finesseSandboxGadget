@@ -1,0 +1,17 @@
+<table class="table-norm">
+  <tr>
+    <th>Name</th>
+    <th>Relationship</th>
+    <th>ACode</th>
+    <th>Work</th>
+    <th>Foreign</th>
+  </tr>
+  <tr *ngFor="let u of aul">
+    <td class="namea">{{u.userName}}</td>
+    <td>{{u.authorizedUser}}</td>
+    <td>{{u.areaCode}}</td>
+    <td>{{u.workPhone}}</td>
+    <td>{{u.foreignPhone}}</td>
+
+  </tr>
+</table>
