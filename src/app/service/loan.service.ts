@@ -19,7 +19,7 @@ export class LoanService {
 
 
   constructor(public http: Http){ this.result = "";
-    this.baseURI = 'https://192.168.1.13/fiwebapi';
+    this.baseURI = 'https://localhost/fiwebapi';
   }
   result: string;
   baseURI: string;
@@ -62,6 +62,13 @@ export class LoanService {
       .map((res: Response) => res.json());
   }
 
+  public savePromised(c: IContact){
+    let uri = this.baseURI + '/api/Contacts/';
+    this.save(uri,JSON.stringify(c)).subscribe(r => {
+      this.result = r;
+      console.log(this.result);
+    });
+  }
   public Add(c: Comments){
     //let uri = 'http://localhost:5055/api/Comments/';
     let uri = this.baseURI + '/api/Comments/';

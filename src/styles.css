@@ -14,10 +14,18 @@ nav{
 body{
   background-color: black;
   color: #FFCC99;
-  font-family: Garamond;
-
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 }/* You can add global styles to this file, and also import other style files */
+input{
+  background-color: black;
+  color: #ffddbb;
+  //color: red;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+label{
+  font-size: small;
+}
 h1{ /* colors of the heading text */
   margin: 0;
   background: #1d2528;
