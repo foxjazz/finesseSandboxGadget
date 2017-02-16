@@ -1,4 +1,41 @@
 <div class="row">
+  <div class="col-lg-2">
+    <h3>
+    {{Loan.loanID}}
+    </h3>
+  </div>
+  <div class="col-lg-2">
+    {{Loan.investor}}
+  </div>
+  <div class="col-lg-2">
+    <h3>
+    {{Loan.dueDate | date:"MM/dd/yyyy"}}
+    </h3>
+  </div>
+  <div class="col-lg-2">
+    <h3>
+    Collect/{{Loan.collector}}
+    </h3>
+  </div>
+  <div class="col-xs-2">
+    <h3>
+    {{Loan.primStat}}
+    </h3>
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-lg-2">
+    Borrowers:  {{Loan.borrowerName}} , {{Loan.coBorrowerName}}
+  </div>
+  <div class="col-lg-8">
+    Address {{MA.addressLine1 | asCase:"name"}} {{MA.addressLine2 }} {{MA.city | asCase:"name"}},
+    {{MA.state}} {{MA.zip}}
+  </div>
+
+</div>
+
+<div class="row">
   <div class="col-md-4">
     <div>
       <ul>
@@ -45,7 +82,7 @@
 </div>
 <div class="row">
   <div class="col-md-4">
-    d: {{c.promisedByDate | date:"MM/dd/yyyy"}}
+    <!--d: {{c.promisedByDate | date:"MM/dd/yyyy"}}-->
     <form (submit)="savePromise()" #memberForm="ngForm" autocomplete="off">
       <div>
         <label class="wid {{d1}}" for="pbd">Promise Date </label>
