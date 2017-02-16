@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {Comments} from "../comments/Comments";
 import {ILoan} from "./Loan";
-import {IContact} from "../contact/contact";
+import {IContact, Contact} from "../contact/contact";
 import {IMailingAddress} from "../main/MailingAddress";
 import {payment} from "../payments/payment";
 import {IAuthorizedUser} from "./AuthorizedUser";
@@ -62,9 +62,9 @@ export class LoanService {
       .map((res: Response) => res.json());
   }
 
-  public savePromised(c: IContact){
+  public savePromised(c: Contact){
     let uri = this.baseURI + '/api/Contacts/';
-    this.save(uri,JSON.stringify(c)).subscribe(r => {
+    this.put(uri,JSON.stringify(c)).subscribe(r => {
       this.result = r;
       console.log(this.result);
     });
@@ -78,7 +78,15 @@ export class LoanService {
     });
 
   }
+  private put(uri: string,data: string) : Observable<any>{
+    // this won't actually work because the StarWars API doesn't
+    // is read-only. But it would look like this:
 
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions( { headers: headers } );
+    return this.http.put(uri, data, options).map(x => x.json());
+
+  }
   private save(uri: string,data: string) : Observable<any>{
     // this won't actually work because the StarWars API doesn't
     // is read-only. But it would look like this:

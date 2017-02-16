@@ -45,11 +45,11 @@
 </div>
 <div class="row">
   <div class="col-md-4">
-    test {{testdate | date:"MM/dd/yyyy"}} d: {{c.promisedByDate | date:"MM/dd/yyyy"}}
-    <form (submit)="savePromises()" name="contact">
+    d: {{c.promisedByDate | date:"MM/dd/yyyy"}}
+    <form (submit)="savePromise()" #memberForm="ngForm" autocomplete="off">
       <div>
         <label class="wid {{d1}}" for="pbd">Promise Date </label>
-        <input name="pbd" class="pbd" type="date" id="pbd" [ngModel]="hpromisedByDate">
+        <input name="pbd" class="pbd" type="date" id="pbd" [(ngModel)]="hpbd">
         <!--<input [(ngModel)]="pbd" class="pd {{d1}}" id="pbd" name="pbd">-->
 
         <label class="widAmt" for="pa">Promise Amt</label>

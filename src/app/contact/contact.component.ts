@@ -2,7 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {IContact} from "./contact";
 import {LoanService} from "../service/loan.service";
 import {ILoan} from "../service/Loan";
-import {IpromiseDate} from "./promisedate";
+
 
 @Component({
   selector: 'app-contact',

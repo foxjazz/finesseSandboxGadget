@@ -78,6 +78,10 @@ export class LoanInfoComponent implements OnInit {
     return new Date(Date.UTC(Number(ee[2]), Number(ee[0])-1, Number(ee[1]))) ;
   }
 
+  savePromise(){
+    this.c.loanID = this.Loan.loanID;
+    this.ls.savePromised(this.c);
+  }
   savePromises() {
     //first checkvalidations
     let invalid = false;
@@ -177,12 +181,14 @@ export class LoanInfoComponent implements OnInit {
 
   }
 
-  set hpromisedByDate(e){ /* What gets Saved */
+  set hpbd(e){ /* What gets Saved */
     let ee = e.split('-');
-    let d = new Date(Date.UTC(Number(ee[0]), Number(ee[1])-1, Number(ee[2])+1)) ;
-    this.c.promisedByDate = new Date(d.toISOString().substring(0,19));
+    if(ee.length > 0 && Number(ee[0]) > 2000) {
+      let d = new Date(Date.UTC(Number(ee[0]), Number(ee[1]) - 1, Number(ee[2]) + 1));
+      this.c.promisedByDate = new Date(d.toISOString().substring(0, 19));
+    }
   }
-  get hpromisedByDate(){ /* What gets displayed */
+  get hpbd(){ /* What gets displayed */
     if(this.c.promisedByDate != null) {
       let d = new Date(this.c.promisedByDate.valueOf());
       let s = d.toLocaleDateString();
