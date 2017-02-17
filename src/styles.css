@@ -48,6 +48,14 @@ div{
 html{
    text-size-adjust: 100%;
  }
+select{
+  background: #1d2528;
+  color: #FFCC99;
+}
+option{
+  background: #1d2528;
+  color: #FFCC99;
+}
 .sh{
   height: 800px;
 }

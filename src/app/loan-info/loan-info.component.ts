@@ -6,6 +6,7 @@ import {IContact, Contact} from "../contact/contact";
 import {IAuthorizedUser} from "../service/AuthorizedUser";
 import {FormsModule} from '@angular/forms';
 import {isDate} from "rxjs/util/isDate";
+import {IOtherLoan} from "./IOtherLoan";
 
 @Component({
   selector: 'app-loan-info',
@@ -16,6 +17,7 @@ import {isDate} from "rxjs/util/isDate";
 export class LoanInfoComponent implements OnInit {
 
   constructor(private ls: LoanService) {
+    this.otherLoans = new Array<IOtherLoan>();
     this.Loan =  {loanID: "0000032141",
     originalAmt: null, principalBal: null, escrowPmt: null,
     legalFeeBal: null,
@@ -62,7 +64,7 @@ export class LoanInfoComponent implements OnInit {
   public d3: string;
   public test: string;
   public testdate: Date;
-
+  public otherLoans: Array<IOtherLoan>;
   testDate(ds: string){
     this.test = ds;
     let d = Date.parse(ds);
@@ -73,68 +75,20 @@ export class LoanInfoComponent implements OnInit {
     else this.d1 = "pde";
 
   }
-  mdy(s: string): Date{
-    let ee = this.pbd.split('/');
-    return new Date(Date.UTC(Number(ee[2]), Number(ee[0])-1, Number(ee[1]))) ;
-  }
+
 
   savePromise(){
     this.c.loanID = this.Loan.loanID;
     this.ls.savePromised(this.c);
   }
-  savePromises() {
-    //first checkvalidations
-    let invalid = false;
-    this.d1 = "";
-    this.d2 = "";
-    this.d3 = "";
 
-    let d = this.mdy(this.pbd);
-    this.test = d.toISOString();
-    if (this.pbd != null){
-      let ee = this.pbd.split('/');
-      let d = new Date(Date.UTC(Number(ee[0]), Number(ee[1])-1, Number(ee[2])+1)) ;
 
-      if (isDate(d)) {
-        this.d1 = "";
-        this.c.promisedByDate = d;
-      }
-      else {
-        this.d1 = "pde";
-        invalid = true;
-      }
-    }
-    if (this.pbd2 != null) {
-      let d = this.mdy(this.pbd2);
 
-      if (isDate(d)) {
-        this.d2 = "";
-        this.c.promisedByDate = d;
-      }
-      else {
-        this.d2 = "pde";
-        invalid = true;
-      }
-    }
 
-    if (this.pbd3 != null) {
-      let d = this.mdy(this.pbd3);
-
-      if (isDate(d)) {
-        this.d3 = "";
-        this.c.promisedByDate = d;
-      }
-      else {
-        this.d3 = "pde";
-        invalid = true;
-      }
-    }
-    if(!invalid)
-      this.ls.savePromised(this.c);
-  }
   getLoan():ILoan{
     return this.Loan;
   }
+
   hoverAU(){
     this.showAU = true;
   }
@@ -143,40 +97,46 @@ export class LoanInfoComponent implements OnInit {
   }
   onChangedLoanID(){
     let id = this.Loan.loanID;
-    if(id.length === 10)
+    if(id.length === 10) {
       this.ls.getMailingAddress(id).subscribe(h => {
-        if(h.length > 0){
+        if (h.length > 0) {
           this.MA = h[0];
-          this.gref = "https://www.google.com/maps/place/" + this.MA.addressLine1.replace(' ','').replace('  ','') + "," + this.MA.city.replace(' ','') + "," + this.MA.state;
+          this.gref = "https://www.google.com/maps/place/" + this.MA.addressLine1.replace(' ', '').replace('  ', '') + "," + this.MA.city.replace(' ', '') + "," + this.MA.state;
         }
 
       });
       this.ls.getLoan(id).subscribe(h => {
-        if(h.length > 0) {
+        if (h.length > 0) {
           this.Loan = h[0];
           this.OnGetLoan.emit(this.Loan);
         }
       });
+
+      this.ls.getOtherLoans(id).subscribe(o => {
+        if (o.length > 0) {
+          this.otherLoans = o;
+        }
+      });
 //new DatePipe().transform(inputDate);
       this.ls.getContacts(id).subscribe(c => {
-        if(c != null) {
+        if (c != null) {
           this.contacts = c;
-          if(c.length > 0) {
+          if (c.length > 0) {
             this.c = c[0];
 
 
             //this.test = myd.toDateString();
-          //  let r = new DatePipe().transform(myd, 'MM/dd/yyyy');
+            //  let r = new DatePipe().transform(myd, 'MM/dd/yyyy');
             //this.test = new DatePipe().transform(myd, 'MM/dd/yyyy');
             //[ngModel]="pdb | date : 'modifier'" (ngModelChange)="parse($event)"
 
             this.testdate = this.c.promisedByDate;
-           // this.pbd2 = this.c.promiseDate2.toDateString();
+            // this.pbd2 = this.c.promiseDate2.toDateString();
             //this.pbd3 = this.c.promiseDate3.toDateString();
           }
         }
-      })
-
+      });
+    }
 
 
   }

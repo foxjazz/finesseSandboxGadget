@@ -11,6 +11,8 @@ import {IContact, Contact} from "../contact/contact";
 import {IMailingAddress} from "../main/MailingAddress";
 import {payment} from "../payments/payment";
 import {IAuthorizedUser} from "./AuthorizedUser";
+import {IOtherLoan} from "../loan-info/IOtherLoan";
+import {baseuri} from "./config";
 
 // This is the http calls to crud the comments in the database of Service.Comments
 
@@ -20,9 +22,11 @@ export class LoanService {
 
   constructor(public http: Http){ this.result = "";
     this.baseURI = 'https://localhost/fiwebapi';
+    this.baseURI = baseuri.base;
   }
   result: string;
   baseURI: string;
+
   public getComments(id: string): Observable<Array<Comments>>
   {
     let uri = this.baseURI + '/api/Comments/' + id;
@@ -33,6 +37,11 @@ export class LoanService {
   {
     let uri = this.baseURI + '/api/Payments/' + id;
 
+    return this.http.get(uri)
+      .map((res: Response) => res.json());
+  }
+  public getOtherLoans(id: string): Observable<Array<IOtherLoan>>{
+    let uri = this.baseURI + '/api/OtherLoans/' + id
     return this.http.get(uri)
       .map((res: Response) => res.json());
   }
