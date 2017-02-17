@@ -7,10 +7,11 @@ import {IAuthorizedUser} from "../service/AuthorizedUser";
 import {FormsModule} from '@angular/forms';
 import {isDate} from "rxjs/util/isDate";
 import {IOtherLoan} from "./IOtherLoan";
+import {PaymentsComponent} from "../payments/payments.component";
 
 @Component({
   selector: 'app-loan-info',
-  providers: [LoanService],
+  providers: [LoanService, PaymentsComponent],
   templateUrl: './loan-info.component.html',
   styleUrls: ['./loan-info.component.css']
 })
@@ -118,7 +119,7 @@ export class LoanInfoComponent implements OnInit {
         }
       });
 //new DatePipe().transform(inputDate);
-      this.ls.getContacts(id).subscribe(c => {
+     /* this.ls.getContacts(id).subscribe(c => {
         if (c != null) {
           this.contacts = c;
           if (c.length > 0) {
@@ -130,12 +131,12 @@ export class LoanInfoComponent implements OnInit {
             //this.test = new DatePipe().transform(myd, 'MM/dd/yyyy');
             //[ngModel]="pdb | date : 'modifier'" (ngModelChange)="parse($event)"
 
-            this.testdate = this.c.promisedByDate;
+            //this.testdate = this.c.promisedByDate;
             // this.pbd2 = this.c.promiseDate2.toDateString();
             //this.pbd3 = this.c.promiseDate3.toDateString();
           }
         }
-      });
+      });*/
     }
 
 

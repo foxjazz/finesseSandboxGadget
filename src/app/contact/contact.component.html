@@ -1,21 +1,28 @@
-<li>Last contact {{contacts[0].dateLastContacted}}</li>
-<!--
-<div>
+<form (submit)="savePromise()" #memberForm="ngForm" autocomplete="off">
+  <div>
+    <label class="wid {{d1}}" for="pbd">Promise Date </label>
+    <input name="pbd" class="pbd" type="date" id="pbd" [(ngModel)]="hpbd">
+    <!--<input [(ngModel)]="pbd" class="pd {{d1}}" id="pbd" name="pbd">-->
 
-  <table class="table-norm">
-    <tr>
-      <th>Last contact</th>
-      <th>Demeanor</th>
-      <th>Reason</th>
-      <th>Outcome</th>
+    <label class="widAmt" for="pa">Promise Amt</label>
+    <input class="pa" type="number" [(ngModel)]="c.promiseAmt" id="pa" name="pa">
+  </div>
 
-    </tr>
-    <tr *ngFor="let c of contacts">
-      <td>{{c.dateLastContacted | date:"MM/dd/yyyy"}}</td>
-      <td>{{c.demeanor}}</td>
-      <td>{{c.reason}}</td>
-      <td>{{c.outcome}}</td>
-    </tr>
-  </table>
-</div>
--->
+  <div>
+    <label class="wid {{d2}}" for="pbd2">Promise Date 2</label>
+    <input class="pbd" type="date" [(ngModel)]="hpbd2" id="pbd2" name="pbd2">
+    <label for="pa2">Promise Amt 2</label>
+    <input class="pa" type="number" [(ngModel)]="c.promiseAmt2" id="pa2" name="pa2">
+  </div>
+
+  <div>
+    <label class="wid {{d3}}" for="pbd3">Promise Date 3</label>
+    <input class="pbd" type="date" [(ngModel)]="hpbd3" id="pbd3" name="pbd3">
+    <label for="pa3">Promise Amt 2</label>
+    <input class="pa" type="number" [(ngModel)]="c.promiseAmt3" id="pa3" name="pa3">
+  </div>
+
+  <div>
+    <button type="submit" class="btn-blue">Update Promise</button>
+  </div>
+</form>

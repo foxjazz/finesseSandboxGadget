@@ -1,6 +1,24 @@
 
 
-    <div>
+<div>
+  <table class="table-d">
+    <caption>Comments</caption>
+    <tr>
+      <th>Date</th>
+      <th>Setup By</th>
+      <th class="cmw">Comment</th>
+      <th>Additional Notes</th>
+    </tr>
+    <tr *ngFor="let cmt of comments"  (click)="onUsingTable(cmt)">
+      <td class="cmw"> {{cmt.dateandTime | date:"MM/dd/yyyy hh:mm"}} </td>
+      <td class="cmw">{{cmt.setupBy}}</td>
+      <td class="cmw"> {{cmt.comment}} </td>
+      <td>{{cmt.additionalNotes}}</td>
+    </tr>
+  </table>
+</div>
+
+<div>
       <table class="table-entry">
 
         <tr>
@@ -32,21 +50,4 @@
     </div>-->
 
 
-  <div>
-      <table class="table-d">
-        <caption>Comments</caption>
-          <tr>
-            <th>Date</th>
-            <th>Setup By</th>
-            <th class="cmw">Comment</th>
-            <th>Additional Notes</th>
-          </tr>
-          <tr *ngFor="let cmt of comments"  (click)="onUsingTable(cmt)">
-            <td class="cmw"> {{cmt.dateandTime | date:"MM/dd/yyyy hh:mm"}} </td>
-            <td class="cmw">{{cmt.setupBy}}</td>
-            <td class="cmw"> {{cmt.comment}} </td>
-            <td>{{cmt.additionalNotes}}</td>
-          </tr>
-          </table>
-  </div>
 
