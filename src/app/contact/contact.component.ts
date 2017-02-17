@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {IContact} from "./contact";
+import {IContact, Contact} from "./contact";
 import {LoanService} from "../service/loan.service";
 import {ILoan} from "../service/Loan";
 
@@ -14,7 +14,7 @@ export class ContactComponent implements OnInit {
 
   constructor(private ls: LoanService) {
     this.contacts = new Array<IContact>();
-
+    this.c = new Contact();
   }
 
   @Input('loan')
