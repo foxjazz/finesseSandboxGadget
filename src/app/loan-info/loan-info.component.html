@@ -2,7 +2,9 @@
   <div class="col-md-12">
 
       <h3>
-        <input [(ngModel)]="Loan.loanID"  id="fn" type="text" value="00000" (input)="onChangedLoanID()" class="input-custom">  {{Loan.investor}} Due: {{Loan.dueDate | date:"MM/dd/yyyy"}} Collect/{{Loan.collector}} {{Loan.primStat}}
+        <input [(ngModel)]="lid"  id="fn" type="text" value="00000" (input)="onChangedLoanID()" class="input-custom">
+        #: {{Loan.loanID}}
+        {{Loan.investor}} Due: {{Loan.dueDate | date:"MM/dd/yyyy"}} Collect/{{Loan.collector}} {{Loan.primStat}}
       </h3>
       <div>
         Borrowers  {{Loan.borrowerName}} , co {{Loan.coBorrowerName}}

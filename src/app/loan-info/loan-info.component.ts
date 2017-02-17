@@ -3,8 +3,6 @@ import {LoanService} from "../service/loan.service";
 import { ILoan} from "../service/Loan";
 import {IMailingAddress} from "../main/MailingAddress";
 import {IContact, Contact} from "../contact/contact";
-import {IAuthorizedUser} from "../service/AuthorizedUser";
-import {FormsModule} from '@angular/forms';
 import {isDate} from "rxjs/util/isDate";
 import {IOtherLoan} from "./IOtherLoan";
 import {PaymentsComponent} from "../payments/payments.component";
@@ -39,7 +37,7 @@ export class LoanInfoComponent implements OnInit {
     this.d1 ="";
     this.d2 = "";
     this.d3 = "";
-
+    this.lid = '27900';
 /*
     this.c = {loanID: "",dateLastContacted: null, outcome: "", demeanor: "", reason: "", followUpDt: null, promiseAmt: 0, promiseAmt2: 0, promiseAmt3: 0,
               promisedByDate: null, promiseDate2: null, promiseDate3: null};
@@ -59,12 +57,14 @@ export class LoanInfoComponent implements OnInit {
   public showAU: boolean;
   public pbd: string;
   public pbd2: string;
+  public lid: string;
   public pbd3: string;
   public d1: string;
   public d2: string;
   public d3: string;
   public test: string;
   public testdate: Date;
+  private tlid: string;
   public otherLoans: Array<IOtherLoan>;
   testDate(ds: string){
     this.test = ds;
@@ -97,23 +97,28 @@ export class LoanInfoComponent implements OnInit {
     this.showAU = false;
   }
   onChangedLoanID(){
-    let id = this.Loan.loanID;
-    if(id.length === 10) {
-      this.ls.getMailingAddress(id).subscribe(h => {
+
+    if(this.lid.length === 5)
+      this.tlid = "00000" + this.lid;
+
+
+
+    if(this.tlid.length === 10 ) {
+      this.ls.getMailingAddress(this.tlid).subscribe(h => {
         if (h.length > 0) {
           this.MA = h[0];
           this.gref = "https://www.google.com/maps/place/" + this.MA.addressLine1.replace(' ', '').replace('  ', '') + "," + this.MA.city.replace(' ', '') + "," + this.MA.state;
         }
 
       });
-      this.ls.getLoan(id).subscribe(h => {
+      this.ls.getLoan(this.tlid).subscribe(h => {
         if (h.length > 0) {
           this.Loan = h[0];
           this.OnGetLoan.emit(this.Loan);
         }
       });
 
-      this.ls.getOtherLoans(id).subscribe(o => {
+      this.ls.getOtherLoans(this.tlid).subscribe(o => {
         if (o.length > 0) {
           this.otherLoans = o;
         }
@@ -199,9 +204,9 @@ export class LoanInfoComponent implements OnInit {
     }
   }
   ngOnInit() {
-    this.Loan.loanID = '0000027900';
-    this.OnGetLoan.emit(this.Loan);
     this.onChangedLoanID();
+    this.OnGetLoan.emit(this.Loan);
+
   }
 
 
