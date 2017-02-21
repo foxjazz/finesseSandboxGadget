@@ -6,8 +6,12 @@ export interface IContact{
 
   dateLastContacted: Date;
   demeanor: string;
+  demeanorcode: string;
+
   outcome: string;
+  outcomecode:string;
   reason: string;
+  reasoncode: string;
   followUpDt: Date;
   promiseAmt: number;
   promisedByDate: Date;
@@ -23,11 +27,16 @@ export interface IContact{
 
 export class Contact implements IContact{
 
+  constructor() {}
+
   loanID: string;
   dateLastContacted: Date;
   demeanor: string;
+  demeanorcode: string;
   outcome: string;
+  outcomecode: string;
   reason: string;
+  reasoncode: string;
   followUpDt: Date;
   promiseAmt: number;
   promisedByDate: Date;
@@ -36,5 +45,7 @@ export class Contact implements IContact{
   promiseDate2: Date;
   promiseAmt3: number;
   promiseDate3: Date;
+
+
 
 }

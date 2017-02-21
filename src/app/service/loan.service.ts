@@ -13,6 +13,8 @@ import {payment} from "../payments/payment";
 import {IAuthorizedUser} from "./AuthorizedUser";
 import {IOtherLoan} from "../loan-info/IOtherLoan";
 import {baseuri} from "./config";
+import {Outcome} from "../contact/outcome";
+import {Reason} from "../contact/reason";
 
 // This is the http calls to crud the comments in the database of Service.Comments
 
@@ -26,6 +28,20 @@ export class LoanService {
   }
   result: string;
   baseURI: string;
+
+  public getOutcomes():Observable<Array<Outcome>>
+  {
+    let uri = this.baseURI + '/api/outcomes'
+    return this.http.get(uri)
+      .map((res: Response) => res.json());
+  }
+
+  public getReasons():Observable<Array<Reason>>
+  {
+    let uri = this.baseURI + '/api/reasons'
+    return this.http.get(uri)
+      .map((res: Response) => res.json());
+  }
 
   public getComments(id: string): Observable<Array<Comments>>
   {

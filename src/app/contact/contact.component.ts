@@ -2,6 +2,9 @@ import {Component, OnInit, Input} from '@angular/core';
 import {IContact, Contact} from "./contact";
 import {LoanService} from "../service/loan.service";
 import {ILoan} from "../service/Loan";
+import {Outcome} from "./outcome";
+import {Reason, IReason} from "./reason";
+import {IDemeanor} from "./demeanor";
 
 
 @Component({
@@ -15,6 +18,10 @@ export class ContactComponent implements OnInit {
   constructor(private ls: LoanService) {
     this.contacts = new Array<IContact>();
     this.c = new Contact();
+    this.reasons = new Array<Reason>();
+    this.outcomes = new Array<Outcome>();
+    this.demeanors = new Array<IDemeanor>();
+    this.demeanors.push({description: 'cooperative', code: '01'}, {description:'uncoopreative', code: '02'});
   }
 
   @Input('loan')
@@ -34,10 +41,15 @@ export class ContactComponent implements OnInit {
     return this.Loan;
   }
 
-
+  demeanors: Array<IDemeanor>;
+  reasons: Array<Reason>;
+  outcomes: Array<Outcome>;
   Loan: ILoan;
   contacts: Array<IContact>;
   c: IContact;
+  res: {description: string; code: string};
+  outc: {description: string; code: string};
+  dem: {description: string; code: string};
 //even tho we are getting an array back we will show the first.
   //the contact name shown in a dropdown so that when it is selected we show the selected contact.
   set hpbd(e){ /* What gets Saved */
@@ -97,12 +109,32 @@ export class ContactComponent implements OnInit {
     }
   }
 
+  savePromise(){
+
+    this.c.demeanor = this.dem.description;
+    this.c.outcome = this.outc.description;
+    this.c.reason = this.res.description;
+    this.c.demeanorcode = this.dem.code;
+    this.c.outcomecode = this.outc.code;
+    this.c.reasoncode = this.res.code;
+    this.ls.savePromised(this.c);
+  }
   public getContacts() {
     this.ls.getContacts(this.Loan.loanID).subscribe(c => {
       this.contacts = c;
+      this.res.description = this.c.reason;
+      this.outc.description = this.c.outcome;
+      this.dem.description = this.c.demeanor;
     });
   }
   ngOnInit() {
+    this.ls.getOutcomes().subscribe(o => {
+      this.outcomes = o;
+    })
+    this.ls.getReasons().subscribe(r => {
+      this.reasons = r;
+    })
+
   }
 
 }

@@ -1,5 +1,25 @@
 <form (submit)="savePromise()" #memberForm="ngForm" autocomplete="off">
   <div>
+    <select name="demeanor" [(ngModel)]="demeanors">
+
+      <option *ngFor="let dem of demeanors" [ngValue]="dem" [value]="dem">
+        {{ dem.description }}
+      </option>
+    </select>
+    <select name="reason" [(ngModel)]="reasons">
+
+      <option *ngFor="let res of reasons" [ngValue]="res" [value]="res">
+        {{ res.description }}
+      </option>
+    </select>
+    <select name="outcome" [(ngModel)]="outcomes">
+
+      <option *ngFor="let outc of outcomes" [ngValue]="outc" [value]="outc">
+        {{ outc.description }}
+      </option>
+    </select>
+  </div>
+  <div>
     <label class="wid {{d1}}" for="pbd">Promise Date </label>
     <input name="pbd" class="pbd" type="date" id="pbd" [(ngModel)]="hpbd">
     <!--<input [(ngModel)]="pbd" class="pd {{d1}}" id="pbd" name="pbd">-->
@@ -23,6 +43,6 @@
   </div>
 
   <div>
-    <button type="submit" class="btn-blue">Update Promise</button>
+    <button type="submit" class="btn-blue">Update Contact</button>
   </div>
 </form>
