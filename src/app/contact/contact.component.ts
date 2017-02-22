@@ -2,9 +2,10 @@ import {Component, OnInit, Input} from '@angular/core';
 import {IContact, Contact} from "./contact";
 import {LoanService} from "../service/loan.service";
 import {ILoan} from "../service/Loan";
-import {Outcome} from "./outcome";
+import {Outcome, IOutcome} from "./outcome";
 import {Reason, IReason} from "./reason";
 import {IDemeanor} from "./demeanor";
+import {Form} from "@angular/forms";
 
 
 @Component({
@@ -33,6 +34,10 @@ export class ContactComponent implements OnInit {
         this.contacts = c;
         if (c.length > 0) {
           this.c = c[0];
+          for(let r of this.reasons){
+            if(r.description = this.c.reason)
+              this.res = r;
+          }
         }
       }
     });
@@ -47,9 +52,9 @@ export class ContactComponent implements OnInit {
   Loan: ILoan;
   contacts: Array<IContact>;
   c: IContact;
-  res: {description: string; code: string};
-  outc: {description: string; code: string};
-  dem: {description: string; code: string};
+  res: IReason;
+  outc: IOutcome;
+  dem: IDemeanor;
 //even tho we are getting an array back we will show the first.
   //the contact name shown in a dropdown so that when it is selected we show the selected contact.
   set hpbd(e){ /* What gets Saved */
@@ -109,14 +114,22 @@ export class ContactComponent implements OnInit {
     }
   }
 
-  savePromise(){
+  savePromise(o){
 
-    this.c.demeanor = this.dem.description;
-    this.c.outcome = this.outc.description;
-    this.c.reason = this.res.description;
-    this.c.demeanorcode = this.dem.code;
-    this.c.outcomecode = this.outc.code;
-    this.c.reasoncode = this.res.code;
+    if(o.value.dem != undefined && o.value.dem.length != "") {
+      this.c.demeanor = o.value.dem.description;
+      this.c.demeanorcode = o.value.dem.code;
+    }
+
+    if(o.value.outc != undefined && o.value.outc.length != "") {
+      this.c.outcome = o.value.outc.description;
+      this.c.outcomecode = o.value.outc.code;
+
+    }
+    if(o.value.res != undefined && o.value.res.length != "") {
+      this.c.reason = o.value.res.description;
+      this.c.reasoncode = o.value.res.code;
+    }
     this.ls.savePromised(this.c);
   }
   public getContacts() {

@@ -27,11 +27,13 @@ export class MainComponent implements OnInit {
 
   }
   getLoan(): ILoan{
+    if(this.Loan == undefined)
+      console.log("undefined loan on main getLoan");
     return this.Loan;
   }
   ngOnInit() {
     if(this.Loan == undefined)
-      console.log("undefined");
+      console.log("undefined loan on main ngOnInit");
     let t = "test";
   }
 
