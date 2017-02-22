@@ -34,10 +34,10 @@ export class ContactComponent implements OnInit {
         this.contacts = c;
         if (c.length > 0) {
           this.c = c[0];
-          for(let r of this.reasons){
+          /*for(let r of this.reasons){
             if(r.description = this.c.reason)
               this.res = r;
-          }
+          }*/
         }
       }
     });
@@ -79,8 +79,10 @@ export class ContactComponent implements OnInit {
   }
   set hpbd2(e){ /* What gets Saved */
     let ee = e.split('-');
-    let d = new Date(Date.UTC(Number(ee[0]), Number(ee[1])-1, Number(ee[2])+1)) ;
-    this.c.promiseDate2 = new Date(d.toISOString().substring(0,19));
+    if(ee.length > 0 && Number(ee[0]) > 2000) {
+      let d = new Date(Date.UTC(Number(ee[0]), Number(ee[1]) - 1, Number(ee[2]) + 1));
+      this.c.promiseDate2 = new Date(d.toISOString().substring(0, 19));
+    }
   }
   get hpbd2(){ /* What gets displayed */
     if(this.c.promiseDate2 != null) {
@@ -97,8 +99,10 @@ export class ContactComponent implements OnInit {
   }
   set hpbd3(e){ /* What gets Saved */
     let ee = e.split('-');
-    let d = new Date(Date.UTC(Number(ee[0]), Number(ee[1])-1, Number(ee[2])+1)) ;
-    this.c.promiseDate3 = new Date(d.toISOString().substring(0,19));
+    if(ee.length > 0 && Number(ee[0]) > 2000) {
+      let d = new Date(Date.UTC(Number(ee[0]), Number(ee[1]) - 1, Number(ee[2]) + 1));
+      this.c.promiseDate3 = new Date(d.toISOString().substring(0, 19));
+    }
   }
   get hpbd3(){ /* What gets displayed */
     if(this.c.promiseDate3 != null) {
