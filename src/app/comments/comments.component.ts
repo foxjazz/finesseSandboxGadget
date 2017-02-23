@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {LoanService} from "../service/loan.service";
-import {Comments} from "./Comments";
+import {Comments, ICommentList} from "./Comments";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
 import {ILoan} from "../service/Loan";
@@ -86,11 +86,17 @@ export class CommentsComponent implements OnInit {
   {
       this.comment = cmt;
   }
+  commentList: Array<ICommentList>;
   ngOnInit() {
 
 
      //let id = this.LoanID + "14544";
      //let id2: string;
+    this.commentList = new Array<ICommentList>();
+    this.ls.getCommentList().subscribe(cr => {
+       this.commentList = cr;
+    });
+
     this.subscription = this.ar.queryParams.subscribe(
       (queryParam: any) => {
         this.LoanID = queryParam['LoanID'];

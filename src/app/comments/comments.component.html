@@ -28,7 +28,12 @@
         </tr>
         <tr>
           <td>
-            <textarea [(ngModel)]="inputComment" id="comment" class="input-area text-area-h cm"></textarea>
+            <select name="res" ngModel>
+
+              <option *ngFor="let cl of commentList"  [ngValue]="cl" >
+                {{ cl.description }}
+              </option>
+            </select>
           </td>
 
           <td class="an">

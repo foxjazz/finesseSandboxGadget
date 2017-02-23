@@ -5,7 +5,7 @@ import {Http, Response, Headers, RequestOptions} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import {Comments} from "../comments/Comments";
+import {Comments, ICommentList} from "../comments/Comments";
 import {ILoan} from "./Loan";
 import {IContact, Contact} from "../contact/contact";
 import {IMailingAddress} from "../main/MailingAddress";
@@ -46,6 +46,12 @@ export class LoanService {
   public getComments(id: string): Observable<Array<Comments>>
   {
     let uri = this.baseURI + '/api/Comments/' + id;
+    return this.http.get(uri)
+      .map((res: Response) => res.json());
+  }
+
+  public getCommentList(): Observable<Array<ICommentList>>{
+    let uri = this.baseURI + '/api/CommentOptions';
     return this.http.get(uri)
       .map((res: Response) => res.json());
   }

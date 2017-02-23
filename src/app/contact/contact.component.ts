@@ -57,6 +57,27 @@ export class ContactComponent implements OnInit {
   dem: IDemeanor;
 //even tho we are getting an array back we will show the first.
   //the contact name shown in a dropdown so that when it is selected we show the selected contact.
+
+  set fold(e){
+    let ee = e.split('-');
+    if(ee.length > 0 && Number(ee[0]) > 2000) {
+      let d = new Date(Date.UTC(Number(ee[0]), Number(ee[1]) - 1, Number(ee[2]) + 1));
+      this.c.followUpDt = new Date(d.toISOString().substring(0, 19));
+    }
+  }
+  get fold(){
+    if(this.c.followUpDt != null) {
+      let d = new Date(this.c.followUpDt.valueOf());
+      let s = d.toLocaleDateString();
+      let ee = s.split('/');
+      if(ee[0].length == 1)
+        ee[0] = "0" + ee[0];
+      if(ee[1].length == 1)
+        ee[1] = "0" + ee[1];
+      let final = ee[2] + "-" + ee[0] + "-" + ee[1];
+      return final;
+    }
+  }
   set hpbd(e){ /* What gets Saved */
     let ee = e.split('-');
     if(ee.length > 0 && Number(ee[0]) > 2000) {
