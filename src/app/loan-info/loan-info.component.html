@@ -11,8 +11,8 @@
         Address - {{MA.addressLine1 | asCase:"name"}} {{MA.addressLine2 }} {{MA.city | asCase:"name"}},
         {{MA.state}} {{MA.zip}}  <a href="{{gref}}">Google Map</a>  loans: {{otherLoans.length}}
 
-          <select name="other" ngModel>
-            <option *ngFor="let o of otherLoans" [ngValue]="o">
+          <select name="other" ngModel (ngModelChange)="onOtherLoanSelect($event)">
+            <option *ngFor="let o of otherLoans"  [selected]="o.loanID == Loan.loanID" [ngValue]="o">
               {{ o.loanID }}
             </option>
           </select>
@@ -47,9 +47,6 @@
 
       <li>Total Due: {{Loan.principalBal | currency}}</li>
       <li>Payment Amount {{Loan.paymentAmount | currency}}</li>
-      <li>Reason {{c.reason}}</li>
-      <li>Outcome {{c.outcome}}</li>
-      <li>Demeanor {{c.demeanor}}</li>
       <li>Follow up date {{c.followUpDt | date:"MM/dd/yyyy"}}</li>
       <li (mouseover)="hoverAU()" (mouseleave)="leaveAU()">Authorized Users</li>
 

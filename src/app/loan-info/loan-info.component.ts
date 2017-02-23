@@ -77,7 +77,13 @@ export class LoanInfoComponent implements OnInit {
 
   }
 
+  public test2: string;
+  onOtherLoanSelect(l: any){
+    this.lid = l.loanID.substring(5);
+    this.tlid = l.loanID;
+    this.onChangedLoanID();
 
+  }
   savePromise(){
     this.c.loanID = this.Loan.loanID;
     this.ls.savePromised(this.c);
@@ -100,8 +106,8 @@ export class LoanInfoComponent implements OnInit {
 
     if(this.lid.length === 5)
       this.tlid = "00000" + this.lid;
-
-
+    else
+      return;
 
     if(this.tlid.length === 10 ) {
       this.ls.getMailingAddress(this.tlid).subscribe(h => {
