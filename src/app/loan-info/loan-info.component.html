@@ -27,6 +27,30 @@
 <div class="row">
   <div class="col-md-4">
     <div>
+      <table class="table-l">
+        <caption>Info</caption>
+        <tbody>
+        <tr>
+          <td>Type</td>
+          <td>{{Loan.loanType}}</td>
+        </tr>
+        <tr>
+          <td>interest rate</td>
+          <td>{{Loan.interestRate}}</td>
+        </tr>
+        <tr>
+          <td># payments due</td>
+          <td>{{Loan.numberOfPaymentsDue}}</td>
+        </tr>
+        <tr>
+          <td>date last contact</td>
+          <td>{{c.dateLastContacted}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+<!--
+    <div>
       <ul>
 
         <li>Type {{Loan.loanType}}</li>
@@ -38,22 +62,38 @@
 
       </ul>
     </div>
+-->
 
   </div>
 
   <div class="col-md-4">
+    <div>
+      <table class="table-l">
+        <caption>Info</caption>
+        <tbody>
+        <tr>
+          <td>SPOC</td>
+          <td>{{Loan.spoc}}</td>
+        </tr>
+        <tr>
+          <td>total due</td>
+          <td>{{Loan.principalBal | currency}}</td>
+        </tr>
+        <tr>
+          <td>payment amt</td>
+          <td>{{Loan.paymentAmount}}</td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
     <ul>
-
-
-      <li>Total Due: {{Loan.principalBal | currency}}</li>
-      <li>Payment Amount {{Loan.paymentAmount | currency}}</li>
-      <li>Follow up date {{c.followUpDt | date:"MM/dd/yyyy"}}</li>
       <li (mouseover)="hoverAU()" (mouseleave)="leaveAU()">Authorized Users</li>
-
     </ul>
   </div>
   <div class="col-md-4">
-    <app-payments [loan]="getLoan()"></app-payments>
+    <!--<app-payments [loan]="getLoan()"></app-payments>-->
+    <app-contact [loan]="getLoan()"></app-contact>
   </div>
 
 

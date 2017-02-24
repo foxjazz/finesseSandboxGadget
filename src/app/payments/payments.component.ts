@@ -13,7 +13,10 @@ export class PaymentsComponent implements OnInit {
 
   constructor(private ls: LoanService) {
     this.payments = new Array<payment>();
+    this.long = false;
   }
+
+  @Input() long: boolean;
 
   @Input('loan')
   set loan(l: ILoan){

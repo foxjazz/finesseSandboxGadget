@@ -7,15 +7,16 @@
         {{ dem.description }}
       </option>
     </select>
-  </div><div>
-  Reason:
+    <label class="wh">  </label>
+    Reason:
     <select name="res" ngModel>
 
       <option *ngFor="let res of reasons"  [selected]="res.description == c.reason" [ngValue]="res" >
         {{ res.description }}
       </option>
     </select>
-</div><div>
+  </div>
+  <div>
   Outcome:
     <select name="outc" ngModel>
 

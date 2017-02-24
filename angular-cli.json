@@ -24,7 +24,8 @@
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
         "../node_modules/tether/dist/js/tether.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.js"
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "https://uccx-001-app-prod.statebridgecompany.com:8445/desktop/assets/js/finesse.js"
       ],
       "environments": {
         "source": "environments/environment.ts",
