@@ -6,13 +6,14 @@
 </div>
 
 <div class="row" >
-  <button class="btn-red" (click)="setLong(false)" *ngIf="isLong()"> return to short payment info</button>
-  <button class="btn-grey" (click)="setLong(true)" *ngIf="!isLong()">long payment info</button>
+  <button class="btn-red" (click)="setLong(false)" *ngIf="isLong()"> return to normal</button>
+  <button class="btn-grey" (click)="setLong(true)" *ngIf="!isLong()">more payment info</button>
 </div>
 <!--<div class="row"><app-contact></app-contact></div>-->
 <div class="row">
 
   <div class="col-md-8" *ngIf="!isLong()">
+
     <app-comments [loan]="getLoan()" [refreshComments]="getTF()"></app-comments>
   </div>
 
