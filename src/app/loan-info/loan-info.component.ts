@@ -46,8 +46,9 @@ export class LoanInfoComponent implements OnInit {
     this.c = new Contact();
   }
 
-  @Output() OnComment = new EventEmitter<Array<Comment>>();
+  @Output() OnCommentAtLoanInfo = new EventEmitter<boolean>();
   @Output() OnGetLoan = new EventEmitter<ILoan>();
+
 
   public Loan: ILoan;
   public MA: IMailingAddress;
@@ -84,14 +85,10 @@ export class LoanInfoComponent implements OnInit {
     this.onChangedLoanID();
 
   }
-  savePromise(){
-    this.c.loanID = this.Loan.loanID;
-    this.ls.savePromised(this.c);
-  }
 
- onComment(ca: Array<Comment>){
-    this.OnComment.emit(ca);
- }
+   onComment(ca: boolean){
+     this.OnCommentAtLoanInfo.emit(ca);
+   }
 
 
   getLoan():ILoan{

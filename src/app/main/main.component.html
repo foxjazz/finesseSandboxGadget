@@ -2,22 +2,24 @@
   |
 </div>
 <div >
-
-   <app-loan-info (OnGetLoan)="onGetLoan($event)" (OnComment)="onComment($event)"> </app-loan-info>
+   <app-loan-info (OnGetLoan)="onGetLoan($event)" (OnCommentAtLoanInfo)="onComment($event)"> </app-loan-info>
 </div>
 
-
-
-
+<div class="row" >
+  <button class="btn-red" (click)="setLong(false)" *ngIf="isLong()"> return to short payment info</button>
+  <button class="btn-grey" (click)="setLong(true)" *ngIf="!isLong()">long payment info</button>
+</div>
 <!--<div class="row"><app-contact></app-contact></div>-->
 <div class="row">
-  <div class="col-md-8">
-    <app-comments [loan]="getLoan()" [comments]="getComments()"></app-comments>
+
+  <div class="col-md-8" *ngIf="!isLong()">
+    <app-comments [loan]="getLoan()"></app-comments>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-{{short4}}">
     <!--<app-contact [loan]="getLoan()"></app-contact>-->
-    <app-payments [loan]="getLoan()"></app-payments>
+
+    <app-payments [loan]="getLoan()" [long]="isLong()"></app-payments>
   </div>
 
 </div>

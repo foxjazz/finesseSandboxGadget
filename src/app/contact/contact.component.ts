@@ -17,6 +17,7 @@ import {Form} from "@angular/forms";
 export class ContactComponent implements OnInit {
 
   constructor(private ls: LoanService) {
+    this.error = "";
     this.contacts = new Array<IContact>();
     this.c = new Contact();
     this.reasons = new Array<Reason>();
@@ -25,7 +26,7 @@ export class ContactComponent implements OnInit {
     this.demeanors.push({description: 'cooperative', code: '01'}, {description:'uncoopreative', code: '02'});
   }
 
-  @Output() OnComment = new EventEmitter<Array<Comment>>();
+  @Output() OnComment = new EventEmitter<boolean>();
 
   @Input('loan')
   set loan(l: ILoan){
@@ -51,6 +52,7 @@ export class ContactComponent implements OnInit {
   getComments():Array<Comment>{
     return this.comments;
   }
+
   comments: Array<Comment>;
   demeanors: Array<IDemeanor>;
   reasons: Array<Reason>;
@@ -144,7 +146,7 @@ export class ContactComponent implements OnInit {
       return final;
     }
   }
-
+  error: string;
   savePromise(o){
 
     if(o.value.dem != undefined && o.value.dem.length != "") {
@@ -161,18 +163,29 @@ export class ContactComponent implements OnInit {
       this.c.reason = o.value.res.description;
       this.c.reasoncode = o.value.res.code;
     }
-    this.ls.putget("Contacts",JSON.stringify(this.c),"Comments").subscribe(xx => {
-      this.OnComment.emit(xx);
-    });
+    try {
+      let jso = JSON.stringify(this.c);
+      this.ls.put("Contacts", jso, "Comments").subscribe(
+        result => {
+          console.log(result);
+          this.OnComment.emit(true);
+        },
+        er => {this.error = <any>er + " 173";}
+      );
+    }
+    catch(e)
+    {
+      this.error = e.toString() + 'catch : contact error';
+    }
   }
-  public getContacts() {
+ /* public getContacts() {
     this.ls.getContacts(this.Loan.loanID).subscribe(c => {
       this.contacts = c;
       this.res.description = this.c.reason;
       this.outc.description = this.c.outcome;
       this.dem.description = this.c.demeanor;
     });
-  }
+  }*/
   ngOnInit() {
     this.ls.getOutcomes().subscribe(o => {
       this.outcomes = o;

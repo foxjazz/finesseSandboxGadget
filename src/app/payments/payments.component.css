@@ -31,3 +31,30 @@ table{
   background-color: #0c0f1d;
 }
 
+.table-l{
+  padding: 0px 9px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: block;
+  height: 840px;
+
+}
+.table-l caption{
+  color: #95a2bf;
+  text-align: center;
+}
+.table-l thead{
+
+}
+.table-l tbody{
+  width: calc(100% - 20px);
+}
+.table-l tr td{
+  padding: 0px 4px;
+}
+.table-l th{
+  padding: 0px 4px;
+}
+.table-l tr:nth-child(even){
+  background-color: #0c0f1d;
+}

@@ -6,7 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/catch';
-import {Comments, ICommentList} from "../comments/Comments";
+import 'rxjs/add/observable/throw';
+import {Comment, ICommentList} from "../comments/Comments";
 import {ILoan} from "./Loan";
 import {IContact, Contact} from "../contact/contact";
 import {IMailingAddress} from "../main/MailingAddress";
@@ -26,9 +27,11 @@ export class LoanService {
   constructor(public http: Http){ this.result = "";
     //this.baseURI = 'https://localhost/fiwebapi';
     this.baseURI = baseuri.base;
+
   }
   result: string;
   baseURI: string;
+  ccomments: Array<Comment>;
 
   public getOutcomes():Observable<Array<Outcome>>
   {
@@ -44,7 +47,7 @@ export class LoanService {
       .map((res: Response) => res.json());
   }
 
-  public getComments(id: string): Observable<Array<Comments>>
+  public getComments(id: string): Observable<Array<Comment>>
   {
     let uri = this.baseURI + '/api/Comments/' + id;
     return this.http.get(uri)
@@ -124,7 +127,24 @@ export class LoanService {
 
   }
 
-  public putget(put: string,data: string, get: string) : Observable<any>{
+  public put(put: string,data: string, get: string) : Observable<any>{
+    // this won't actually work because the StarWars API doesn't
+    // is read-only. But it would look like this:
+    let p = this.baseURI + '/api/' + put;
+    let guri = this.baseURI + '/api/' + get;
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions( { headers: headers } );
+    return this.http.put(p, data, options)
+      .map(x => x.json())
+      .catch(this.handleError);
+  }
+  private handleError(error: any) {
+    let errMsg = (error.message) ? error.message :
+      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+    console.error(errMsg);
+    return Observable.throw(errMsg);
+  }
+ /* public putget(put: string,data: string, get: string) : Observable<any>{
     // this won't actually work because the StarWars API doesn't
     // is read-only. But it would look like this:
     let p = this.baseURI + '/api/' + put;
@@ -135,7 +155,7 @@ export class LoanService {
       .map(x => x.json())
       .mergeMap(g => this.http.get(guri));
 
-  }
+  }*/
   public saveget(u: string,data: string) : Observable<any>{
     // this won't actually work because the StarWars API doesn't
     // is read-only. But it would look like this:

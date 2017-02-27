@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {LoanService} from "../service/loan.service";
-import {Comments, ICommentList} from "./Comments";
+import {Comment, ICommentList, IComment} from "./Comments";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
 import {ILoan} from "../service/Loan";
@@ -15,14 +15,12 @@ export class CommentsComponent implements OnInit {
 
   private subscription: Subscription;
 
-  constructor(private ls: LoanService, private ar: ActivatedRoute) {
-    this.showComments = true; this.expando="Collapse"; this.setupBy = "not set";
+  constructor( lsi: LoanService, private ar: ActivatedRoute) {
 
-    this.comment = {dateandTime: new Date(), additionalNotes: this.inputAdditionalNote, notes: this.inputNote,
-      comment: this.inputComment, loanID: this.LoanID, daysAdvanceNot: 0, eventFrequency: 0,
-      letterCode: null, sentToAttorney: 0, rightPartyContact: 0, qualityRightPartyContact: 0, exclude: 0,
-      completedBy: null, setupBy: this.setupBy, completionDate: null, recordtype: 0 , department: 0 , retainPermanent:0,
-      dueDate: null, Counter: 0};
+    this.showComments = true; this.expando="Collapse"; this.setupBy = "not set";
+    this.ls = lsi;
+    this.comments = new Array<Comment>();
+    this.comment = new Comment();
   }
   @Input('loan')
   set loan(l: ILoan){
@@ -35,12 +33,24 @@ export class CommentsComponent implements OnInit {
     return this.Loan;
   }
 
-  @Input() comments : Array<Comments>;
+  @Input('refreshComments')
+  set rc(b: boolean){
+    if(b) {
+      this.ls.getComments(this.Loan.loanID).subscribe(c => {
+        this.comments = c;
+      });
+    }
+  }
+  get rc():boolean{
+    return false;
+  }
 
+  comments: Array<Comment>;
+  ls: LoanService;
 
   Loan: ILoan;
 
-  comment : Comments;
+  comment : Comment;
   LoanID: string;
   //du: string;
   showComments: boolean;
@@ -101,7 +111,7 @@ export class CommentsComponent implements OnInit {
   onCommentSelect(c: any){
     this.ucomment = c.description;
   }
-  onUsingTable(cmt: Comments)
+  onUsingTable(cmt: Comment)
   {
       this.comment = cmt;
   }

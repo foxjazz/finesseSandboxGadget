@@ -11,22 +11,39 @@ import {PaymentsComponent} from "../payments/payments.component";
   providers: [LoanService,LoanInfoComponent, PaymentsComponent, CommentsComponent],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
+
 })
 
 export class MainComponent implements OnInit {
 
   constructor() {
-
+    this.long = false;
+    this.tf = false;
+    this.short4 = "4";
   }
 
   Loan: ILoan;
-
-  getComments(): Array<Comment>{
-    return this.emitComments;
+  emittedReComments(): boolean{
+    return this.tf;
   }
-  emitComments: Array<Comment>;
-  onComment(ca: Array<Comment>){
-    this.emitComments = ca;
+  tf: boolean;
+  long: boolean;
+  short4: string;
+  isLong(): boolean{
+    return this.long;
+  }
+  setLong(b: boolean)
+  {
+    this.long = b;
+    if(b)
+      this.short4 = "12";
+    else
+      this.short4 = "4";
+  }
+  onComment(ca: boolean){
+    this.tf = ca;
+    //this.emittedReComments(ca);
+
   }
   onGetLoan(l: ILoan)
   {
