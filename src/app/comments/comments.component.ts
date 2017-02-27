@@ -78,14 +78,18 @@ export class CommentsComponent implements OnInit {
         completedBy: null, setupBy: this.setupBy, completionDate: null, recordtype: 0 , department: 0 , retainPermanent:0,
         dueDate: null, Counter: 0};
     }
+
     this.comment.loanID = this.Loan.loanID;
     this.comment.dateandTime = new Date();
     this.setupBy = "gadget";
     this.comment.comment = this.ucomment;
     this.comment.additionalNotes = this.inputAdditionalNote;
-    this.ls.saveget('Comments',JSON.stringify(this.comment)).subscribe(x => {
-      this.comments = x;
-    })
+    if(this.comment.comment.length > 0 && this.comment.additionalNotes.length > 0) {
+      this.ls.saveget('Comments', JSON.stringify(this.comment), this.Loan.loanID).subscribe(x => {
+        console.log(x);
+        this.comments = x;
+      });
+    }
 
   }
   onToggleDu(){

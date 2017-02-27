@@ -156,15 +156,16 @@ export class LoanService {
       .mergeMap(g => this.http.get(guri));
 
   }*/
-  public saveget(u: string,data: string) : Observable<any>{
+  public saveget(u: string,data: string, id: string) : Observable<any>{
     // this won't actually work because the StarWars API doesn't
     // is read-only. But it would look like this:
     let uri = this.baseURI + '/api/' + u;
+    let guri = this.baseURI + '/api/' + u + '/' + id
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions( { headers: headers } );
     return this.http.post(uri, data, options)
-      .map(x => x.json())
-      .mergeMap(g => this.http.get(uri));
+      .map(x => {let reponse = x.json();})
+      .mergeMap(g => this.http.get(guri).map((res: Response) => res.json()));
 
   }
 

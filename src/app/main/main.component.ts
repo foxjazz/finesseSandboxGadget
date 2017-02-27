@@ -32,6 +32,10 @@ export class MainComponent implements OnInit {
   isLong(): boolean{
     return this.long;
   }
+  getTF():boolean{
+    return this.tf;
+  }
+
   setLong(b: boolean)
   {
     this.long = b;
@@ -43,8 +47,8 @@ export class MainComponent implements OnInit {
   onComment(ca: boolean){
     this.tf = ca;
     //this.emittedReComments(ca);
-
   }
+
   onGetLoan(l: ILoan)
   {
     this.Loan  = l;

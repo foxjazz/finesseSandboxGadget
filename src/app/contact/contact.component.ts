@@ -36,7 +36,8 @@ export class ContactComponent implements OnInit {
       if (c != null) {
         this.contacts = c;
         if (c.length > 0) {
-          this.c = c[0];
+          this.c =c[0];
+          this.prev = Object.assign({},this.c);
           /*for(let r of this.reasons){
             if(r.description = this.c.reason)
               this.res = r;
@@ -52,7 +53,7 @@ export class ContactComponent implements OnInit {
   getComments():Array<Comment>{
     return this.comments;
   }
-
+  prev: IContact;
   comments: Array<Comment>;
   demeanors: Array<IDemeanor>;
   reasons: Array<Reason>;
@@ -63,6 +64,7 @@ export class ContactComponent implements OnInit {
   res: IReason;
   outc: IOutcome;
   dem: IDemeanor;
+  message: string;
 //even tho we are getting an array back we will show the first.
   //the contact name shown in a dropdown so that when it is selected we show the selected contact.
 
@@ -164,14 +166,21 @@ export class ContactComponent implements OnInit {
       this.c.reasoncode = o.value.res.code;
     }
     try {
+      let jprev = JSON.stringify(this.prev);
       let jso = JSON.stringify(this.c);
-      this.ls.put("Contacts", jso, "Comments").subscribe(
-        result => {
-          console.log(result);
-          this.OnComment.emit(true);
-        },
-        er => {this.error = <any>er + " 173";}
-      );
+      if(jprev != jso) {
+        this.message = "";
+        this.ls.put("Contacts", jso, "Comments").subscribe(
+          result => {
+            console.log(result);
+            this.OnComment.emit(true);
+          },
+          er => {
+            this.error = <any>er + " 173";
+          }
+        );
+      }
+      else this.message = "no changes";
     }
     catch(e)
     {
