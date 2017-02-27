@@ -28,12 +28,13 @@
         </tr>
         <tr>
           <td>
-            <select name="res" ngModel>
+            <select name="cl" ngModel (ngModelChange)="onCommentSelect($event)">
 
-              <option *ngFor="let cl of commentList"  [ngValue]="cl" >
+              <option *ngFor="let cl of commentList"  [selected]="cl.description == comment.comment"  [ngValue]="cl"  >
                 {{ cl.description }}
               </option>
             </select>
+            <!--{{ucomment}}-->
           </td>
 
           <td class="an">

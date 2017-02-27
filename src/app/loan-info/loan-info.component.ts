@@ -46,7 +46,7 @@ export class LoanInfoComponent implements OnInit {
     this.c = new Contact();
   }
 
-
+  @Output() OnComment = new EventEmitter<Array<Comment>>();
   @Output() OnGetLoan = new EventEmitter<ILoan>();
 
   public Loan: ILoan;
@@ -89,7 +89,9 @@ export class LoanInfoComponent implements OnInit {
     this.ls.savePromised(this.c);
   }
 
-
+ onComment(ca: Array<Comment>){
+    this.OnComment.emit(ca);
+ }
 
 
   getLoan():ILoan{

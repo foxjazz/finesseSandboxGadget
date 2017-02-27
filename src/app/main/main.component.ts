@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {LoanInfoComponent} from '../loan-info/loan-info.component'
 import {ContactComponent} from '../contact/contact.component'
 import {CommentsComponent} from "../comments/comments.component";
@@ -21,6 +21,13 @@ export class MainComponent implements OnInit {
 
   Loan: ILoan;
 
+  getComments(): Array<Comment>{
+    return this.emitComments;
+  }
+  emitComments: Array<Comment>;
+  onComment(ca: Array<Comment>){
+    this.emitComments = ca;
+  }
   onGetLoan(l: ILoan)
   {
     this.Loan  = l;

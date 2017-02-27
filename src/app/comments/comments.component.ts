@@ -18,21 +18,28 @@ export class CommentsComponent implements OnInit {
   constructor(private ls: LoanService, private ar: ActivatedRoute) {
     this.showComments = true; this.expando="Collapse"; this.setupBy = "not set";
 
-
+    this.comment = {dateandTime: new Date(), additionalNotes: this.inputAdditionalNote, notes: this.inputNote,
+      comment: this.inputComment, loanID: this.LoanID, daysAdvanceNot: 0, eventFrequency: 0,
+      letterCode: null, sentToAttorney: 0, rightPartyContact: 0, qualityRightPartyContact: 0, exclude: 0,
+      completedBy: null, setupBy: this.setupBy, completionDate: null, recordtype: 0 , department: 0 , retainPermanent:0,
+      dueDate: null, Counter: 0};
   }
   @Input('loan')
   set loan(l: ILoan){
     this.Loan = l;
     this.ls.getComments(this.Loan.loanID).subscribe(c => {
       this.comments  = c;
-    })
+    });
   }
   get loan(): ILoan{
     return this.Loan;
   }
 
+  @Input() comments : Array<Comments>;
+
+
   Loan: ILoan;
-  comments : Array<Comments>;
+
   comment : Comments;
   LoanID: string;
   //du: string;
@@ -42,6 +49,7 @@ export class CommentsComponent implements OnInit {
   inputNote: string;
   inputAdditionalNote: string;
   setupBy: string;
+  ucomment: string;
   getLoan(): ILoan{
     return this.Loan;
   }
@@ -49,18 +57,26 @@ export class CommentsComponent implements OnInit {
   {
     if(this.comments.length > 0) {
       this.comment = this.comments[0];
-      this.comment.comment = this.inputComment;
+      //this.comment.comment = this.inputComment;
       this.comment.notes = this.inputNote;
       this.comment.additionalNotes = this.inputAdditionalNote;
     }
-    else{
+    else if (this.comment == null){
       this.comment = {dateandTime: new Date(), additionalNotes: this.inputAdditionalNote, notes: this.inputNote,
         comment: this.inputComment, loanID: this.LoanID, daysAdvanceNot: 0, eventFrequency: 0,
         letterCode: null, sentToAttorney: 0, rightPartyContact: 0, qualityRightPartyContact: 0, exclude: 0,
         completedBy: null, setupBy: this.setupBy, completionDate: null, recordtype: 0 , department: 0 , retainPermanent:0,
         dueDate: null, Counter: 0};
     }
-    this.ls.Add(this.comment);
+    this.comment.loanID = this.Loan.loanID;
+    this.comment.dateandTime = new Date();
+    this.setupBy = "gadget";
+    this.comment.comment = this.ucomment;
+    this.comment.additionalNotes = this.inputAdditionalNote;
+    this.ls.saveget('Comments',JSON.stringify(this.comment)).subscribe(x => {
+      this.comments = x;
+    })
+
   }
   onToggleDu(){
     if(this.showComments) {
@@ -82,11 +98,20 @@ export class CommentsComponent implements OnInit {
       });
 
   }
+  onCommentSelect(c: any){
+    this.ucomment = c.description;
+  }
   onUsingTable(cmt: Comments)
   {
       this.comment = cmt;
   }
   commentList: Array<ICommentList>;
+
+  refresh(){
+    this.ls.getComments(this.Loan.loanID).subscribe(c => {
+      this.comments  = c;
+    });
+  }
   ngOnInit() {
 
 

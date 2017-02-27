@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {IContact, Contact} from "./contact";
 import {LoanService} from "../service/loan.service";
 import {ILoan} from "../service/Loan";
@@ -25,6 +25,8 @@ export class ContactComponent implements OnInit {
     this.demeanors.push({description: 'cooperative', code: '01'}, {description:'uncoopreative', code: '02'});
   }
 
+  @Output() OnComment = new EventEmitter<Array<Comment>>();
+
   @Input('loan')
   set loan(l: ILoan){
     this.Loan = l;
@@ -46,6 +48,10 @@ export class ContactComponent implements OnInit {
     return this.Loan;
   }
 
+  getComments():Array<Comment>{
+    return this.comments;
+  }
+  comments: Array<Comment>;
   demeanors: Array<IDemeanor>;
   reasons: Array<Reason>;
   outcomes: Array<Outcome>;
@@ -155,7 +161,9 @@ export class ContactComponent implements OnInit {
       this.c.reason = o.value.res.description;
       this.c.reasoncode = o.value.res.code;
     }
-    this.ls.savePromised(this.c);
+    this.ls.putget("Contacts",JSON.stringify(this.c),"Comments").subscribe(xx => {
+      this.OnComment.emit(xx);
+    });
   }
   public getContacts() {
     this.ls.getContacts(this.Loan.loanID).subscribe(c => {
