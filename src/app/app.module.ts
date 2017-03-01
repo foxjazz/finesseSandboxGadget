@@ -16,6 +16,7 @@ import {CasePipe} from "./Common/case.pipe";
 import { PaymentsComponent } from './payments/payments.component';
 import { AuthorizedUsersComponent } from './authorized-users/authorized-users.component';
 import {CommonModule} from "@angular/common";
+import { MoneyPipe } from './money.pipe';
 
 const appRoutes: Routes=[{path:'',component:MainComponent},
   {path:'comments', component:CommentsComponent},
@@ -35,7 +36,8 @@ const appRoutes: Routes=[{path:'',component:MainComponent},
     PaymentsComponent,
     MainComponent,
     AppComponent,
-    AuthorizedUsersComponent
+    AuthorizedUsersComponent,
+    MoneyPipe
 
 
   ],

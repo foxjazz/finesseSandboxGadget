@@ -77,11 +77,11 @@
         </tr>
         <tr>
           <td>total due</td>
-          <td>{{Loan.principalBal | currency}}</td>
+          <td>{{Loan.principalBal | currency | remusd}}</td>
         </tr>
         <tr>
           <td>payment amt</td>
-          <td>{{Loan.paymentAmount}}</td>
+          <td>{{Loan.paymentAmount | currency | remusd}}</td>
         </tr>
 
         </tbody>
