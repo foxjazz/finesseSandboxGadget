@@ -28,12 +28,23 @@ export class MainComponent implements OnInit {
   private subscription: Subscription;
   Loan: ILoan;
   private LoanID: string;
+  userName: string;
   emittedReComments(): boolean{
     return this.tf;
   }
   tf: boolean;
   long: boolean;
   short4: string;
+
+  isUserEmpty(): boolean{
+    if(this.userName = null)
+      return true;
+    else
+      return false;
+  }
+  getUserName(): string{
+    return this.userName;
+  }
   isLong(): boolean{
     return this.long;
   }
@@ -68,6 +79,10 @@ export class MainComponent implements OnInit {
     return this.Loan;
   }
   ngOnInit() {
+    let tryuser = localStorage.getItem('username');
+    if(tryuser != null)
+      this.userName = tryuser;
+
     if(this.Loan == undefined)
       console.log("undefined loan on main ngOnInit");
     let t = "test";
@@ -77,6 +92,9 @@ export class MainComponent implements OnInit {
         if(xl != null) {
           this.LoanID = xl;
         }
+        let un = queryParam['userName'];
+        if(un != null)
+          this.userName = un;
       }
 
     );

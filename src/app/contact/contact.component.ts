@@ -24,6 +24,7 @@ export class ContactComponent implements OnInit {
     this.outcomes = new Array<Outcome>();
     this.demeanors = new Array<IDemeanor>();
     this.demeanors.push({description: 'cooperative', code: '01'}, {description:'uncoopreative', code: '02'});
+    this.c.setupBy = "test Gadget";
   }
 
   @Output() OnComment = new EventEmitter<boolean>();
@@ -50,6 +51,7 @@ export class ContactComponent implements OnInit {
     return this.Loan;
   }
 
+  @Input() userName: string;
   getComments():Array<Comment>{
     return this.comments;
   }
@@ -165,6 +167,8 @@ export class ContactComponent implements OnInit {
       this.c.reason = o.value.res.description;
       this.c.reasoncode = o.value.res.code;
     }
+    if(this.userName != null)
+      this.c.setupBy = this.userName;
     try {
       let jprev = JSON.stringify(this.prev);
       let jso = JSON.stringify(this.c);

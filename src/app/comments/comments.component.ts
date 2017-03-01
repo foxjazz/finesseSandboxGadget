@@ -22,6 +22,8 @@ export class CommentsComponent implements OnInit {
     this.comments = new Array<Comment>();
     this.comment = new Comment();
   }
+
+
   @Input('loan')
   set loan(l: ILoan){
     this.Loan = l;
@@ -45,6 +47,7 @@ export class CommentsComponent implements OnInit {
     return false;
   }
 
+  @Input() userName: string;
   comments: Array<Comment>;
   ls: LoanService;
 
@@ -81,7 +84,8 @@ export class CommentsComponent implements OnInit {
 
     this.comment.loanID = this.Loan.loanID;
     this.comment.dateandTime = new Date();
-    this.setupBy = "gadget";
+    if(this.setupBy == null)
+      this.setupBy = "test gadget";
     this.comment.comment = this.ucomment;
     this.comment.additionalNotes = this.inputAdditionalNote;
     if(this.comment.comment.length > 0 && this.comment.additionalNotes.length > 0) {

@@ -61,6 +61,7 @@ export class LoanInfoComponent implements OnInit {
     return this.Loan.loanID;
   }
 
+  @Input() userName: string;
   public Loan: ILoan;
   public MA: IMailingAddress;
   public gref: string;
@@ -89,6 +90,9 @@ export class LoanInfoComponent implements OnInit {
 
   }
 
+  getUserName():string{
+    return this.userName;
+  }
   public test2: string;
   onOtherLoanSelect(l: any){
     this.lid = l.loanID.substring(5);

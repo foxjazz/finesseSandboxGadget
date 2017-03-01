@@ -1,8 +1,11 @@
 <div class="tops">
   |
+  <div *ngIf="isUserEmpty()">
+    User Name: <Input type="string" [(ngModel)]="userName"><button class="btn-blue">set username</button>
+  </div>
 </div>
 <div >
-   <app-loan-info (OnGetLoan)="onGetLoan($event)" (OnCommentAtLoanInfo)="onComment($event)" [LoanID]="getLoanID()"> </app-loan-info>
+   <app-loan-info (OnGetLoan)="onGetLoan($event)" (OnCommentAtLoanInfo)="onComment($event)" [LoanID]="getLoanID()" [userName]="getUserName()"> </app-loan-info>
 </div>
 
 <div class="row" >
@@ -14,7 +17,7 @@
 
   <div class="col-md-8" *ngIf="!isLong()">
 
-    <app-comments [loan]="getLoan()" [refreshComments]="getTF()"></app-comments>
+    <app-comments [loan]="getLoan()" [refreshComments]="getTF()" [userName]="getUserName()"></app-comments>
   </div>
 
   <div class="col-md-{{short4}}">

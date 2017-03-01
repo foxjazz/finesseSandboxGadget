@@ -20,6 +20,7 @@ export interface IContact{
   promiseDate2: Date;
   promiseAmt3: number;
   promiseDate3: Date;
+  setupBy: string;
 
 
 
@@ -45,6 +46,7 @@ export class Contact implements IContact{
   promiseDate2: Date;
   promiseAmt3: number;
   promiseDate3: Date;
+  setupBy: string;
 
 
 
