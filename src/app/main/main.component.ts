@@ -5,6 +5,8 @@ import {CommentsComponent} from "../comments/comments.component";
 import {ILoan} from "../service/Loan";
 import {LoanService} from "../service/loan.service";
 import {PaymentsComponent} from "../payments/payments.component";
+import {ActivatedRoute} from "@angular/router";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-main',
@@ -16,13 +18,16 @@ import {PaymentsComponent} from "../payments/payments.component";
 
 export class MainComponent implements OnInit {
 
-  constructor() {
+  constructor(private ar: ActivatedRoute) {
     this.long = false;
     this.tf = false;
     this.short4 = "4";
+    this.LoanID = null;
   }
 
+  private subscription: Subscription;
   Loan: ILoan;
+  private LoanID: string;
   emittedReComments(): boolean{
     return this.tf;
   }
@@ -36,6 +41,9 @@ export class MainComponent implements OnInit {
     return this.tf;
   }
 
+  getLoanID(): string{
+    return this.LoanID;
+  }
   setLong(b: boolean)
   {
     this.long = b;
@@ -63,6 +71,15 @@ export class MainComponent implements OnInit {
     if(this.Loan == undefined)
       console.log("undefined loan on main ngOnInit");
     let t = "test";
+    this.subscription = this.ar.queryParams.subscribe(
+      (queryParam: any) => {
+        let xl = queryParam['LoanID'];
+        if(xl != null) {
+          this.LoanID = xl;
+        }
+      }
+
+    );
   }
 
 }

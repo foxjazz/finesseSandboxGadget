@@ -2,7 +2,7 @@
   |
 </div>
 <div >
-   <app-loan-info (OnGetLoan)="onGetLoan($event)" (OnCommentAtLoanInfo)="onComment($event)"> </app-loan-info>
+   <app-loan-info (OnGetLoan)="onGetLoan($event)" (OnCommentAtLoanInfo)="onComment($event)" [LoanID]="getLoanID()"> </app-loan-info>
 </div>
 
 <div class="row" >

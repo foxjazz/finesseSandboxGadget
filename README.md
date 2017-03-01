@@ -7,7 +7,14 @@
 
 
 ##finesse shortcuts:
-ssh administrator@10.10.20.10 (pw is ciscopsdt)  
+https://uccx-001-app-prod.statebridgecompany.com/appadmin/main
+
+
+
+ssh administrator@10.0.0.24  edc456TFC^&*
+4001004098
+
+OLD  OLD  ssh administrator@10.10.20.10 (pw is ciscopsdt) OLD  
 utils reset_3rdpartygadget_password   (this needs to be run to enable the third party gadget echosystem)  
 utils service restart Cisco Finesse Tomcat   (this is run after every change to the gadget xml on the back copied to the back end).    
 

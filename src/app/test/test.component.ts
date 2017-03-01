@@ -17,12 +17,15 @@ export class TestComponent implements OnInit {
     this.command = "User/Agent002";
     this.body = '<User> <state>READY</state></User>';
     this.s = '';
+    this.uri = "https://uccx-001-app-prod.statebridgecompany.com:8445/finesse/api/";
   }
   s: string;
   uri: string;
   command: string;
   response: any;
   body: string;
+  interesting: string;
+  errMsg: string;
   testThis(){
 
   }
@@ -31,7 +34,7 @@ export class TestComponent implements OnInit {
     this.testGet();
   }
   setSecure(){
-    this.uri = "https://hq-uccx.abc.inc:8445/finesse/api/"
+    this.uri = "https://uccx-001-app-prod.statebridgecompany.com:8445/finesse/api/";
   }
   setHttp(){
     this.uri = "https://hq-uccx.abc.inc:8082/finesse/api/"
@@ -62,12 +65,21 @@ export class TestComponent implements OnInit {
       this.response = r;
     })
   }
+  private handleError(error: any) {
+     let errMsg = (error.message) ? error.message :
+      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+    this.errMsg = errMsg;
+
+    console.error(errMsg);
+    return Observable.throw(errMsg);
+  }
   public get(): Observable<any>
   {
 
     return this.http.get(this.uri + this.command)
-     // .map((res: Response) => JSON.parse(xml2json(res.text(),'  '))
-      .map((res: Response) => res);
+
+      .map((res: Response) => this.interesting = res.json())
+      .catch(this.handleError);
   }
   public put(): Observable<Array<any>>
   {
@@ -84,7 +96,7 @@ export class TestComponent implements OnInit {
      })
   }
   ngOnInit() {
-    this.uri = "https://hq-uccx.abc.inc:8445/finesse/api/"
+
 
   }
 

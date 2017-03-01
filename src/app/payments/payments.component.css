@@ -4,7 +4,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   display: block;
-  height: 340px;
+  height: 500px;
 
 }
 table{
@@ -12,10 +12,7 @@ table{
   scrollbar-arrow-color: purple;
   scrollbar-face-color: blue;
 }
-.table-d caption{
-  color: #95a2bf;
-  text-align: center;
-}
+
 .table-d thead{
 
 }

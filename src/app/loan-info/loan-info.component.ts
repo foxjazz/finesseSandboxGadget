@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {LoanService} from "../service/loan.service";
 import { ILoan} from "../service/Loan";
 import {IMailingAddress} from "../main/MailingAddress";
@@ -48,7 +48,18 @@ export class LoanInfoComponent implements OnInit {
 
   @Output() OnCommentAtLoanInfo = new EventEmitter<boolean>();
   @Output() OnGetLoan = new EventEmitter<ILoan>();
+@Input('LoanID')
 
+  set LoanID(s: string){
+    if(s != null) {
+      this.lid = s.substring(5);
+      this.tlid = s;
+      this.onChangedLoanID();
+    }
+  }
+  get LoanID(): string{
+    return this.Loan.loanID;
+  }
 
   public Loan: ILoan;
   public MA: IMailingAddress;
