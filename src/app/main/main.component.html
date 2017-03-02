@@ -1,14 +1,18 @@
 <div class="tops">
-  <div class="row" *ngIf="isUserEmpty()">
+  <div class="row" >
 
-    <div class="col-lg-2 text-area">
-
-      User Name: <Input class="input-custom" type="string" [(ngModel)]="userName" name="userName" ngDefaultControl>
+    <div class="col-lg-2">
+        User Name: <input class="input-custom" type="string" [(ngModel)]="winUserName" name="winUserName">
     </div>
-    <div class="col-lg-2 text-area">
-
-       <button class="btn-red wd">set username</button>
+    <div class="col-lg-2">
+      <button class="btn-red wd" type="button" (click)="setTheUser()">set username</button>
     </div>
+
+    <div class="col-lg-4">
+
+      Welcome {{userName}}
+    </div>
+
   </div>
 </div>
 

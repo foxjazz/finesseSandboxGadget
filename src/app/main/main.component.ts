@@ -18,7 +18,7 @@ import {Subscription} from "rxjs";
 
 export class MainComponent implements OnInit {
 
-  constructor(private ar: ActivatedRoute) {
+  constructor(private ar: ActivatedRoute, private ls: LoanService) {
     this.long = false;
     this.tf = false;
     this.short4 = "4";
@@ -29,6 +29,7 @@ export class MainComponent implements OnInit {
   Loan: ILoan;
   private LoanID: string;
   userName: string;
+  winUserName: string;
   emittedReComments(): boolean{
     return this.tf;
   }
@@ -36,6 +37,17 @@ export class MainComponent implements OnInit {
   long: boolean;
   short4: string;
 
+  setTheUser(){
+    if(this.winUserName == undefined || this.winUserName == null)
+      return;
+    localStorage.setItem('winUserName', this.winUserName);
+    this.ls.getUser(this.winUserName).subscribe(x => {
+      if(x.length > 0) {
+        this.userName = x[0].userName;
+        localStorage.setItem('userName', this.userName);
+      }
+    });
+  }
   isUserEmpty(): boolean{
     if(this.userName == null)
       return true;
@@ -79,10 +91,12 @@ export class MainComponent implements OnInit {
     return this.Loan;
   }
   ngOnInit() {
-    let tryuser = localStorage.getItem('username');
+    let tryuser = localStorage.getItem('winUserName');
     if(tryuser != null)
-      this.userName = tryuser;
-
+      this.winUserName = tryuser;
+    let user = localStorage.getItem('userName');
+    if(user != null)
+      this.userName = user;
     if(this.Loan == undefined)
       console.log("undefined loan on main ngOnInit");
     let t = "test";
