@@ -1,4 +1,7 @@
 
+.tbl td{
+  padding: 2px 2px 2px 4px;
+}
 .wh{
   white-space: pre;
 

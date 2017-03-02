@@ -19,7 +19,7 @@
         recent history:
         <select name="recent" ngModel (ngModelChange)="onRecentLoanSelect($event)">
           <option *ngFor="let rz of recent"  [ngValue]="rz">
-            id: {{ rz.loanId }} name: {{rz.borrName}} date: {{rz.dt | date: "MM/dd/yyyy hh:mm"}}
+            id: {{ rz.loanId }} name: {{rz.borrName}} date: {{rz.dt | date: "MM/dd hh:mm"}}
           </option>
         </select>
       </div>

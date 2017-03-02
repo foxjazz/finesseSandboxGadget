@@ -265,10 +265,16 @@ export class LoanInfoComponent implements OnInit {
 
     let jrec = localStorage.getItem('recent');
     rec = JSON.parse(jrec);
-    if(rec != null)
-      this.recent = rec.sort((l,r) => {if (l.dt < r.dt) return 1; if(l.dt > r.dt) return -1; else return 0;});
-    else
+   /* for(let o of rec){
+      o.dt = new Date(o.dt);
+    }*/
+    if(rec == null)
       this.recent = new Array<IHistory>();
+    else
+      this.recent = rec;
+
+
+
 
 
     this.onChangedLoanID();
