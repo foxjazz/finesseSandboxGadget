@@ -6,6 +6,7 @@ import {IContact, Contact} from "../contact/contact";
 import {isDate} from "rxjs/util/isDate";
 import {IOtherLoan} from "./IOtherLoan";
 import {PaymentsComponent} from "../payments/payments.component";
+import {IHistory} from "./history";
 
 @Component({
   selector: 'app-loan-info',
@@ -16,6 +17,7 @@ import {PaymentsComponent} from "../payments/payments.component";
 export class LoanInfoComponent implements OnInit {
 
   constructor(private ls: LoanService) {
+    this.recent = new Array<IHistory>();
     this.otherLoans = new Array<IOtherLoan>();
     this.Loan =  {loanID: "0000032141",
     originalAmt: null, principalBal: null, escrowPmt: null,
@@ -78,7 +80,10 @@ export class LoanInfoComponent implements OnInit {
   public test: string;
   public testdate: Date;
   private tlid: string;
+  private rh: IHistory;
+  private recent: Array<IHistory>;
   public otherLoans: Array<IOtherLoan>;
+/*
   testDate(ds: string){
     this.test = ds;
     let d = Date.parse(ds);
@@ -89,6 +94,7 @@ export class LoanInfoComponent implements OnInit {
     else this.d1 = "pde";
 
   }
+*/
 
   getUserName():string{
     return this.userName;
@@ -99,6 +105,14 @@ export class LoanInfoComponent implements OnInit {
     this.tlid = l.loanID;
     this.onChangedLoanID();
 
+  }
+  onRecentLoanSelect(recl: any)
+  {
+    if(recl != null) {
+      this.lid = recl.loanId(5);
+      this.tlid = recl.loanId;
+      this.onChangedLoanID();
+    }
   }
 
    onComment(ca: boolean){
@@ -116,6 +130,9 @@ export class LoanInfoComponent implements OnInit {
   leaveAU(){
     this.showAU = false;
   }
+
+
+
   onChangedLoanID(){
 
     if(this.lid.length === 5)
@@ -131,11 +148,29 @@ export class LoanInfoComponent implements OnInit {
         }
 
       });
+
       this.ls.getLoan(this.tlid).subscribe(h => {
+        if(h === undefined)
+          return;
         if (h.length > 0) {
           this.Loan = h[0];
           this.OnGetLoan.emit(this.Loan);
-        }
+          if (this.recent == null)
+            return;
+          this.recent = this.recent.sort((l,r) => {if (l.dt < r.dt) return 1; if(l.dt > r.dt) return -1; else return 0;});
+          if(this.recent.length == 0 || this.Loan.loanID != this.recent[0].loanId) {
+            this.rh = {loanId: this.Loan.loanID, borrName: this.Loan.borrowerName, dt: new Date()}};
+            this.recent.push(this.rh);
+            this.recent = this.recent.sort((l, r) => {
+              if (l.dt < r.dt) return 1;
+              if (l.dt > r.dt) return -1; else return 0;
+            });
+            if (this.recent.length > 6)
+              this.recent.length = 7;
+            let str = JSON.stringify(this.recent);
+            console.log(str);
+            localStorage.setItem('recent', str);
+          }
       });
 
       this.ls.getOtherLoans(this.tlid).subscribe(o => {
@@ -224,6 +259,18 @@ export class LoanInfoComponent implements OnInit {
     }
   }
   ngOnInit() {
+    /*let rc2 = new Array<IHistory>();
+    localStorage.setItem('recent',JSON.stringify(rc2));*/
+    let rec: Array<IHistory>;
+
+    let jrec = localStorage.getItem('recent');
+    rec = JSON.parse(jrec);
+    if(rec != null)
+      this.recent = rec.sort((l,r) => {if (l.dt < r.dt) return 1; if(l.dt > r.dt) return -1; else return 0;});
+    else
+      this.recent = new Array<IHistory>();
+
+
     this.onChangedLoanID();
     this.OnGetLoan.emit(this.Loan);
 
