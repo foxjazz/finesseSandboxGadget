@@ -25,6 +25,7 @@ export class ContactComponent implements OnInit {
     this.demeanors = new Array<IDemeanor>();
     this.demeanors.push({description: 'cooperative', code: '01'}, {description:'uncoopreative', code: '02'});
     this.c.setupBy = "test Gadget";
+    this.saveButton = "Update Contact";
   }
 
   @Output() OnComment = new EventEmitter<boolean>();
@@ -33,11 +34,12 @@ export class ContactComponent implements OnInit {
   set loan(l: ILoan){
     this.Loan = l;
 
-    this.ls.getContacts(this.Loan.loanID).subscribe(c => {
-      if (c != null) {
-        this.contacts = c;
-        if (c.length > 0) {
-          this.c =c[0];
+    this.ls.getContacts(this.Loan.loanID).subscribe(clocal => {
+      if (clocal != null) {
+        this.contacts = clocal;
+        this.saveButton = "Update Contact";
+        if (clocal.length > 0) {
+          this.c =clocal[0];
           this.prev = Object.assign({},this.c);
           /*for(let r of this.reasons){
             if(r.description = this.c.reason)
@@ -52,9 +54,13 @@ export class ContactComponent implements OnInit {
   }
 
   @Input() userName: string;
+
+  /*
   getComments():Array<Comment>{
     return this.comments;
-  }
+  }*/
+
+  saveButton: string;
   prev: IContact;
   comments: Array<Comment>;
   demeanors: Array<IDemeanor>;

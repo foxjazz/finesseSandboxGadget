@@ -17,10 +17,12 @@ export class CommentsComponent implements OnInit {
 
   constructor( lsi: LoanService, private ar: ActivatedRoute) {
 
+    this.saveButton = "Add Comment";
     this.showComments = true; this.expando="Collapse"; this.setupBy = "not set";
     this.ls = lsi;
     this.comments = new Array<Comment>();
     this.comment = new Comment();
+
   }
 
 
@@ -28,6 +30,7 @@ export class CommentsComponent implements OnInit {
   set loan(l: ILoan){
     this.Loan = l;
     this.ls.getComments(this.Loan.loanID).subscribe(c => {
+      this.saveButton = "Add Comment";
       this.comments  = c;
     });
   }
@@ -39,6 +42,7 @@ export class CommentsComponent implements OnInit {
   set rc(b: boolean){
     if(b) {
       this.ls.getComments(this.Loan.loanID).subscribe(c => {
+        this.saveButton = "Add Comment";
         this.comments = c;
       });
     }
@@ -52,7 +56,7 @@ export class CommentsComponent implements OnInit {
   ls: LoanService;
 
   Loan: ILoan;
-
+  saveButton:string;
   comment : Comment;
   LoanID: string;
   //du: string;
@@ -89,6 +93,7 @@ export class CommentsComponent implements OnInit {
     this.comment.comment = this.ucomment;
     this.comment.additionalNotes = this.inputAdditionalNote;
     if(this.comment.comment.length > 0 && this.comment.additionalNotes.length > 0) {
+      this.saveButton = "Comment Added";
       this.ls.saveget('Comments', JSON.stringify(this.comment), this.Loan.loanID).subscribe(x => {
         console.log(x);
         this.comments = x;
@@ -126,6 +131,7 @@ export class CommentsComponent implements OnInit {
   commentList: Array<ICommentList>;
 
   refresh(){
+    this.saveButton = "Add Comment";
     this.ls.getComments(this.Loan.loanID).subscribe(c => {
       this.comments  = c;
     });

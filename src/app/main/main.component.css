@@ -6,6 +6,11 @@
   color: black;
 
 }
+.wd{
+  width: 150px;
+  display: inline-table;
+  margin: 0px;
+}
 .btn-red {
   background: #411e1e;
   background-image: -webkit-linear-gradient(top, #411e1e, #703c36);

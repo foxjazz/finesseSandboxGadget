@@ -37,7 +37,7 @@ export class MainComponent implements OnInit {
   short4: string;
 
   isUserEmpty(): boolean{
-    if(this.userName = null)
+    if(this.userName == null)
       return true;
     else
       return false;

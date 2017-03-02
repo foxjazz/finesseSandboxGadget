@@ -1,9 +1,17 @@
 <div class="tops">
-  |
-  <div *ngIf="isUserEmpty()">
-    User Name: <Input type="string" [(ngModel)]="userName"><button class="btn-blue">set username</button>
+  <div class="row" *ngIf="isUserEmpty()">
+
+    <div class="col-lg-2 text-area">
+
+      User Name: <Input class="input-custom" type="string" [(ngModel)]="userName" name="userName" ngDefaultControl>
+    </div>
+    <div class="col-lg-2 text-area">
+
+       <button class="btn-red wd">set username</button>
+    </div>
   </div>
 </div>
+
 <div >
    <app-loan-info (OnGetLoan)="onGetLoan($event)" (OnCommentAtLoanInfo)="onComment($event)" [LoanID]="getLoanID()" [userName]="getUserName()"> </app-loan-info>
 </div>

@@ -101,9 +101,10 @@ caption{
   box-sizing: border-box;
   font-family: "Helvetica Neue", Arial, sans-serif;
   width: 90%;
+  height: 26px;
   color: #9cc2ee;
   font-size: 14px;
-  padding: 5px 2px 5px 2px;
+  padding: 2px 2px 2px 2px;
   text-decoration: none;
   margin:0 auto;
   display:block;
