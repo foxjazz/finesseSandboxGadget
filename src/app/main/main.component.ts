@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output} from '@angular/core';
 import {LoanInfoComponent} from '../loan-info/loan-info.component'
 import {ContactComponent} from '../contact/contact.component'
 import {CommentsComponent} from "../comments/comments.component";
@@ -7,6 +7,7 @@ import {LoanService} from "../service/loan.service";
 import {PaymentsComponent} from "../payments/payments.component";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
+import {EventEmitter} from "@angular/forms/src/facade/async";
 
 @Component({
   selector: 'app-main',
@@ -19,13 +20,22 @@ import {Subscription} from "rxjs";
 export class MainComponent implements OnInit {
 
   constructor(private ar: ActivatedRoute, private ls: LoanService) {
+    this.themeName = "themeDark";
     this.long = false;
     this.tf = false;
     this.short4 = "4";
     this.LoanID = null;
+    this.themes = new Array<{name: string;}>();
+    this.themes.push({name: "themeLight"});
+    this.themes.push({name: "themeDark"});
+
+
   }
 
   private subscription: Subscription;
+
+
+  public themes: Array<{name: string;}>;
   Loan: ILoan;
   private LoanID: string;
   userName: string;
@@ -36,7 +46,13 @@ export class MainComponent implements OnInit {
   tf: boolean;
   long: boolean;
   short4: string;
-
+  themeName: string;
+  selChangeTheme(test: any){
+    this.themeName = test.name;
+  }
+  changeTheme(){
+    this.themeName = "themeDark";
+  }
   setTheUser(){
     if(this.winUserName == undefined || this.winUserName == null)
       return;

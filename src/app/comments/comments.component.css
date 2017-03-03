@@ -16,7 +16,7 @@
   padding: 0px 4px;
 }
 .table-d tr:nth-child(even){
-  background-color: #0c0f1d;
+  background-color: var(--9th);
 }
 .cmw{
   min-width: 120px;
@@ -35,23 +35,20 @@
   width: 40%;
 }
 .input-area{
-  color: lightcoral;
-  background-color: black;
+  color: var(--colorvar);
+  background-color: var(--bg);
 }
 .input-custom{
   border-style: inset;
   border-color: lightgreen;
   height: 20px;
-  color: lightcoral;
-  background-color: black;
+  color: var(--colorvar);
+  background-color: var(--bg);
 }
 
 
 
-.long-button{
-  background-color: #3cb0fd;
 
-}
 /*
 .down{
   !*background:url(/images/Btn.PNG) no-repeat;*!
@@ -78,8 +75,6 @@
 .table-container {
   overflow-y: auto;
   overflow-x: hidden;
-
-  background: #000000;
   border-spacing: 0;
   width:100%;
   display: block;
@@ -87,13 +82,12 @@
 
 }
 .table-container tr:nth-child(even){
-  background-color: #0c0f1d;
+  background-color: var(--9th);
 }
 
 /* reposition the divs in the header cells and place in the blank area of the headercontainer */
 .table-container thead {
   width: 100%;
-  color: #c9182d;
   padding: 2px 2px;
   /*top: 0;*/
   display: table;
@@ -120,7 +114,6 @@
 }
 .table-container tr:hover {
   background-color: #4c2f2f !important;
-  color: #e5ef27;
 }
 
 .table-container th{
@@ -137,7 +130,6 @@
   overflow-y: auto;
   overflow-x: hidden;
 
-  background: #000000;
   border-spacing: 0;
   width:100%;
   display: block;

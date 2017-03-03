@@ -21,6 +21,7 @@ export class ContactComponent implements OnInit {
     this.contacts = new Array<IContact>();
     this.c = new Contact();
     this.reasons = new Array<Reason>();
+    this.reasons = new Array<Reason>();
     this.outcomes = new Array<Outcome>();
     this.demeanors = new Array<IDemeanor>();
     this.demeanors.push({description: 'cooperative', code: '01'}, {description:'uncoopreative', code: '02'});

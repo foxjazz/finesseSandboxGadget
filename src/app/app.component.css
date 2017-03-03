@@ -1,14 +1,5 @@
-body{
-  background: #1d2528;
-  color: #3cb0fd;
-}
-div{
-  background: #1d2528;
-}
-a{
-  background: #1d2528;
-  color: #3498db;
-}
+
+
 nav li{
   display:inline-block;
   border-bottom:1px solid #935fbf;

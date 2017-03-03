@@ -2,6 +2,7 @@
 <!--<div class="setheight">
   <app-nav></app-nav>
 </div>-->
-<div>
-  <router-outlet></router-outlet>
+<div class="{{colortheme}}">
+
+  <router-outlet (OnThemeChange)="setTheme($event)"></router-outlet>
 </div>

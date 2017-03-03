@@ -1,25 +1,44 @@
+
+.themeLight{
+  --colorvar: black;
+  --caption: black;
+  --bg: white;
+  --9th: #ffeee2;
+  --border: black;
+
+}
+.themeDark{
+  --colorvar: #CBD4DD;
+  --caption: #ddbdca;
+  --bg: #1d2528;
+  --9th: black;
+  --border: #9e511b;
+}
+
+
 :host {
   display: block;
-
-  background-color: #1d2528;
-  color: #CBD4DD;
+  background-color: var(--bg);
+  color: var(--colorvar);
 }
+
+
 ul{
 
 }
 ul li{ cursor: default;}
 nav{
-  color: #C2CAD3;
+  color: var(--colorvar);
 }
 body{
-  background-color: black;
-  color: #CBD4DD;
+  background-color: var(--bg);
+  color: var(--colorvar);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 }/* You can add global styles to this file, and also import other style files */
 input{
-  background-color: black;
-  color: #CBD4DD;
+  background-color: var(--bg);
+  color: var(--colorvar);
   //color: red;
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
@@ -28,36 +47,36 @@ label{
 }
 h1{ /* colors of the heading text */
   margin: 0;
-  background: #1d2528;
-  color: #CBD4DD;
+  background: var(--bg);
+  color: var(--colorvar);
 }
 
 h2{
-  background: #1d2528;
-  color: #CBD4DD;
+  background: var(--bg);
+  color: var(--colorvar);
 }
 
 h3{
-  background: #1d2528;
-  color: #CBD4DD;
+  background: var(--bg);
+  color: var(--colorvar);
 }
 div{
-  background: #1d2528;
-  color: #CBD4DD;
+  background: var(--bg);
+  color: var(--colorvar);
 }
 html{
    text-size-adjust: 100%;
  }
 select{
-  background: #1d2528;
-  color: #CBD4DD;
+  background: var(--bg);
+  color: var(--colorvar);
 }
 option{
-  background: #1d2528;
-  color: #CBD4DD;
+  background: var(--bg);
+  color: var(--colorvar);
 }
 caption{
-  color: #ddbdca;
+  color: var(--caption);
   text-align: center;
 }
 .sh{
@@ -71,7 +90,7 @@ caption{
 }
 
 .table-norm caption{
-  color: #CBD4DD;
+  color: var(--colorvar);
   text-align: center;
 }
 .table-norm tr td{

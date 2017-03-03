@@ -1,22 +1,27 @@
-<div class="tops">
-  <div class="row" >
 
+<div class="tops {{themeName}}">
+  <div class="row">
     <div class="col-lg-2">
         User Name: <input class="input-custom" type="string" [(ngModel)]="winUserName" name="winUserName">
     </div>
     <div class="col-lg-2">
       <button class="btn-red wd" type="button" (click)="setTheUser()">set username</button>
     </div>
-
     <div class="col-lg-4">
-
       Welcome {{userName}}
     </div>
-
-  </div>
+    <div class="col-lg-2">
+      <select name="selName" ngModel (ngModelChange)="selChangeTheme($event)">
+        <option *ngFor="let th of themes" [selected]="th.name == themeName" [ngValue]="th">
+          {{ th.name }}
+        </option>
+      </select>
+    </div>
 </div>
 
-<div >
+
+
+<div>
    <app-loan-info (OnGetLoan)="onGetLoan($event)" (OnCommentAtLoanInfo)="onComment($event)" [LoanID]="getLoanID()" [userName]="getUserName()"> </app-loan-info>
 </div>
 
@@ -26,18 +31,13 @@
 </div>
 <!--<div class="row"><app-contact></app-contact></div>-->
 <div class="row">
-
   <div class="col-md-8" *ngIf="!isLong()">
-
     <app-comments [loan]="getLoan()" [refreshComments]="getTF()" [userName]="getUserName()"></app-comments>
   </div>
-
   <div class="col-md-{{short4}}">
-    <!--<app-contact [loan]="getLoan()"></app-contact>-->
-
     <app-payments [loan]="getLoan()" [long]="isLong()"></app-payments>
   </div>
-
 </div>
+
 
 
