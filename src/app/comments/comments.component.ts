@@ -90,6 +90,8 @@ export class CommentsComponent implements OnInit {
     this.comment.dateandTime = new Date();
     if(this.setupBy == null)
       this.setupBy = "test gadget";
+    if(this.userName != null && this.userName.length > 0)
+      this.comment.setupBy = this.userName;
     this.comment.comment = this.ucomment;
     this.comment.additionalNotes = this.inputAdditionalNote;
     if(this.comment.comment.length > 0 && this.comment.additionalNotes.length > 0) {
