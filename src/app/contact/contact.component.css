@@ -2,10 +2,7 @@
 .tbl td{
   padding: 2px 2px 2px 4px;
 }
-.wh{
-  white-space: pre;
 
-}
 .btn-blue {
   background: #0e2737;
   background-image: -webkit-linear-gradient(top, #0e2737, #193e5c);

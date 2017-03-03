@@ -15,6 +15,15 @@
   --border: #9e511b;
 }
 
+.h3{
+  font-size: large;
+}
+.h4{
+  font-size: medium;
+}
+.wh{
+  white-space: pre;
+}
 
 :host {
   display: block;

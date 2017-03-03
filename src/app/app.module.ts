@@ -17,6 +17,7 @@ import { PaymentsComponent } from './payments/payments.component';
 import { AuthorizedUsersComponent } from './authorized-users/authorized-users.component';
 import {CommonModule} from "@angular/common";
 import { MoneyPipe } from './money.pipe';
+import { RemovePipe } from './remove.pipe';
 
 const appRoutes: Routes=[{path:'',component:MainComponent},
   {path:'comments', component:CommentsComponent},
@@ -37,7 +38,8 @@ const appRoutes: Routes=[{path:'',component:MainComponent},
     MainComponent,
     AppComponent,
     AuthorizedUsersComponent,
-    MoneyPipe
+    MoneyPipe,
+    RemovePipe
 
 
   ],

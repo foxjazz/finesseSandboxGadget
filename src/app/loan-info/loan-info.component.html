@@ -1,13 +1,20 @@
 <div class="row box1">
   <div class="col-md-12">
 
-      <h3>
+    <div class="h3">
         <input [(ngModel)]="lid"  id="fn" type="text" value="00000" (input)="onChangedLoanID()" class="input-custom">
-        #: {{Loan.loanID}}
-        {{Loan.investor}} Due: {{Loan.dueDate | date:"MM/dd/yyyy"}} Collect/{{Loan.collector}} {{Loan.primStat}}
-      </h3>
-      <div>
-        Borrowers  {{Loan.borrowerName}} , co {{Loan.coBorrowerName}}
+        #: {{Loan.loanID}} <label class="wh">     </label>
+        {{Loan.investor}} <label class="wh">     </label> Due: {{Loan.dueDate | date:"MM/dd/yyyy"}}  <label class="wh">   </label> Collect/{{Loan.collector}}  <label class="wh"> **</label>
+      {{Loan.primStat}}
+      <label class="wh">   </label>history:
+      <select name="recent" ngModel (ngModelChange)="onRecentLoanSelect($event)" class="rHistory">
+        <option *ngFor="let rz of recent"  [ngValue]="rz">
+          id: {{ rz.loanId }} n: {{rz.borrName | remove : "Borrower,"}} date: {{rz.dt | date: "MM/dd hh:mm"}}
+        </option>
+      </select>
+    </div>
+      <div class="h4">
+        {{Loan.borrowerName | asCase:"name"}} , co {{Loan.coBorrowerName | asCase:"name"}}
         Address - {{MA.addressLine1 | asCase:"name"}} {{MA.addressLine2 }} {{MA.city | asCase:"name"}},
         {{MA.state}} {{MA.zip}}  <a href="{{gref}}">Google Map</a>  loans: {{otherLoans.length}}
 
@@ -16,12 +23,7 @@
               {{ o.loanID }}
             </option>
           </select>
-        recent history:
-        <select name="recent" ngModel (ngModelChange)="onRecentLoanSelect($event)">
-          <option *ngFor="let rz of recent"  [ngValue]="rz">
-            id: {{ rz.loanId }} name: {{rz.borrName}} date: {{rz.dt | date: "MM/dd hh:mm"}}
-          </option>
-        </select>
+
       </div>
 
   </div>

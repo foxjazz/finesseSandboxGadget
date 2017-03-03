@@ -5,6 +5,11 @@
   border: 4px solid var(--border);
 }
 
+.rHistory option{
+
+  font-size: small;
+}
+
 .input-custom{
   border-style: inset;
   border-color: var(--border);
