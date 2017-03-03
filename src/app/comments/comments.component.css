@@ -4,17 +4,21 @@
 }
 .ml {margin-left: 6px;}
 .table-d{
-  padding: 0px 9px;
+  padding: 4px 9px;
 
 }
 
+.table-d table tr:nth-child(1){
+  font-weight: bold;
+}
 
 .table-d tr td{
-  padding: 0px 4px;
+  padding: 4px 4px;
 }
 .table-d th{
-  padding: 0px 4px;
+  padding: 2px 4px;
 }
+
 .table-d tr:nth-child(even){
   background-color: var(--9th);
 }
