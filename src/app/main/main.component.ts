@@ -49,6 +49,7 @@ export class MainComponent implements OnInit {
   themeName: string;
   selChangeTheme(test: any){
     this.themeName = test.name;
+    localStorage.setItem('theme',this.themeName);
   }
   changeTheme(){
     this.themeName = "themeDark";
@@ -107,6 +108,9 @@ export class MainComponent implements OnInit {
     return this.Loan;
   }
   ngOnInit() {
+    let trytheme = localStorage.getItem('theme');
+    if(trytheme != null && trytheme.length > 0)
+      this.themeName = trytheme;
     let tryuser = localStorage.getItem('winUserName');
     if(tryuser != null)
       this.winUserName = tryuser;
