@@ -138,6 +138,12 @@ export class CommentsComponent implements OnInit {
       this.comments  = c;
     });
   }
+
+  getCommentsAll(){
+    this.ls.getAllComments(this.Loan.loanID).subscribe(c => {
+      this.comments  = c;
+    });
+  }
   ngOnInit() {
 
 

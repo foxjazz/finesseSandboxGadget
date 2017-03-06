@@ -53,6 +53,13 @@ export class LoanService {
       .map((res: Response) => res.json());
   }
 
+  public getAllComments(id: string): Observable<Array<Comment>>
+  {
+    let uri = this.baseURI + '/api/Comments/All/' + id;
+    return this.http.get(uri)
+      .map((res: Response) => res.json());
+  }
+
   public getComments(id: string): Observable<Array<Comment>>
   {
     let uri = this.baseURI + '/api/Comments/' + id;
