@@ -1,95 +1,97 @@
-<form (submit)="savePromise(memberForm)" #memberForm="ngForm" autocomplete="off">
-  <div>
-  <table class="tbl-norm">
-    <tr>
-      <td>Demeanor:</td>
-      <td> <select name="dem" ngModel>
+<div class="hasborder">
+  <form (submit)="savePromise(memberForm)" #memberForm="ngForm" autocomplete="off">
+    <div>
+    <table class="tbl-norm">
+      <tr>
+        <td>Demeanor:</td>
+        <td> <select name="dem" ngModel>
 
-        <option *ngFor="let dem of demeanors" [selected]="dem.description == c.demeanor" [ngValue]="dem" >
-          {{ dem.description }}
-        </option>
-      </select></td>
-      <td>
-        Reason:
-      </td>
-      <td>
-        <select name="res" ngModel>
-
-          <option *ngFor="let res of reasons"  [selected]="res.description == c.reason" [ngValue]="res" >
-            {{ res.description }}
+          <option *ngFor="let dem of demeanors" [selected]="dem.description == c.demeanor" [ngValue]="dem" >
+            {{ dem.description }}
           </option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Outcome:
-      </td>
-      <td>
-        <select name="outc" ngModel>
+        </select></td>
+        <td>
+          Reason:
+        </td>
+        <td>
+          <select name="res" ngModel>
 
-          <option *ngFor="let outc of outcomes" [selected]="outc.description == c.outcome" [ngValue]="outc" >
-            {{ outc.description }}
-          </option>
-        </select>
-      </td>
-      <td>
-        <label class="wh norm" for="fol">Follow Up Date </label>
-      </td>
-      <td>
-        <input name="fol" class="pbd" type="date" id="fol" [(ngModel)]="fold">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label class="wh norm" for="pbd">Promise Date </label>
-      </td>
-      <td>
-        <input name="pbd" class="pbd" type="date" id="pbd" [(ngModel)]="hpbd">
-      </td>
-      <td>
-        <label class="widAmt norm" for="pa">Promise Amt</label>
-      </td>
-      <td>
-        <input class="pa" type="number" [(ngModel)]="c.promiseAmt" id="pa" name="pa">
-      </td>
+            <option *ngFor="let res of reasons"  [selected]="res.description == c.reason" [ngValue]="res" >
+              {{ res.description }}
+            </option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Outcome:
+        </td>
+        <td>
+          <select name="outc" ngModel>
 
-    </tr>
-    <tr>
-      <td>
-        <label class="wh norm" for="pbd3">Promise Date 2 </label>
-      </td>
-      <td>
-        <input class="pbd" type="date" [(ngModel)]="hpbd3" id="pbd2" name="pbd3">
-      </td>
-      <td>
-        <label class="norm" for="pa2">Promise Amt 2</label>
-      </td>
-      <td>
-        <input class="pa" type="number" [(ngModel)]="c.promiseAmt2" id="pa2" name="pa2">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label class="wh norm" for="pbd3">Promise Date 3</label>
-      </td>
-      <td>
-        <input class="pbd" type="date" [(ngModel)]="hpbd3" id="pbd3" name="pbd3">
-      </td>
-      <td>
-        <label class="norm" for="pa3">Promise Amt 3</label>
-      </td>
-      <td>
-        <input class="pa" type="number" [(ngModel)]="c.promiseAmt3" id="pa3" name="pa3">
-      </td>
-    </tr>
+            <option *ngFor="let outc of outcomes" [selected]="outc.description == c.outcome" [ngValue]="outc" >
+              {{ outc.description }}
+            </option>
+          </select>
+        </td>
+        <td>
+          <label class="wh norm" for="fol">Follow Up Date </label>
+        </td>
+        <td>
+          <input name="fol" class="pbd" type="date" id="fol" [(ngModel)]="fold">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="wh norm" for="pbd">Promise Date </label>
+        </td>
+        <td>
+          <input name="pbd" class="pbd" type="date" id="pbd" [(ngModel)]="hpbd">
+        </td>
+        <td>
+          <label class="widAmt norm" for="pa">Promise Amt</label>
+        </td>
+        <td>
+          <input class="pa" type="number" [(ngModel)]="c.promiseAmt" id="pa" name="pa">
+        </td>
 
-  </table>
-  </div>
+      </tr>
+      <tr>
+        <td>
+          <label class="wh norm" for="pbd3">Promise Date 2 </label>
+        </td>
+        <td>
+          <input class="pbd" type="date" [(ngModel)]="hpbd3" id="pbd2" name="pbd3">
+        </td>
+        <td>
+          <label class="norm" for="pa2">Promise Amt 2</label>
+        </td>
+        <td>
+          <input class="pa" type="number" [(ngModel)]="c.promiseAmt2" id="pa2" name="pa2">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="wh norm" for="pbd3">Promise Date 3</label>
+        </td>
+        <td>
+          <input class="pbd" type="date" [(ngModel)]="hpbd3" id="pbd3" name="pbd3">
+        </td>
+        <td>
+          <label class="norm" for="pa3">Promise Amt 3</label>
+        </td>
+        <td>
+          <input class="pa" type="number" [(ngModel)]="c.promiseAmt3" id="pa3" name="pa3">
+        </td>
+      </tr>
 
-  <div> {{error}}
-    {{message}}<span><button type="submit" class="btn-blue">{{saveButton}}</button></span>
+    </table>
+    </div>
+
+    <div> {{error}}
+      {{message}}<span><button type="submit" class="btn-blue">{{saveButton}}</button></span>
 
 
-  </div>
-</form>
+    </div>
+  </form>
+</div>

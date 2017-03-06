@@ -6,12 +6,12 @@
         #: {{Loan.loanID}} <label class="wh">     </label>
         {{Loan.investor}} <label class="wh">     </label> Due: {{Loan.dueDate | date:"MM/dd/yyyy"}}  <label class="wh">   </label> Collect/{{Loan.collector}}  <label class="wh"> **</label>
       {{Loan.primStat}}
-      <label class="wh">   </label>history:
+    <!--  <label class="wh">   </label>history:
       <select name="recent" ngModel (ngModelChange)="onRecentLoanSelect($event)" class="rHistory">
         <option *ngFor="let rz of recent"  [ngValue]="rz">
           id: {{ rz.loanId }} n: {{rz.borrName | remove : "Borrower,"}} date: {{rz.dt | date: "MM/dd hh:mm"}}
         </option>
-      </select>
+      </select>-->
     </div>
       <div class="h4">
         {{Loan.borrowerName | asCase:"name"}} , co {{Loan.coBorrowerName | asCase:"name"}}
@@ -34,22 +34,22 @@
   <div class="col-md-3">
     <div>
       <table class="table-l">
-        <caption>Info</caption>
+        <caption class="b">Info</caption>
         <tbody>
         <tr>
-          <td>Type</td>
+          <td><label class="b">Type</label></td>
           <td>{{Loan.loanType}}</td>
         </tr>
         <tr>
-          <td>interest rate</td>
+          <td><label class="b">Interest Rate</label></td>
           <td>{{Loan.interestRate | percent}}</td>
         </tr>
         <tr>
-          <td># payments due</td>
+          <td><label class="b"># Payments Due</label></td>
           <td>{{Loan.numberOfPaymentsDue}}</td>
         </tr>
         <tr>
-          <td>date last contact</td>
+          <td><Label class="b">Date Last Contact</Label></td>
           <td>{{c.dateLastContacted}}</td>
         </tr>
         </tbody>
@@ -75,18 +75,18 @@
   <div class="col-md-3">
     <div>
       <table class="table-l">
-        <caption>Info</caption>
+        <caption class="b">Info</caption>
         <tbody>
         <tr>
-          <td>SPOC</td>
+          <td><Label class="b">SPOC</Label></td>
           <td>{{Loan.spoc}}</td>
         </tr>
         <tr>
-          <td>total due</td>
+          <td><Label class="b">Total Due</Label></td>
           <td>{{Loan.principalBal | currency | remusd}}</td>
         </tr>
         <tr>
-          <td>payment amt</td>
+          <td><Label class="b">Payment Amt</Label></td>
           <td>{{Loan.paymentAmount | currency | remusd}}</td>
         </tr>
 

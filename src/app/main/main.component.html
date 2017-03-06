@@ -5,7 +5,7 @@
         User Name: <input class="input-custom" type="string" [(ngModel)]="winUserName" name="winUserName">
     </div>
     <div class="col-lg-2">
-      <button class="btn-red wd" type="button" (click)="setTheUser()">set username</button>
+      <button class="btn-red wd" type="button" (click)="setTheUser()">Set Username</button>
     </div>
     <div class="col-lg-4">
       Welcome {{userName}}
@@ -25,17 +25,17 @@
    <app-loan-info (OnGetLoan)="onGetLoan($event)" (OnCommentAtLoanInfo)="onComment($event)" [LoanID]="getLoanID()" [userName]="getUserName()"> </app-loan-info>
 </div>
 
-<div class="row" >
-  <button class="btn-red" (click)="setLong(false)" *ngIf="isLong()"> return to normal</button>
-  <button class="btn-grey" (click)="setLong(true)" *ngIf="!isLong()">more payment info</button>
-</div>
+<!--<div class="row" >
+  <button class="btn-red" (click)="setLong(false)" *ngIf="isLong()"> Return to Normal</button>
+  <button class="btn-grey" (click)="setLong(true)" *ngIf="!isLong()">More Payment Info</button>
+</div>-->
 <!--<div class="row"><app-contact></app-contact></div>-->
 <div class="row">
   <div class="col-md-8" *ngIf="!isLong()">
     <app-comments [loan]="getLoan()" [refreshComments]="getTF()" [userName]="getUserName()"></app-comments>
   </div>
   <div class="col-md-{{short4}}">
-    <app-payments [loan]="getLoan()" [long]="isLong()"></app-payments>
+    <app-payments [loan]="getLoan()" [long]="isLong()" (OnSetLong)="setLong($event)"></app-payments>
   </div>
 </div>
 

@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ILoan} from "../service/Loan";
 import {payment} from "./payment";
 import {LoanService} from "../service/loan.service";
@@ -25,10 +25,13 @@ export class PaymentsComponent implements OnInit {
       this.payments  = c;
     })
   }
+  @Output() OnSetLong =  new EventEmitter<boolean>();
   get loan(): ILoan{
     return this.Loan;
   }
-
+  setLong(b: boolean){
+    this.OnSetLong.emit(b);
+  }
   public payments: Array<payment>;
   Loan: ILoan;
   ngOnInit() {

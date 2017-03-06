@@ -14,19 +14,20 @@ table{
 }
 
 .table-d thead{
-
+  color: var(--highlight);
 }
 .table-d tbody{
   width: calc(100% - 16px);
 }
 .table-d tr td{
-  padding: 0px 4px;
+  padding: 3px 4px;
 }
 .table-d th{
    padding: 0px 4px;
  }
 .table-d tr:nth-child(even){
   background-color: var(--9th);
+  color: var(--evenFor);
 }
 
 .table-l{
@@ -55,4 +56,5 @@ table{
 }
 .table-l tr:nth-child(even){
   background-color: var(--9th);
+
 }

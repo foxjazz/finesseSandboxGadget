@@ -21,6 +21,7 @@
       </tr>
     </tbody>
   </table>
+  <button class="btn-blue" (click)="setLong(true)" >More Payment Info</button>
 </div>
 
 <div *ngIf="long" class="ml">
@@ -73,10 +74,8 @@
       <td>{{p.effectiveDate | date:"MM/dd/yyyy"}}</td>
       <td>{{p.invoiceNumber}}</td>
 
-
-
-
     </tr>
     </tbody>
   </table>
+  <button class="btn-blue" (click)="setLong(false)"> Return to Normal</button>
 </div>

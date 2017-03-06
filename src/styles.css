@@ -3,16 +3,26 @@
   --colorvar: black;
   --caption: black;
   --bg: white;
-  --9th: #ffeee2;
+  --9th: #d1e5d8;
   --border: black;
-
+  --evenFor: #211b36;
+  --shade: #d8d8ff;
+  --highlight: #632203;
 }
 .themeDark{
   --colorvar: #CBD4DD;
   --caption: #ddbdca;
   --bg: #1d2528;
   --9th: black;
-  --border: #9e511b;
+  --border: #98a9c5;
+  --shade: #193e5c;
+  --evenFor: #ddbdca;
+  --highlight: white;
+}
+
+.hasborder{
+  border: 5px solid var(--shade);
+
 }
 
 .h3{

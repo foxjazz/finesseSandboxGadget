@@ -8,9 +8,16 @@
 
 }
 
+
+.table-sub tr:nth-child(1){
+  font-weight: bold;
+}
+
+/*
 .table-d table tr:nth-child(1){
   font-weight: bold;
 }
+*/
 
 .table-d tr td{
   padding: 4px 4px;
@@ -18,10 +25,17 @@
 .table-d th{
   padding: 2px 4px;
 }
-
+.table-d thead{
+  color: var(--highlight);
+}
 .table-d tr:nth-child(even){
   background-color: var(--9th);
 }
+.table-d tr tr:nth-child(even){
+  background-color: inherit;
+}
+
+
 .cmw{
   min-width: 120px;
 }

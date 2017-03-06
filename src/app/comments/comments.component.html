@@ -4,32 +4,36 @@
 
   <table class="table-d">
     <caption>Comments</caption>
+    <thead>
     <tr>
       <th>Date</th>
       <th>Setup By</th>
       <!--<th class="cmw">Comment</th>-->
       <th>Comment / Additional Notes</th>
     </tr>
+    </thead>
     <tr *ngFor="let cmt of comments"  (click)="onUsingTable(cmt)">
-      <td class="cmw"><table>
-        <tr>
-          <td>
-            {{cmt.dateandTime | date:"MM/dd/yyyy"}}
-          </td>
-        </tr>
-        <tr>
-          <td>
-            {{cmt.dateandTime | date:"hh:mm"}}
-          </td>
-        </tr>
+      <td class="cmw">
+        <table>
+          <tr>
+            <td>
+              {{cmt.dateandTime | date:"MM/dd/yyyy"}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{cmt.dateandTime | date:"hh:mm"}}
+            </td>
+          </tr>
 
-      </table>  </td>
+        </table>
+      </td>
 
 
       <td class="cmw">{{cmt.setupBy}}</td>
       <!--<td class="cmw"> {{cmt.comment}} </td>-->
       <td>
-        <table>
+        <table class="table-sub">
           <tr>
             <td>{{cmt.comment}}</td>
           </tr>
