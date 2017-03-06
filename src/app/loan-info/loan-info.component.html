@@ -16,7 +16,7 @@
       <div class="h4">
         {{Loan.borrowerName | asCase:"name"}} , co {{Loan.coBorrowerName | asCase:"name"}}
         Address - {{MA.addressLine1 | asCase:"name"}} {{MA.addressLine2 }} {{MA.city | asCase:"name"}},
-        {{MA.state}} {{MA.zip}}  <a href="{{gref}}">Google Map</a> <label class="wh">   </label>loans: {{otherLoans.length}}
+        {{MA.state}} {{MA.zip}}  <!--<a href="{{gref}}">Google Map</a>--> <label class="wh">   </label>loans: {{otherLoans.length}}
 
           <select name="other" ngModel (ngModelChange)="onOtherLoanSelect($event)">
             <option *ngFor="let o of otherLoans"  [selected]="o.loanID == Loan.loanID" [ngValue]="o">

@@ -1,9 +1,42 @@
 
+<div class="ml">
+  <table class="table-entry">
+
+    <tr>
+      <td><label class="cm">Comment</label></td>
+      <td class="an">Additional Notes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <select name="cl" ngModel (ngModelChange)="onCommentSelect($event)">
+
+          <option *ngFor="let cl of commentList"  [selected]="cl.description == comment.comment"  [ngValue]="cl"  >
+            {{ cl.description }}
+          </option>
+        </select>
+        <!--{{ucomment}}-->
+      </td>
+
+      <td class="an">
+        <textarea [(ngModel)]="inputAdditionalNote" id="an" class="input-area text-area-h an"></textarea>
+      </td>
+      <td>
+        <form (submit)="submitComments()" #memberForm="ngForm">
+          <div>
+            <button class="btn-blue">{{saveButton}}</button>
+          </div>
+        </form>
+      </td>
+    </tr>
+
+  </table>
+</div>
 
 <div class="ml">
 
   <table class="table-d">
-    <caption>Comments</caption>
+    <caption>Comment History</caption>
     <thead>
     <tr>
       <th>Date</th>
@@ -22,7 +55,7 @@
           </tr>
           <tr>
             <td>
-              {{cmt.dateandTime | date:"hh:mm"}}
+              {{cmt.dateandTime | date:"jm"}}
             </td>
           </tr>
 
@@ -46,39 +79,6 @@
   </table>
 </div>
 
-<div class="ml">
-      <table class="table-entry">
-
-        <tr>
-          <td><label class="cm">Comment</label></td>
-          <td class="an">Additional Notes</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <select name="cl" ngModel (ngModelChange)="onCommentSelect($event)">
-
-              <option *ngFor="let cl of commentList"  [selected]="cl.description == comment.comment"  [ngValue]="cl"  >
-                {{ cl.description }}
-              </option>
-            </select>
-            <!--{{ucomment}}-->
-          </td>
-
-          <td class="an">
-            <textarea [(ngModel)]="inputAdditionalNote" id="an" class="input-area text-area-h an"></textarea>
-          </td>
-          <td>
-            <form (submit)="submitComments()" #memberForm="ngForm">
-              <div>
-                <button class="btn-blue">{{saveButton}}</button>
-              </div>
-            </form>
-          </td>
-        </tr>
-
-      </table>
-    </div>
 <!--    <div>
       <button type="button" class="btn-blue" (click)="onToggleDu()">{{expando}}</button>
     </div>-->
