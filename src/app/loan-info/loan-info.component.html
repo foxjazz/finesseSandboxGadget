@@ -46,11 +46,11 @@
         </tr>
         <tr>
           <td><label class="b"># Payments Due</label></td>
-          <td>{{Loan.numberOfPaymentsDue}}</td>
+          <td>{{Loan.numberOfPaymentsdue}}</td>
         </tr>
         <tr>
           <td><Label class="b">Date Last Contact</Label></td>
-          <td>{{c.dateLastContacted}}</td>
+          <td>{{Loan.dateLastContacted | date:"MM/dd/yyyy"}}</td>
         </tr>
         </tbody>
       </table>
