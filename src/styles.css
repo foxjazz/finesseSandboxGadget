@@ -121,7 +121,7 @@ caption{
   min-width: 100px;
 }
 .table-norm tr:nth-child(even){
-  background-color: #0c0f1d;
+  background-color: var(--9th);
 }
 
 .btn-blue {
