@@ -29,7 +29,9 @@
   background-color: inherit;
 }
 
-
+.wd{
+  width: 200px;
+}
 .cmw{
   min-width: 120px;
 }
@@ -37,8 +39,9 @@
 .an{
   width: 300px;
 }
-.cm{
-  width: 150px;
+
+.text-area-h{
+  width: 90%;
 }
 .text-area-med{
   width: 20%;
