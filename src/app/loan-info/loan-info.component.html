@@ -121,7 +121,7 @@
   <div class="col-md-3">
     <app-comment-input (OnGotComments)="updateComment($event)"></app-comment-input>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-5 hasborder">
     <!--<app-payments [loan]="getLoan()"></app-payments>-->
     <app-contact [loan]="getLoan()" (OnComment)="onComment($event)" [userName]="getUserName()"></app-contact>
   </div>
