@@ -134,6 +134,7 @@ export class CommentsComponent implements OnInit {
     this.saveButton = "Add Comment";
     this.ls.getComments(this.Loan.loanID).subscribe(c => {
       this.comments  = c;
+      this.gacFlag = false;
     });
   }
 
@@ -161,6 +162,7 @@ export class CommentsComponent implements OnInit {
         if(this.LoanID != null) {
           this.ls.getComments(this.LoanID).subscribe(h => {
             this.comments = h;
+            this.gacFlag = false;
 
           });
         }
