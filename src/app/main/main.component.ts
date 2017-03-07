@@ -43,6 +43,8 @@ export class MainComponent implements OnInit {
   emittedReComments(): boolean{
     return this.tf;
   }
+
+  CommentJSON: string;
   tf: boolean;
   long: boolean;
   short4: string;
@@ -92,8 +94,8 @@ export class MainComponent implements OnInit {
     else
       this.short4 = "4";
   }
-  onComment(ca: boolean){
-    this.tf = ca;
+  onComment(CommentJ: string){
+    this.CommentJSON = CommentJ;
     //this.emittedReComments(ca);
   }
 

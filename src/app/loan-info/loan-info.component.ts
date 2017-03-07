@@ -48,10 +48,9 @@ export class LoanInfoComponent implements OnInit {
     this.c = new Contact();
   }
 
-  @Output() OnCommentAtLoanInfo = new EventEmitter<boolean>();
+  @Output() OnUpdateCommentFromCommentInput = new EventEmitter<string>();
   @Output() OnGetLoan = new EventEmitter<ILoan>();
-@Input('LoanID')
-
+  @Input('LoanID')
   set LoanID(s: string){
     if(s != null) {
       this.lid = s.substring(5);
@@ -64,6 +63,9 @@ export class LoanInfoComponent implements OnInit {
   }
 
   @Input() userName: string;
+  updateComment(commentJ: string){
+    this.OnUpdateCommentFromCommentInput.emit(commentJ);
+  }
   public Loan: ILoan;
   public MA: IMailingAddress;
   public gref: string;

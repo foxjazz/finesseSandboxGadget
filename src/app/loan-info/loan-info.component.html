@@ -52,7 +52,7 @@
 
 
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-2">
     <div>
       <table class="table-l">
         <caption class="b">Info</caption>
@@ -93,7 +93,7 @@
 
   </div>
 
-  <div class="col-md-3">
+  <div class="col-md-2">
     <div>
       <table class="table-l">
         <caption class="b">Info</caption>
@@ -118,7 +118,10 @@
       <li (mouseover)="hoverAU()" (mouseleave)="leaveAU()">Authorized Users</li>
     </ul>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-2">
+    <app-comment-input (OngotComment)="updateComment($event)"></app-comment-input>
+  </div>
+  <div class="col-md-4">
     <!--<app-payments [loan]="getLoan()"></app-payments>-->
     <app-contact [loan]="getLoan()" (OnComment)="onComment($event)" [userName]="getUserName()"></app-contact>
   </div>
