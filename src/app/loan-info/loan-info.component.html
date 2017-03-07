@@ -1,34 +1,55 @@
-<div class="row box1">
-  <div class="col-md-12">
+<div class="row box-top">
+  <div class="col-md-3 h3">
 
-    <div class="h3">
-        <input [(ngModel)]="lid"  id="fn" type="text" value="00000" (input)="onChangedLoanID()" class="input-custom">
-        #: {{Loan.loanID}} <label class="wh">     </label>
-        {{Loan.investor}} <label class="wh">     </label> Due: {{Loan.dueDate | date:"MM/dd/yyyy"}}  <label class="wh">   </label> Collect/{{Loan.collector}}  <label class="wh"> **</label>
-      {{Loan.primStat}}
+
+    <input [(ngModel)]="lid"  id="fn" type="text" value="00000" (input)="onChangedLoanID()" class="input-custom">
+    #: {{Loan.loanID}}
+
     <!--  <label class="wh">   </label>history:
       <select name="recent" ngModel (ngModelChange)="onRecentLoanSelect($event)" class="rHistory">
         <option *ngFor="let rz of recent"  [ngValue]="rz">
           id: {{ rz.loanId }} n: {{rz.borrName | remove : "Borrower,"}} date: {{rz.dt | date: "MM/dd hh:mm"}}
         </option>
       </select>-->
-    </div>
-      <div class="h4">
-        {{Loan.borrowerName | asCase:"name"}} , co {{Loan.coBorrowerName | asCase:"name"}}
-        Address - {{MA.addressLine1 | asCase:"name"}} {{MA.addressLine2 }} {{MA.city | asCase:"name"}},
-        {{MA.state}} {{MA.zip}}  <!--<a href="{{gref}}">Google Map</a>--> <label class="wh">   </label>loans: {{otherLoans.length}}
 
-          <select name="other" ngModel (ngModelChange)="onOtherLoanSelect($event)">
-            <option *ngFor="let o of otherLoans"  [selected]="o.loanID == Loan.loanID" [ngValue]="o">
-              {{ o.loanID }}
-            </option>
-          </select>
 
-      </div>
 
+  </div>
+  <div class="col-md-3 h3">
+    {{Loan.investor}}
+
+  </div>
+  <div class="col-md-3 h3">
+    Due: {{Loan.dueDate | date:"MM/dd/yyyy"}}  <label class="wh">      </label> {{Loan.legal}}/{{Loan.warning}}
+  </div>
+  <div class="col-md-3 h3">
+    {{Loan.primStat}}
   </div>
 
 </div>
+<div class="row box-bottom h4">
+  <div class="col-md-3 h3">
+    {{Loan.borrowerName | asCase:"name"}} <label class="wh">  </label> {{Loan.coBorrowerName | asCase:"name"}}
+  </div>
+  <div class="col-md-6 h3">
+    Address - {{MA.addressLine1 | asCase:"name"}} {{MA.addressLine2 }} {{MA.city | asCase:"name"}},
+    {{MA.state}} {{MA.zip}}
+  </div>
+
+  <div class="col-md-3 h3">
+
+    loans: {{otherLoans.length}}
+
+    <select name="other" ngModel (ngModelChange)="onOtherLoanSelect($event)">
+      <option *ngFor="let o of otherLoans"  [selected]="o.loanID == Loan.loanID" [ngValue]="o">
+        {{ o.loanID }}
+      </option>
+    </select>
+
+
+  </div>
+</div>
+
 
 <div class="row">
   <div class="col-md-3">

@@ -11,6 +11,6 @@ export interface ILoan {loanID: string;  originalAmt: number; principalBal: numb
   coBorrowerName: string; coBorrowerSSN: string;
   investor: string; interestRate: number;  paymentAmount: number;
   spoc: string; numberOfPaymentsDue: number;
-  dueDate: Date; primStat: string; loanType: string; collector: string;
+  dueDate: Date; primStat: string; loanType: string; collector: string; legal: string; warning: string;
 };
 

@@ -30,7 +30,7 @@ export class LoanInfoComponent implements OnInit {
     coBorrowerName: "cb", coBorrowerSSN: "cbssn",
     investor: "", interestRate: null, paymentAmount: null,
     spoc: "spoc", numberOfPaymentsDue: 0,
-    dueDate: null, primStat: "", loanType: null, collector: ""};
+    dueDate: null, primStat: "", loanType: null, collector: "", legal:"", warning: ""};
 
     this.showAU = false;
 

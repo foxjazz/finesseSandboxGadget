@@ -2,7 +2,15 @@
   font-weight: bold;
   float: right;
 }
-
+.row{
+  margin: 0px;
+}
+.box-top{
+  border-top: 4px solid var(--border);
+}
+.box-bottom{
+  border-bottom: 4px solid var(--border);
+}
 .div li{
 
 }
