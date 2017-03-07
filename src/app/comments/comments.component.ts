@@ -22,7 +22,7 @@ export class CommentsComponent implements OnInit {
     this.ls = lsi;
     this.comments = new Array<Comment>();
     this.comment = new Comment();
-
+    this.gacFlag = false;
   }
 
 
@@ -64,6 +64,7 @@ export class CommentsComponent implements OnInit {
   get UpdateComment(): string{
     return this.updatedComment;
   }
+  private gacFlag: boolean;
   updatedComment: string;
   comments: Array<Comment>;
   ls: LoanService;
@@ -137,6 +138,9 @@ export class CommentsComponent implements OnInit {
   }
 
   getCommentsAll(){
+    if(this.gacFlag == true)
+      return;
+    this.gacFlag = true;
     this.ls.getAllComments(this.Loan.loanID).subscribe(c => {
       this.comments  = c;
     });
