@@ -3,7 +3,6 @@ import {LoanService} from "../service/loan.service";
 import { ILoan} from "../service/Loan";
 import {IMailingAddress} from "../main/MailingAddress";
 import {IContact, Contact} from "../contact/contact";
-import {isDate} from "rxjs/util/isDate";
 import {IOtherLoan} from "./IOtherLoan";
 import {PaymentsComponent} from "../payments/payments.component";
 import {IHistory} from "./history";
@@ -116,11 +115,6 @@ export class LoanInfoComponent implements OnInit {
       this.onChangedLoanID();
     }
   }
-
-   onComment(ca: boolean){
-     this.OnCommentAtLoanInfo.emit(ca);
-   }
-
 
   getLoan():ILoan{
     return this.Loan;

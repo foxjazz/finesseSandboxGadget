@@ -1,0 +1,38 @@
+<div class="ml">
+  <!--<form (submit)="submitComments()" #memberForm="ngForm">-->
+  <table class="table-entry">
+
+    <tr>
+      <td>
+        <label class="cm">Comment</label>
+      </td>
+      <td>
+        <select name="cl" ngModel (ngModelChange)="onCommentSelect($event)">
+
+          <option *ngFor="let cl of commentList"  [ngValue]="cl"  >
+            {{ cl.description }}
+          </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="cm">Comment</label>
+      </td>
+      <td>
+        <textarea [(ngModel)]="inputAdditionalNote" id="an" class="input-area text-area-h an"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>
+
+        <div>
+          <button class="btn-blue" type="button" (click)="onSubmit()">{{saveButton}}</button>
+        </div>
+
+      </td>
+    </tr>
+
+  </table>
+  <!--  </form>-->
+</div>
