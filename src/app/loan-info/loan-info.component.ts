@@ -132,6 +132,8 @@ export class LoanInfoComponent implements OnInit {
 
   onChangedLoanID(){
 
+    if(this.lid.length > 5)
+      return;
     if(this.lid.length === 5)
       this.tlid = "00000" + this.lid;
     else
