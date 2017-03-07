@@ -3,7 +3,9 @@
 
 
     <input [(ngModel)]="lid"  id="fn" type="text" value="00000" (input)="onChangedLoanID()" class="input-custom">
+    <label class="red" *ngIf="notFound">Not found</label>
     #: {{Loan.loanID}}
+
 
     <!--  <label class="wh">   </label>history:
       <select name="recent" ngModel (ngModelChange)="onRecentLoanSelect($event)" class="rHistory">

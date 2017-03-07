@@ -65,6 +65,7 @@ export class LoanInfoComponent implements OnInit {
   updateComment(commentJ: string){
     this.OnUpdateCommentFromCommentInput.emit(commentJ);
   }
+  public notFound: boolean;
   public Loan: ILoan;
   public MA: IMailingAddress;
   public gref: string;
@@ -139,16 +140,17 @@ export class LoanInfoComponent implements OnInit {
     if(this.tlid.length === 10 ) {
       this.ls.getMailingAddress(this.tlid).subscribe(h => {
         if (h.length > 0) {
+
           this.MA = h[0];
           this.gref = "https://www.google.com/maps/place/" + this.MA.addressLine1.replace(' ', '').replace('  ', '') + "," + this.MA.city.replace(' ', '') + "," + this.MA.state;
         }
-
       });
 
       this.ls.getLoan(this.tlid).subscribe(h => {
         if(h === undefined)
           return;
         if (h.length > 0) {
+          this.notFound = false;
           this.Loan = h[0];
           this.OnGetLoan.emit(this.Loan);
           if (this.recent == null)
@@ -167,6 +169,9 @@ export class LoanInfoComponent implements OnInit {
             console.log(str);
             localStorage.setItem('recent', str);
           }
+          else{
+          this.notFound = true;
+        }
       });
 
       this.ls.getOtherLoans(this.tlid).subscribe(o => {
