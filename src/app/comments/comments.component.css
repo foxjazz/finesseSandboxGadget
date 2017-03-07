@@ -172,7 +172,12 @@
 .text-area-h{
   height: 70px;
 }
-
+.btn-w{
+  width: 160px;
+}
+.al{
+  float: left;
+}
 
 
 .table-view tbody{

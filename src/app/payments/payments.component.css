@@ -12,7 +12,12 @@ table{
   scrollbar-arrow-color: purple;
   scrollbar-face-color: blue;
 }
-
+.btn-w{
+  width: 160px;
+}
+.al{
+  float: left;
+}
 .table-d thead{
   color: var(--highlight);
 }
