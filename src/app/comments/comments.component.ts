@@ -52,6 +52,19 @@ export class CommentsComponent implements OnInit {
   }
 
   @Input() userName: string;
+  @Input()
+  set UpdatedComment(uc: string)
+  {
+    if(uc.length != 0) {
+      this.updatedComment = uc;
+      this.comment = JSON.parse(uc);
+      this.updateComment();
+    }
+  }
+  get UpdateComment(): string{
+    return this.updatedComment;
+  }
+  updatedComment: string;
   comments: Array<Comment>;
   ls: LoanService;
 
@@ -70,30 +83,14 @@ export class CommentsComponent implements OnInit {
   getLoan(): ILoan{
     return this.Loan;
   }
-  submitComments()
+  updateComment()
   {
-    if(this.comments.length > 0) {
-      this.comment = this.comments[0];
-      //this.comment.comment = this.inputComment;
-      this.comment.notes = this.inputNote;
-      this.comment.additionalNotes = this.inputAdditionalNote;
-    }
-    else if (this.comment == null){
-      this.comment = {dateandTime: new Date(), additionalNotes: this.inputAdditionalNote, notes: this.inputNote,
-        comment: this.inputComment, loanID: this.LoanID, daysAdvanceNot: 0, eventFrequency: 0,
-        letterCode: null, sentToAttorney: 0, rightPartyContact: 0, qualityRightPartyContact: 0, exclude: 0,
-        completedBy: null, setupBy: this.setupBy, completionDate: null, recordtype: 0 , department: 0 , retainPermanent:0,
-        dueDate: null, Counter: 0};
-    }
-
     this.comment.loanID = this.Loan.loanID;
     this.comment.dateandTime = new Date();
     if(this.setupBy == null)
       this.setupBy = "test gadget";
     if(this.userName != null && this.userName.length > 0)
       this.comment.setupBy = this.userName;
-    this.comment.comment = this.ucomment;
-    this.comment.additionalNotes = this.inputAdditionalNote;
     if(this.comment.comment.length > 0 && this.comment.additionalNotes.length > 0) {
       this.saveButton = "Comment Added";
       this.ls.saveget('Comments', JSON.stringify(this.comment), this.Loan.loanID).subscribe(x => {

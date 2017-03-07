@@ -33,7 +33,7 @@
 <!--<div class="row"><app-contact></app-contact></div>-->
 <div class="row">
   <div class="col-md-8" *ngIf="!isLong()">
-    <app-comments [loan]="getLoan()" [refreshComments]="getTF()" [userName]="getUserName()"></app-comments>
+    <app-comments [loan]="getLoan()" [refreshComments]="getTF()" [userName]="getUserName()" [UpdatedComment]="getUpdatedComment()"></app-comments>
   </div>
   <div class="col-md-{{short4}}">
     <app-payments [loan]="getLoan()" [long]="isLong()" (OnSetLong)="setLong($event)"></app-payments>

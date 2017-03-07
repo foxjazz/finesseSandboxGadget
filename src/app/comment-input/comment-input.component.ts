@@ -20,7 +20,6 @@ export class CommentInputComponent implements OnInit {
 
   @Output() OnGotComments = new EventEmitter<string>();
   @Input() userName: string;
-  @Input() LoanID: string;
   comments: Array<Comment>;
   Loan: ILoan;
   saveButton:string;
@@ -38,7 +37,7 @@ export class CommentInputComponent implements OnInit {
     if(this.comment == null)
       this.comment = new Comment();
 
-    this.comment.loanID = this.Loan.loanID;
+
     this.comment.dateandTime = new Date();
 
     if(this.userName != null && this.userName.length > 0)

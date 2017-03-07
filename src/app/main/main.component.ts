@@ -94,6 +94,12 @@ export class MainComponent implements OnInit {
     else
       this.short4 = "4";
   }
+  getUpdatedComment(): string{
+    if(this.CommentJSON == null)
+      return "";
+    else
+      return this.CommentJSON;
+  }
   onComment(CommentJ: string){
     this.CommentJSON = CommentJ;
     //this.emittedReComments(ca);
