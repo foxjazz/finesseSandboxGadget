@@ -1,5 +1,9 @@
-
-
+.pbd{
+  padding: 0px 2px;
+}
+.pa{
+  padding: 0px 3px;
+}
 .tbl td{
   padding: 2px 2px 2px 4px;
 }

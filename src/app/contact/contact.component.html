@@ -1,6 +1,6 @@
 <div>
   <form (submit)="savePromise(memberForm)" #memberForm="ngForm" autocomplete="off">
-    <div>
+
     <table class="tbl-norm">
       <tr>
         <td>Demeanor:</td>
@@ -11,7 +11,7 @@
           </option>
         </select></td>
         <td>
-          Reason:
+          <label class="wh"> </label>Reason:
         </td>
         <td>
           <select name="res" ngModel>
@@ -30,7 +30,7 @@
           <input name="fol" class="pbd" type="date" id="fol" [(ngModel)]="fold">
         </td>
         <td>
-          Outcome:
+          <label class="wh"> </label>Outcome:
         </td>
         <td>
           <select name="outc" ngModel>
@@ -50,7 +50,7 @@
           <input name="pbd" class="pbd" type="date" id="pbd" [(ngModel)]="hpbd">
         </td>
         <td>
-          <label class="widAmt norm" for="pa">Promise Amt</label>
+          <label class="widAmt norm wh" for="pa"> Promise Amt</label>
         </td>
         <td>
           <input class="pa" type="number" [(ngModel)]="c.promiseAmt" id="pa" name="pa">
@@ -65,7 +65,7 @@
           <input class="pbd" type="date" [(ngModel)]="hpbd3" id="pbd2" name="pbd3">
         </td>
         <td>
-          <label class="norm" for="pa2">Promise Amt 2</label>
+          <label class="norm wh" for="pa2"> Promise Amt 2 </label>
         </td>
         <td>
           <input class="pa" type="number" [(ngModel)]="c.promiseAmt2" id="pa2" name="pa2">
@@ -73,13 +73,13 @@
       </tr>
       <tr>
         <td>
-          <label class="wh norm" for="pbd3">Promise Date 3</label>
+          <label class="norm" for="pbd3">Promise Date 3</label>
         </td>
         <td>
           <input class="pbd" type="date" [(ngModel)]="hpbd3" id="pbd3" name="pbd3">
         </td>
         <td>
-          <label class="norm" for="pa3">Promise Amt 3</label>
+          <label class="norm wh" for="pa3"> Promise Amt 3 </label>
         </td>
         <td>
           <input class="pa" type="number" [(ngModel)]="c.promiseAmt3" id="pa3" name="pa3">
@@ -87,7 +87,7 @@
       </tr>
 
     </table>
-    </div>
+
 
     <div> {{error}}
       {{message}}<span><button type="submit" class="btn-blue">{{saveButton}}</button></span>
