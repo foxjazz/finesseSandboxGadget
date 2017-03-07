@@ -15,6 +15,8 @@ export class CommentInputComponent implements OnInit {
     this.saveButton = "Add Comment";
     this.setupBy = "not set";
     this.comment = new Comment();
+    this.hasAdditionalNotes = true;
+    this.hasComment = true;
   }
 
 
@@ -26,12 +28,27 @@ export class CommentInputComponent implements OnInit {
   onCommentSelect(c: any){
     this.inputComment = c.description;
   }
+  hasAdditionalNotes: boolean;
+  hasComment: boolean;
   comment: Comment;
   inputAdditionalNote: string;
   inputComment: string;
   setupBy: string;
   commentList: Array<ICommentList>;
 
+  get isCommentRed(): string{
+    if(this.hasComment === false)
+      return "red";
+    else
+      return ""
+  }
+
+  get isAddNoteRed(): string{
+    if(this.hasAdditionalNotes === false)
+      return "red";
+    else
+      return ""
+  }
   onSubmit()
   {
     if(this.comment == null)
@@ -44,7 +61,9 @@ export class CommentInputComponent implements OnInit {
       this.comment.setupBy = this.userName;
     this.comment.comment = this.inputComment;
     this.comment.additionalNotes = this.inputAdditionalNote;
-    if(this.comment.comment.length > 0 && this.comment.additionalNotes.length > 0) {
+    if(this.comment.comment && this.comment.additionalNotes && this.comment.comment.length > 0 && this.comment.additionalNotes.length > 0) {
+      this.hasComment = true;
+      this.hasAdditionalNotes = true;
       this.saveButton = "Comment Added";
       this.OnGotComments.emit(JSON.stringify(this.comment));
 /*
@@ -54,6 +73,12 @@ export class CommentInputComponent implements OnInit {
         this.OnGotComments.emit(true);
       });
 */
+    }
+    else{
+      if(!this.inputComment || this.inputComment.length === 0)
+        this.hasComment = false;
+      if(!this.inputAdditionalNote || this.inputAdditionalNote.length === 0)
+        this.hasAdditionalNotes = false;
     }
 
   }

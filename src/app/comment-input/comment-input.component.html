@@ -6,7 +6,7 @@
       <td>
         <label class="cm">Comment</label>
       </td>
-      <td>
+      <td class="{{isCommentRed}}">
         <select name="cl" ngModel (ngModelChange)="onCommentSelect($event)">
 
           <option *ngFor="let cl of commentList"  [ngValue]="cl"  >
@@ -19,7 +19,7 @@
       <td>
         <label class="cm">Additional Notes</label>
       </td>
-      <td>
+      <td class="{{isAddNoteRed}}">
         <textarea [(ngModel)]="inputAdditionalNote" id="an" class="input-area text-area-h"></textarea>
       </td>
     </tr>
