@@ -32,6 +32,7 @@ export class CommentsComponent implements OnInit {
     this.ls.getComments(this.Loan.loanID).subscribe(c => {
       this.saveButton = "Add Comment";
       this.comments  = c;
+      this.gacFlag = false;
     });
   }
   get loan(): ILoan{
@@ -44,6 +45,7 @@ export class CommentsComponent implements OnInit {
       this.ls.getComments(this.Loan.loanID).subscribe(c => {
         this.saveButton = "Add Comment";
         this.comments = c;
+        this.gacFlag = false;
       });
     }
   }
@@ -97,6 +99,7 @@ export class CommentsComponent implements OnInit {
       this.ls.saveget('Comments', JSON.stringify(this.comment), this.Loan.loanID).subscribe(x => {
         console.log(x);
         this.comments = x;
+        this.gacFlag = false;
       });
     }
 
@@ -113,7 +116,7 @@ export class CommentsComponent implements OnInit {
       this.expando = "Collapse"
     }
   }
-  onChangedLoanID(){
+ /* onChangedLoanID(){
     let id = this.LoanID;
     if(id.length === 10)
       this.ls.getComments(id).subscribe(h => {
@@ -123,7 +126,7 @@ export class CommentsComponent implements OnInit {
   }
   onCommentSelect(c: any){
     this.ucomment = c.description;
-  }
+  }*/
   onUsingTable(cmt: Comment)
   {
       this.comment = cmt;
