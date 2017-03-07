@@ -45,7 +45,7 @@
       </td>
     </tr>
   </table>
-  <button class="btn-blue btn-w al" type="button" (click)="getCommentsAll()">Get All Comments</button>
+  <button *ngIf="!gacFlag" class="btn-blue btn-w al" type="button" (click)="getCommentsAll()">Get All Comments</button>
 </div>
 
 <!--    <div>
