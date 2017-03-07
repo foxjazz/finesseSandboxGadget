@@ -7,17 +7,9 @@
   padding: 4px 9px;
 
 }
-
-
 .table-sub tr:nth-child(1){
   font-weight: bold;
 }
-
-/*
-.table-d table tr:nth-child(1){
-  font-weight: bold;
-}
-*/
 
 .table-d tr td{
   padding: 4px 4px;
