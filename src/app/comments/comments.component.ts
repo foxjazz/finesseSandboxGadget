@@ -88,6 +88,10 @@ export class CommentsComponent implements OnInit {
   }
   updateComment()
   {
+    if(this.comments.length > 0) {
+      this.comment.rightPartyContact = this.comments[0].rightPartyContact;
+      this.comment.qualityRightPartyContact = this.comments[0].qualityRightPartyContact
+    }
     this.comment.loanID = this.Loan.loanID;
     this.comment.dateandTime = new Date();
     if(this.setupBy == null)

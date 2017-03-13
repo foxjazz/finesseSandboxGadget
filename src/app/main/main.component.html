@@ -23,7 +23,7 @@
 
 
 <div>
-   <app-loan-info (OnGetLoan)="onGetLoan($event)" (OnUpdateCommentFromCommentInput)="onComment($event)" [LoanID]="getLoanID()" [userName]="getUserName()"> </app-loan-info>
+   <app-loan-info (OnGetLoan)="onGetLoan($event)" (OnUpdateCommentFromCommentInput)="onComment($event)" (OnContactChange)="emittedReComments()"    [LoanID]="getLoanID()" [userName]="getUserName()"> </app-loan-info>
 </div>
 
 <!--<div class="row" >

@@ -21,7 +21,8 @@ export interface IContact{
   promiseAmt3: number;
   promiseDate3: Date;
   setupBy: string;
-
+rpc: boolean;
+qrpc: boolean;
 
 
 }
@@ -47,6 +48,8 @@ export class Contact implements IContact{
   promiseAmt3: number;
   promiseDate3: Date;
   setupBy: string;
+  rpc: boolean;
+  qrpc: boolean;
 
 
 

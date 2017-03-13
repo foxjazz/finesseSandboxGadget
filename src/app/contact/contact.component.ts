@@ -24,7 +24,7 @@ export class ContactComponent implements OnInit {
     this.reasons = new Array<Reason>();
     this.outcomes = new Array<Outcome>();
     this.demeanors = new Array<IDemeanor>();
-    this.demeanors.push({description: 'cooperative', code: '01'}, {description:'uncoopreative', code: '02'});
+    this.demeanors.push({description: 'cooperative', code: '01'}, {description:'uncooperative', code: '02'});
     this.c.setupBy = "test Gadget";
     this.saveButton = "Update Contact";
   }

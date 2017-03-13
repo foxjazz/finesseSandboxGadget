@@ -49,6 +49,7 @@ export class LoanInfoComponent implements OnInit {
 
   @Output() OnUpdateCommentFromCommentInput = new EventEmitter<string>();
   @Output() OnGetLoan = new EventEmitter<ILoan>();
+  @Output() OnContactChange = new EventEmitter<boolean>();
   @Input('LoanID')
   set LoanID(s: string){
     if(s != null) {
@@ -64,6 +65,9 @@ export class LoanInfoComponent implements OnInit {
   @Input() userName: string;
   updateComment(commentJ: string){
     this.OnUpdateCommentFromCommentInput.emit(commentJ);
+  }
+  onComment(b: any){
+    this.OnContactChange.emit(true);
   }
   public notFound: boolean;
   public Loan: ILoan;

@@ -44,6 +44,16 @@
       </tr>
       <tr>
         <td>
+          <label class="norm" for="rpc">Right Party Contact</label>
+          <input name="rpc" id="rpc" type="checkbox" [(ngModel)]="c.rpc">
+        </td>
+        <td>
+          <label class="norm" for="qrpc">Quality Right Party Contact</label>
+          <input name="qrpc" id="qrpc" type="checkbox" [(ngModel)]="c.qrpc">
+        </td>
+      </tr>
+      <tr>
+        <td>
           <label class="wh norm" for="pbd">Promise Date </label>
         </td>
         <td>
@@ -59,10 +69,10 @@
       </tr>
       <tr>
         <td>
-          <label class="wh norm" for="pbd3">Promise Date 2 </label>
+          <label class="wh norm" for="pbd2">Promise Date 2 </label>
         </td>
         <td>
-          <input class="pbd" type="date" [(ngModel)]="hpbd3" id="pbd2" name="pbd3">
+          <input class="pbd" type="date" [(ngModel)]="hpbd2" id="pbd2" name="pbd2">
         </td>
         <td>
           <label class="norm wh" for="pa2"> Promise Amt 2 </label>
