@@ -40,8 +40,8 @@ export class MainComponent implements OnInit {
   private LoanID: string;
   userName: string;
   winUserName: string;
-  emittedReComments(): boolean{
-    return this.tf;
+  emittedReComments(){
+    this.tf = true;
   }
 
   CommentJSON: string;
