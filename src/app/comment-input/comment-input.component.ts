@@ -28,6 +28,14 @@ export class CommentInputComponent implements OnInit {
   onCommentSelect(c: any){
     this.inputComment = c.description;
   }
+
+  //Extended
+
+
+
+
+  //End of extended
+
   hasAdditionalNotes: boolean;
   hasComment: boolean;
   comment: Comment;

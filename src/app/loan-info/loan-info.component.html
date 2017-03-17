@@ -75,9 +75,24 @@
           <td><Label class="b">Date Last Contact</Label></td>
           <td>{{Loan.dateLastContacted | date:"MM/dd/yyyy"}}</td>
         </tr>
+        <tr>
+          <td><Label class="b">SPOC</Label></td>
+          <td>{{Loan.spoc}}</td>
+        </tr>
+        <tr>
+          <td><Label class="b">Total Due</Label></td>
+          <td>{{Loan.principalBal | currency | remusd}}</td>
+        </tr>
+        <tr>
+          <td><Label class="b">Payment Amt</Label></td>
+          <td>{{Loan.paymentAmount | currency | remusd}}</td>
+        </tr>
         </tbody>
       </table>
     </div>
+    <ul>
+      <li (mouseover)="hoverAU()" (mouseleave)="leaveAU()">Authorized Users</li>
+    </ul>
 <!--
     <div>
       <ul>
@@ -95,7 +110,7 @@
 
   </div>
 
-  <div class="col-md-2">
+  <!--<div class="col-md-2">
     <div>
       <table class="table-l">
         <caption class="b">Info</caption>
@@ -119,11 +134,11 @@
     <ul>
       <li (mouseover)="hoverAU()" (mouseleave)="leaveAU()">Authorized Users</li>
     </ul>
-  </div>
-  <div class="col-md-3">
+  </div>-->
+  <div class="col-md-6">
     <app-comment-input (OnGotComments)="updateComment($event)"></app-comment-input>
   </div>
-  <div class="col-md-5 hasborder">
+  <div class="col-md-4 hasborder">
     <!--<app-payments [loan]="getLoan()"></app-payments>-->
     <app-contact [loan]="getLoan()" (OnComment)="onComment($event)" [userName]="getUserName()"></app-contact>
   </div>

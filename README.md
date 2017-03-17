@@ -1,3 +1,11 @@
+server name: uccx_001_app_prod_uccx
+#UCCX  Host Name: UCCX-001-APP-PROD.statebridgecompany.com
+       Service: 1504
+       Database Name: db_cra
+       UID: uccxhruser
+       Pswd: UCCXr3p0rts123!
+
+
 <script src="https://gist.github.com/andyferra/2554919.js"></script>
 
 # ServiceUI

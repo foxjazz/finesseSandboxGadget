@@ -1,34 +1,126 @@
 <div class="ml">
   <!--<form (submit)="submitComments()" #memberForm="ngForm">-->
   <table class="table-entry">
-
     <tr>
-      <td>
-        <label>Comment</label>
-      </td>
-      <td class="{{isCommentRed}}">
-        <select name="cl" ngModel (ngModelChange)="onCommentSelect($event)">
 
+      <td class="{{isCommentRed}}" colspan="2">
+        <label for="cl">Comment</label>
+        <select id="cl" name="cl" ngModel (ngModelChange)="onCommentSelect($event)">
           <option *ngFor="let cl of commentList"  [ngValue]="cl"  >
             {{ cl.description }}
           </option>
         </select>
       </td>
+
+      <td  colspan="2" class="{{isAddNoteRed}}">
+        <!--<label for="an">Add Notes</label>-->
+        <table>
+          <tr>
+            <td>
+              Add Notes
+            </td>
+            <td width="320px">
+              <textarea [(ngModel)]="inputAdditionalNote" id="an" class="input-area text-area-h"></textarea>
+            </td>
+          </tr>
+        </table>
+
+
+      </td>
+      <td></td>
+
+
+
     </tr>
     <tr>
       <td>
-        <label>Additional Notes</label>
+        <label for="crs">CR Statement</label>
+        <input type="checkbox" id="crs" [(ngModel)]="comment.callrec">
       </td>
-      <td class="~{{isAddNoteRed}}">
-        <textarea [(ngModel)]="inputAdditionalNote" id="an" class="input-area text-area-h"></textarea>
+      <td>
+        <label for="dem">Demographic</label>
+        <input type="checkbox" id="dem" [(ngModel)]="comment.demographic">
+      </td>
+      <td>
+        <label for="dial">Dialed Number</label>
+      </td>
+      <td>
+        <input type="text" id="dial" [(ngModel)]="comment.dialedNumber">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label for="bcn">Best Contact Number</label>
+
+      </td>
+      <td>
+        <input type="text" id="bcn" [(ngModel)]="comment.bestNumber">
+      </td>
+      <td>
+        <label for="plm">Permission to leave message</label>
+
+      </td>
+      <td>
+        <input type="checkbox" id="plm" [(ngModel)]="comment.permissionToLeaveMessage">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label for="poen">Place of employment name</label>
+
+      </td>
+      <td>
+        <input type="text" id="poen" value="Refused" [(ngModel)]="comment.placeOfEmploymentName">
+      </td>
+      <td>
+        <label for="poen2">Employment Phone</label>
+      </td>
+      <td>
+        <input type="text" id="poen2" [(ngModel)]="comment.placeOfEmploymentNumber">
       </td>
     </tr>
     <tr>
       <td>
+        <label for="rtpd">Requested Total</label>
+
+      </td>
+      <td>
+        <input type="checkbox" id="rtpd" [(ngModel)]="comment.requestedTotalPastDue">
+      </td>
+      <td>
+        <label for="bi">Borrower's Intent</label>
+      </td>
+      <td>
+        <input type="text" id="bi" [(ngModel)]="comment.borrowersIntent">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="rd">Reason delinquent</label>
+
+      </td>
+      <td>
+        <input type="text" id="rd" [(ngModel)]="comment.reasonForDeliquency">
+      </td>
+      <td>
+        <label for="email">Email</label>
+
+      </td>
+      <td>
+        <input type="text" id="email" [(ngModel)]="comment.emailAddress">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4">
         <button class="btn-blue" type="button" (click)="onSubmit()">{{saveButton}}</button>
       </td>
     </tr>
 
   </table>
+
+
+
   <!--  </form>-->
 </div>
