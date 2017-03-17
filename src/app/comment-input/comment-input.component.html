@@ -17,7 +17,7 @@
         <table>
           <tr>
             <td>
-              Add Notes
+             <label class="wh"> Add Notes </label>
             </td>
             <td width="320px">
               <textarea [(ngModel)]="inputAdditionalNote" id="an" class="input-area text-area-h"></textarea>
@@ -42,7 +42,7 @@
         <input type="checkbox" id="dem" [(ngModel)]="comment.demographic">
       </td>
       <td>
-        <label for="dial">Dialed Number</label>
+        <label for="dial" class="wh"> Dialed Number</label>
       </td>
       <td>
         <input type="text" id="dial" [(ngModel)]="comment.dialedNumber">
@@ -51,14 +51,14 @@
 
     <tr>
       <td>
-        <label for="bcn">Best Contact Number</label>
+        <label for="bcn" class="wh">Best Contact Number </label>
 
       </td>
       <td>
         <input type="text" id="bcn" [(ngModel)]="comment.bestNumber">
       </td>
       <td>
-        <label for="plm">Permission to Leave Message</label>
+        <label for="plm" class="wh"> Permission to Leave Message</label>
 
       </td>
       <td>
@@ -68,14 +68,14 @@
 
     <tr>
       <td>
-        <label for="poen">Place of employment name</label>
+        <label for="poen" class="wh">Place of Employment </label>
 
       </td>
       <td>
         <input type="text" id="poen" value="Refused" [(ngModel)]="comment.placeOfEmploymentName">
       </td>
       <td>
-        <label for="poen2">Employment Phone</label>
+        <label for="poen2" class="wh"> Employment Phone</label>
       </td>
       <td>
         <input type="text" id="poen2" [(ngModel)]="comment.placeOfEmploymentNumber">
@@ -90,7 +90,7 @@
         <input type="checkbox" id="rtpd" [(ngModel)]="comment.requestedTotalPastDue">
       </td>
       <td>
-        <label for="bi">Borrower's Intent</label>
+        <label for="bi" class="wh"> Borrower's Intent</label>
       </td>
       <td>
         <input type="text" id="bi" [(ngModel)]="comment.borrowersIntent">
@@ -105,7 +105,7 @@
         <input type="text" id="rd" [(ngModel)]="comment.reasonForDeliquency">
       </td>
       <td>
-        <label for="email">Email</label>
+        <label for="email" class="wh"> Email</label>
 
       </td>
       <td>
