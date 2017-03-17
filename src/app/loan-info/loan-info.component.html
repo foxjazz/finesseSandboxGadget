@@ -135,10 +135,10 @@
       <li (mouseover)="hoverAU()" (mouseleave)="leaveAU()">Authorized Users</li>
     </ul>
   </div>-->
-  <div class="col-md-6">
+  <div class="col-md-5">
     <app-comment-input (OnGotComments)="updateComment($event)"></app-comment-input>
   </div>
-  <div class="col-md-4 hasborder">
+  <div class="col-md-5 hasborder">
     <!--<app-payments [loan]="getLoan()"></app-payments>-->
     <app-contact [loan]="getLoan()" (OnComment)="onComment($event)" [userName]="getUserName()"></app-contact>
   </div>
