@@ -32,7 +32,6 @@ export class LoanService {
   }
   result: string;
   baseURI: string;
-  ccomments: Array<Comment>;
 
   public getOutcomes():Observable<Array<Outcome>>
   {

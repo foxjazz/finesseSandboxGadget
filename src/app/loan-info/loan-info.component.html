@@ -93,48 +93,10 @@
     <ul>
       <li (mouseover)="hoverAU()" (mouseleave)="leaveAU()">Authorized Users</li>
     </ul>
-<!--
-    <div>
-      <ul>
-
-        <li>Type {{Loan.loanType}}</li>
-        <li>Interest Rate {{Loan.interestRate | percent}}</li>
-        <li># Payments Due {{Loan.numberOfPaymentsdue}}</li>
-        <li>Last contact {{c.dateLastContacted}}</li>
-        <li>SPOC {{Loan.spoc}}</li>
-
-
-      </ul>
-    </div>
--->
 
   </div>
 
-  <!--<div class="col-md-2">
-    <div>
-      <table class="table-l">
-        <caption class="b">Info</caption>
-        <tbody>
-        <tr>
-          <td><Label class="b">SPOC</Label></td>
-          <td>{{Loan.spoc}}</td>
-        </tr>
-        <tr>
-          <td><Label class="b">Total Due</Label></td>
-          <td>{{Loan.principalBal | currency | remusd}}</td>
-        </tr>
-        <tr>
-          <td><Label class="b">Payment Amt</Label></td>
-          <td>{{Loan.paymentAmount | currency | remusd}}</td>
-        </tr>
 
-        </tbody>
-      </table>
-    </div>
-    <ul>
-      <li (mouseover)="hoverAU()" (mouseleave)="leaveAU()">Authorized Users</li>
-    </ul>
-  </div>-->
   <div class="col-md-5">
     <app-comment-input (OnGotComments)="updateComment($event)"></app-comment-input>
   </div>
@@ -147,35 +109,7 @@
 </div>
 <div class="row">
   <div class="col-md-5">
-    <!--d: {{c.promisedByDate | date:"MM/dd/yyyy"}}-->
-   <!-- <form (submit)="savePromise()" #memberForm="ngForm" autocomplete="off">
-      <div>
-        <label class="wid {{d1}}" for="pbd">Promise Date </label>
-        <input name="pbd" class="pbd" type="date" id="pbd" [(ngModel)]="hpbd">
-        &lt;!&ndash;<input [(ngModel)]="pbd" class="pd {{d1}}" id="pbd" name="pbd">&ndash;&gt;
 
-        <label class="widAmt" for="pa">Promise Amt</label>
-        <input class="pa" type="number" [(ngModel)]="c.promiseAmt" id="pa" name="pa">
-      </div>
-
-      <div>
-        <label class="wid {{d2}}" for="pbd2">Promise Date 2</label>
-        <input class="pbd" type="date" [(ngModel)]="hpbd2" id="pbd2" name="pbd2">
-        <label for="pa2">Promise Amt 2</label>
-        <input class="pa" type="number" [(ngModel)]="c.promiseAmt2" id="pa2" name="pa2">
-      </div>
-
-      <div>
-        <label class="wid {{d3}}" for="pbd3">Promise Date 3</label>
-        <input class="pbd" type="date" [(ngModel)]="hpbd3" id="pbd3" name="pbd3">
-        <label for="pa3">Promise Amt 2</label>
-        <input class="pa" type="number" [(ngModel)]="c.promiseAmt3" id="pa3" name="pa3">
-      </div>
-
-      <div>
-        <button type="submit" class="btn-blue">Update Promise</button>
-      </div>
-    </form>-->
   </div>
   <div *ngIf="showAU" class="col-md-8">
     <div><app-authorized-users [loan]="getLoan()"></app-authorized-users></div>
