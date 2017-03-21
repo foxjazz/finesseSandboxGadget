@@ -2,6 +2,7 @@
 
 #config - url
 src/app/service/config.ts
+/src/app/service/config.ts
 secret.md
 
 # compiled output
