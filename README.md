@@ -1,4 +1,10 @@
+finesse 3rdparty gadget location
+out of network: https://aqm-002-app-prd.statebridgecompany.com/
 
+uccx: https://uccx-001-app-prod.statebridgecompany.com:8445/3rdpartygadget/files/index.html
+
+finesse login links:
+https://uccx-001-app-prod.statebridgecompany.com:8445/desktop
 
 
 ## LINKS   
