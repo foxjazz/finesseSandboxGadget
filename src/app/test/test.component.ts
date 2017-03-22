@@ -3,6 +3,7 @@ import {Http, Response, Headers, RequestOptions} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import  * as xml2js from 'xml2js';
 
 import * as finesse from 'finesse';
 
@@ -62,7 +63,12 @@ export class TestComponent implements OnInit {
   }
   testGet(){
     this.get().subscribe( r => {
-      this.response = r;
+      let x2 = new xml2js.Parser();
+      x2.parseString(r,(err,result)=>{
+        console.log("xml:" + r);
+        console.log("json:" + JSON.stringify(result));
+        this.response = JSON.stringify(result);
+      });
     })
   }
   private handleError(error: any) {
@@ -76,10 +82,13 @@ export class TestComponent implements OnInit {
   public get(): Observable<any>
   {
 
+    var parser = new xml2js.Parser();
+    console.log("GET-LOG: " + this.uri + this.command);
     return this.http.get(this.uri + this.command)
-
-      .map((res: Response) => this.interesting = res.json())
+      .map((res: Response) =>  res.text())
       .catch(this.handleError);
+
+      //xml2js.parseString(res, (err,res2) =>{ console.log(res2); this.interesting = res2.json();} ))
   }
   public put(): Observable<Array<any>>
   {

@@ -22,7 +22,7 @@
 
 
 
-<div>
+<div *ngIf="isNameValid()">
    <app-loan-info (OnGetLoan)="onGetLoan($event)" (OnUpdateCommentFromCommentInput)="onComment($event)" (OnContactChange)="emittedReComments()"    [LoanID]="getLoanID()" [userName]="getUserName()"> </app-loan-info>
 </div>
 
@@ -31,7 +31,7 @@
   <button class="btn-grey" (click)="setLong(true)" *ngIf="!isLong()">More Payment Info</button>
 </div>-->
 <!--<div class="row"><app-contact></app-contact></div>-->
-<div class="row">
+<div class="row" *ngIf="isNameValid()">
   <div class="col-md-8" *ngIf="!isLong()">
     <app-comments [loan]="getLoan()" [refreshComments]="getTF()" [userName]="getUserName()" [UpdatedComment]="getUpdatedComment()"></app-comments>
   </div>

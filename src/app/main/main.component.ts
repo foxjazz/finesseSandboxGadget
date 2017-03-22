@@ -59,6 +59,7 @@ export class MainComponent implements OnInit {
   setTheUser(){
     if(this.winUserName == undefined || this.winUserName == null)
       return;
+    this.userName = "";
     localStorage.setItem('winUserName', this.winUserName);
     this.ls.getUser(this.winUserName).subscribe(x => {
       if(x.length > 0) {
@@ -93,6 +94,12 @@ export class MainComponent implements OnInit {
       this.short4 = "12";
     else
       this.short4 = "4";
+  }
+  isNameValid(): boolean{
+    if (this.userName != null && this.userName.length > 0)
+      return true;
+    else
+      return false;
   }
   getUpdatedComment(): string{
     if(this.CommentJSON == null)

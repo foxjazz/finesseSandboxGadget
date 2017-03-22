@@ -1,3 +1,9 @@
+
+##to build
+ng build -prod --base-href https://uccx-001-app-prod.statebridgecompany.com:8445/3rdpartygadget/files/release/
+ng build --base-href https://uccx-001-app-prod.statebridgecompany.com:8445/3rdpartygadget/files/dev/
+
+
 finesse 3rdparty gadget location
 out of network: https://aqm-002-app-prd.statebridgecompany.com/
 

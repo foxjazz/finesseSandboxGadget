@@ -18,7 +18,7 @@ export class LoanInfoComponent implements OnInit {
   constructor(private ls: LoanService) {
     this.recent = new Array<IHistory>();
     this.otherLoans = new Array<IOtherLoan>();
-    this.Loan =  {loanID: "0000032141",
+    this.Loan =  {loanID: "0000000000",
     originalAmt: null, principalBal: null, escrowPmt: null,
     legalFeeBal: null,
       lcBal: null, piPmp: null, currencyType: "US Dollars", pmtFrequency: null,
@@ -38,7 +38,7 @@ export class LoanInfoComponent implements OnInit {
     this.d1 ="";
     this.d2 = "";
     this.d3 = "";
-    this.lid = '27900';
+    this.lid = '00000';
 /*
     this.c = {loanID: "",dateLastContacted: null, outcome: "", demeanor: "", reason: "", followUpDt: null, promiseAmt: 0, promiseAmt2: 0, promiseAmt3: 0,
               promisedByDate: null, promiseDate2: null, promiseDate3: null};
