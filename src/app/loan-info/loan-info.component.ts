@@ -25,11 +25,12 @@ export class LoanInfoComponent implements OnInit {
     dateLastContacted: null,
     promisedByDate: null, outcome: "", lastPmtRecvdDate: null, lastUpdateDate: null,
     lastLetterDt: null, lastNSFDt: null, lastNSFCheck: null, outcomeDescription: "",
-      borrowerName: "bn", borrowerSSN: "ssn",
-    coBorrowerName: "cb", coBorrowerSSN: "cbssn",
+      borrowerName: "not-set", borrowerSSN: "not-set",
+    coBorrowerName: "not-set", coBorrowerSSN: "not-set",
     investor: "", interestRate: null, paymentAmount: null,
-    spoc: "spoc", numberOfPaymentsDue: 0,
-    dueDate: null, primStat: "", loanType: null, collector: "", legal:"", warning: ""};
+    spoc: "not-set", numberOfPaymentsDue: 0,
+    dueDate: null, primStat: "not-set", loanType: null, collector: "", legal:"", warning: "", criticalDisplayFlag: false, criticalWarning: "", employmentStatus: false,
+    selfEmployed: false};
 
     this.showAU = false;
 
@@ -39,6 +40,7 @@ export class LoanInfoComponent implements OnInit {
     this.d2 = "";
     this.d3 = "";
     this.lid = '00000';
+    this.critical = '';
 /*
     this.c = {loanID: "",dateLastContacted: null, outcome: "", demeanor: "", reason: "", followUpDt: null, promiseAmt: 0, promiseAmt2: 0, promiseAmt3: 0,
               promisedByDate: null, promiseDate2: null, promiseDate3: null};
@@ -69,6 +71,8 @@ export class LoanInfoComponent implements OnInit {
   onComment(b: any){
     this.OnContactChange.emit(true);
   }
+  criticalwarning: string;
+  critical: string;
   public notFound: boolean;
   public Loan: ILoan;
   public MA: IMailingAddress;
@@ -158,6 +162,10 @@ export class LoanInfoComponent implements OnInit {
         if (h.length > 0) {
           this.notFound = false;
           this.Loan = h[0];
+          if(this.Loan.criticalDisplayFlag === true) {
+            this.critical = "reda";
+            this.criticalwarning = "/" + this.Loan.criticalWarning;
+          }
           this.OnGetLoan.emit(this.Loan);
           if (this.recent == null)
             return;

@@ -5,7 +5,7 @@
         User Name: <input class="input-custom" type="string" [(ngModel)]="winUserName" name="winUserName">
     </div>
     <div class="col-lg-2">
-      <button class="btn-red wd" type="button" (click)="setTheUser()">Set Username</button>
+      <button *ngIf="showSetUserName" class="btn-red wd" type="button" (click)="setTheUser()">Set Username</button>
     </div>
     <div class="col-lg-4">
       Welcome {{userName}}

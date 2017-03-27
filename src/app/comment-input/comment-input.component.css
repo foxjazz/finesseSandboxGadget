@@ -167,10 +167,10 @@
   display: block;
 }
 .table-entry td{
-  min-width: 40px;
+  min-width: 50px;
 }
 .text-area-h{
-  height: 50px;
+  height: 85px;
 }
 
 

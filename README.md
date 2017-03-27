@@ -3,6 +3,7 @@
 ng build -prod --base-href https://uccx-001-app-prod.statebridgecompany.com:8445/3rdpartygadget/files/release/
 ng build --base-href https://uccx-001-app-prod.statebridgecompany.com:8445/3rdpartygadget/files/dev/
 
+my agent extension 4001004098
 
 finesse 3rdparty gadget location
 out of network: https://aqm-002-app-prd.statebridgecompany.com/
@@ -12,7 +13,7 @@ uccx: https://uccx-001-app-prod.statebridgecompany.com:8445/3rdpartygadget/files
 finesse login links:
 https://uccx-001-app-prod.statebridgecompany.com:8445/desktop
 
-
+## RUNNING /  STARTING  ng serve
 ## LINKS   
 ### <styl> color: red; </style> Useful finesse links
    <a href="https://developer.cisco.com/media/finesseDevGuide4.1/">Finesse developer guid</a> ***

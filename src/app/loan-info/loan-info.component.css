@@ -2,7 +2,16 @@
   font-weight: bold;
   float: right;
 }
-.red { color: red;}
+.red { color: red;
+
+}
+.reda{
+  color: red;
+  animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+  50% { opacity: 0; }
+}
 .row{
   margin: 0px;
 }

@@ -1,4 +1,4 @@
-<div class="row box-top">
+<div class="row box-top {{critical}}">
   <div class="col-md-3 h3">
 
 
@@ -22,7 +22,7 @@
 
   </div>
   <div class="col-md-3 h3">
-    Due: {{Loan.dueDate | date:"MM/dd/yyyy"}}  <label class="wh">      </label> {{Loan.legal}}/{{Loan.warning}}
+    Due: {{Loan.dueDate | date:"MM/dd/yyyy"}}  <label class="wh">      </label> {{Loan.legal}}/{{Loan.warning}}{{criticalwarning}}
   </div>
   <div class="col-md-2 h3">
     {{Loan.primStat}}
@@ -86,6 +86,10 @@
         <tr>
           <td><Label class="b">Payment Amt</Label></td>
           <td>{{Loan.paymentAmount | currency | remusd}}</td>
+        </tr>
+        <tr>
+          <td><Label class="b">Employement Status</Label></td>
+          <td>{{Loan.employmentStatus}}</td>
         </tr>
         </tbody>
       </table>

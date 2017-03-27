@@ -20,6 +20,7 @@ import {EventEmitter} from "@angular/forms/src/facade/async";
 export class MainComponent implements OnInit {
 
   constructor(private ar: ActivatedRoute, private ls: LoanService) {
+    this.showSetUserName = true;
     this.themeName = "themeDark";
     this.long = false;
     this.tf = false;
@@ -44,6 +45,7 @@ export class MainComponent implements OnInit {
     this.tf = true;
   }
 
+  showSetUserName: boolean;
   CommentJSON: string;
   tf: boolean;
   long: boolean;
@@ -117,12 +119,14 @@ export class MainComponent implements OnInit {
     this.Loan  = l;
 
   }
+
   getLoan(): ILoan{
     if(this.Loan == undefined)
       console.log("undefined loan on main getLoan");
     return this.Loan;
   }
   ngOnInit() {
+
     let trytheme = localStorage.getItem('theme');
     if(trytheme != null && trytheme.length > 0)
       this.themeName = trytheme;
@@ -142,8 +146,11 @@ export class MainComponent implements OnInit {
           this.LoanID = xl;
         }
         let un = queryParam['userName'];
-        if(un != null)
-          this.userName = un;
+        if(un != null && un != 'undefined') {
+          this.winUserName = un;
+          this.showSetUserName = false;
+          this.setTheUser();
+        }
       }
 
     );
